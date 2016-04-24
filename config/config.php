@@ -21,3 +21,5 @@ Config::set('db.password', '');
 Config::set('db.db_name', 'mvc');
 
 Config::set('salt','7815696ecbf1c96e6');
+
+Config::set('log_path',ROOT.DS.'error.log');

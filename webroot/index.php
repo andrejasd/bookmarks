@@ -27,5 +27,21 @@ print_r($router->getParams());
 
 session_start();
 
-App::run($_SERVER['REQUEST_URI']);
+try {
+
+    App::run($_SERVER['REQUEST_URI']);
+} catch (Exception $ex) {
+    $msg = ($ex->getMessage());
+    $code = ($ex->getCode());
+    $file = ($ex->getFile());
+    $line = ($ex->getLine());
+
+    $log_msg = "Error $code in $file at line $line: $msg : " . time(). PHP_EOL;
+    error_log($log_msg, 3, Config::get('log_path'));
+    //echo $log_msg;
+
+    Router::redirect('/');
+}
+
+
 
