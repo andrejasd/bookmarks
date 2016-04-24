@@ -33,4 +33,9 @@ class Message extends Model {
 
     }
 
+    public function getList(){
+        $sql = "select * from messages";
+        return $this->db->query($sql);
+    }
+
 }

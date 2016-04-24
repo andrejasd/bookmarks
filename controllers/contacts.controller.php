@@ -13,6 +13,11 @@ class ContactsController extends Controller{
                 Session::setFlash('Thank you! Your message was sent successfully!');
             }
         }
-        
+
     }
+
+    public function admin_index(){
+        $this->data = $this->model->getList();
+    }
+
 }
