@@ -13,7 +13,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><?=Config::get('site_name')?></a>
+                <a class="navbar-brand" href="/"><?=Config::get('site_name')?></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -27,7 +27,15 @@
     <div class="container">
 
         <div class="starter-template">
+
+            <?php if( Session::hasFlash() ){ ?>
+            <div class="alert alert-info" role="alert">
+                <?php Session::flash(); ?>
+            </div>
+            <?php } ?>
+
             <?=$data['content']?>
+
         </div>
 
     </div><!-- /.container -->
