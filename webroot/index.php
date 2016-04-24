@@ -28,7 +28,9 @@ print_r($router->getParams());
 session_start();
 
 try {
+
     App::run($_SERVER['REQUEST_URI']);
+
 } catch (Exception $ex) {
     $msg = ($ex->getMessage());
     $code = ($ex->getCode());
@@ -41,6 +43,3 @@ try {
 
     Router::redirect('/');
 }
-
-
-

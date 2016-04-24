@@ -18,6 +18,5 @@ function __autoload($class_name)
     } else {
         throw new Exception('(ASD)Failed to include class: '.$class_name);
     }
-
-
+    
 }
