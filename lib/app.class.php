@@ -25,6 +25,13 @@ class App{
         //echo
         $controller_method = strtolower(self::$router->getMethodPrefix().self::$router->getAction());
 
+        $layout = self::$router->getRoute();
+        if ( $layout == 'admin' && Session::get('role') != 'admin' ){
+            if ( $controller_method != 'admin_login' ){
+                Router::redirect('/admin/users/login');
+            }
+        }
+
         // Calling controller's method
         $controller_object = new $controller_class();
         if ( method_exists($controller_object, $controller_method) ){

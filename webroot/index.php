@@ -25,5 +25,7 @@ print_r($router->getParams());
 
 // Session::setFlash('Test flash message');
 
+session_start();
+
 App::run($_SERVER['REQUEST_URI']);
 
