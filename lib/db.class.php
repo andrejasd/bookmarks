@@ -34,6 +34,7 @@ class DB{
         return $data;
     }
 
+    // предотвращаем sql injection
     public function escape($str){
         return mysqli_escape_string($this->connection, $str);
     }

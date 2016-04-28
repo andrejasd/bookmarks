@@ -5,10 +5,7 @@ class App{
     protected static $router;
 
     public static $db;
-
-    /**
-     * @return mixed
-     */
+    
     public static function getRouter()
     {
         return self::$router;
@@ -25,6 +22,7 @@ class App{
         //echo
         $controller_method = strtolower(self::$router->getMethodPrefix().self::$router->getAction());
 
+        // if admin then admin_login
         $layout = self::$router->getRoute();
         if ( $layout == 'admin' && Session::get('role') != 'admin' ){
             if ( $controller_method != 'admin_login' ){
@@ -39,6 +37,7 @@ class App{
             $view_path = $controller_object->$controller_method();
             $view_object = new View($controller_object->getData(), $view_path);
             $content = $view_object->render();
+            //echo '<pre>'; print_r($content);echo '</pre>'; echo '<br>';
         } else {
             throw new Exception('(ASD)Method '.$controller_method.' of class '.$controller_class.' does not exist');
         }

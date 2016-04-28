@@ -2,8 +2,6 @@
 
 Config::set('site_name', 'My first MVC Site');
 
-Config::set('languages', array('en', 'ua'));
-
 //Routes. Rout name => method prefix
 Config::set('routes', array(
     'default' => '',

@@ -39,7 +39,7 @@ try {
 
     $log_msg = "Error $code in $file at line $line: $msg : " . time(). PHP_EOL;
     error_log($log_msg, 3, Config::get('log_path'));
-    //echo $log_msg;
+    echo $log_msg;
 
-    Router::redirect('/');
+    //Router::redirect('/');
 }

@@ -3,10 +3,13 @@
 // Класс для работы с представлениями
 class View{
 
+    // даные, котрые передаются из контроллера в представление
     protected $data;
 
+    // путь к текущему файлу представления
     protected $path;
 
+    //???
     protected static function getDefaultViewPath(){
         $router = App::getRouter();
         if ( !$router ){
@@ -25,8 +28,10 @@ class View{
         if ( !file_exists($path) ){
             throw new Exception('(ASD)Template file is not found in path: '.$path);
         }
+        //echo $path;
         $this->path = $path;
         $this->data = $data;
+        //echo '<pre>'; print_r($data);echo '</pre>'; echo '<br>';
     }
 
     public function  render(){
@@ -37,8 +42,6 @@ class View{
         $content = ob_get_clean();
 
         return $content;
-        
     }
-
 
 }

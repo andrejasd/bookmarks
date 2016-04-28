@@ -14,8 +14,6 @@ class Router
 
     protected $method_prefix;
 
-    protected $language;
-
     public function getUri()
     {
         return $this->uri;
@@ -60,13 +58,14 @@ class Router
         $this->action = Config::get('default_action');
 
         $uri_parts= explode('?', $this->uri);
+        //print_r($this->uri); echo '<br>'; print_r($uri_parts); echo '<br>';
 
         // Get path like /controller/action/param1/param2/.../...
         $path = $uri_parts[0];
 
         $path_parts = explode('/', $path);
 
-        //echo '<pre>'; print_r($path_parts);
+        //echo '<pre>'; print_r($path_parts); echo '</pre>';
 
         if ( count($path_parts) ){
 
