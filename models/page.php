@@ -2,14 +2,26 @@
 
 class Page extends Model{
 
+
     public function getList($only_published = false){
-        $sql = "select * from pages where 1";
+
+        // вывод стандартного списка закладок для незарегестрированного пользователя
+        if (!Session::get('id'))
+        {
+            $sql = "select * from default_links where 1";
+        }
+        // выводсписка закладок пользователя
+        else{
+            $sql = "select * from favorites_links where user_id = $_SESSION[id]";
+        }
+
         if ( $only_published ){
             $sql .= " and is_published = 1";
         }
+
         return $this->db->query($sql);
     }
-
+    
     public function getByAlias($alias){
         $alias = $this->db->escape($alias);
         $sql = "select * from pages where alias = '{$alias}' limit 1";
@@ -62,6 +74,26 @@ class Page extends Model{
     public function delete($id){
         $id = (int)$id;
         $sql = "delete from pages where id = {$id}";
+        return $this->db->query($sql);
+    }
+
+    // запись в БД новой ссылки
+    public function add_link($data){
+        if ( !isset($data['link']) ){
+            return false;
+        }
+
+        $id = Session::get('id') ;
+        $link = $this->db->escape($data['link']);
+        $title = $this->db->escape($data['title']);
+
+        $sql = "
+            insert into favorites_links
+                    set url = '{$link}',
+                        title = '{$title}',
+                        user_id = '{$id}'
+                ";
+
         return $this->db->query($sql);
     }
 

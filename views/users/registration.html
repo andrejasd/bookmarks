@@ -1,0 +1,22 @@
+<!-- Форма регистрации нового пользователя -->
+<h3>Registration</h3><br/>
+
+<form method="post" action="/users/registration/">
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" value="" class="form-control" placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+        <label for="psw">Password</label>
+        <input type="password" id="psw" name="psw" value="" class="form-control" placeholder="Enter your password">
+    </div>
+
+    <div class="form-group">
+        <label for="psw_confirm">Password confirmation</label>
+        <input type="password" id="psw_confirm" name="psw_confirm" value="" class="form-control" placeholder="Confirm your password">
+    </div>
+
+    <input type="submit" class="btn btn-success" />
+</form>

@@ -1,5 +1,6 @@
 <?php
 
+// обрабатывает запросы и вызивает методы контроллера
 class App{
 
     protected static $router;
@@ -44,8 +45,10 @@ class App{
 
         $layout = self::$router->getRoute();
         $layout_path = VIEWS_PATH.DS.$layout.'.html';
+        //echo $layout_path; echo '<br>';
+        //print_r (compact('content')); echo '<br>';
         $layout_view_object = new View(compact('content'), $layout_path);
         echo $layout_view_object->render();
     }
 
-    }
+}

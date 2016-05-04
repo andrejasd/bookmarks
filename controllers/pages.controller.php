@@ -8,9 +8,12 @@ class PagesController extends Controller{
     }
 
     public function index(){
-        $this->data['pages'] = $this->model->getList();
+        $only_is_published = true;
+        // вывод списка закладок
+        $this->data['links'] = $this->model->getList($only_is_published);
     }
 
+    /*
     public function view(){
         $params = App::getRouter()->getParams();
 
@@ -19,6 +22,7 @@ class PagesController extends Controller{
             $this->data['page'] = $this->model->getByAlias($alias);
         }
     }
+    */
 
     public function admin_index(){
         $this->data['pages'] = $this->model->getList();
@@ -71,6 +75,19 @@ class PagesController extends Controller{
             }
         }
         Router::redirect('/admin/pages/');
+    }
+
+    // добавление ссылки пользователем
+    public function link_add(){
+        if ( $_POST ){
+            $result = $this->model->add_link($_POST);
+            if ( $result ){
+                Session::setFlash('Link was added.');
+            } else {
+                Session::setFlash('Error.');
+            }
+            Router::redirect('/pages/');
+        }
     }
 
 }

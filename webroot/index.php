@@ -37,9 +37,11 @@ try {
     $file = ($ex->getFile());
     $line = ($ex->getLine());
 
-    $log_msg = "Error $code in $file at line $line: $msg : " . time(). PHP_EOL;
+    $log_msg = "Error $code in $file at line $line: $msg : " . date('d M Y, H:i',time()). PHP_EOL;
     error_log($log_msg, 3, Config::get('log_path'));
     echo $log_msg;
 
     //Router::redirect('/');
 }
+
+//echo '<pre>'; print_r($_SESSION);

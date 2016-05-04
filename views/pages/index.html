@@ -2,10 +2,10 @@ This is the pages/index.html
 
 <br>
 
-<?php foreach($data['pages'] as $page_data) { ?>
+<?php foreach($data['links'] as $page_data) { ?>
 
-<div style="margin-top: 20px;">
-    <a href="/pages/view/<?=$page_data['alias']?>"><?=$page_data['title']?></a>
+<div style="margin-top: 10px;">
+    <a href="<?=$page_data['url']?>"><?=$page_data['title']?></a>
 </div>
 
 <?php } ?>

@@ -1,32 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang>
 <head>
     <meta charset="UTF-8">
     <title><?=Config::get('site_name')?></title>
     <link rel="stylesheet" href="/css/style.css">
-    <!--Подключаем bootstrap через maxcdn
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    -->
-    <!--Подключаем bootstrap локально -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script src="/bootstrap/js/bootstrap.js"></script>
+
 </head>
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+<!--
+<script type="text/javascript">
+    $(document).ready(function(){
+        alert(jQuery.fn.jquery);
+    });
+</script>
+-->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
+
             <div class="navbar-header">
                 <a class="navbar-brand" href="/"><?=Config::get('site_name')?></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li <?php if( App::getRouter()->getController() == 'pages' ) {?>class="active"<?php } ?>><a href="/pages/">Pages</a></li>
-                    <li><a <?php if( App::getRouter()->getController() == 'contacts' ) {?>class="active"<?php } ?> href="/contacts/">Contact Us</a></li>
-                </ul>
+
+                <!-- если пользователь не залогинен - выводим поля для логина -->
+                <?php if ( !Session::get('id') ) { ?>
+                    <ul class="navbar-header">
+                        <form class="form-inline" method="post" action='/users/login/'>
+                            <div class="form-group">
+                                <label class="sr-only" for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="login">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="password">Пароль</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Login">
+                        </form>
+                        <a class="btn btn-primary" href="/users/registration/">Registration</a>
+                    </ul>
+                <?php } ?>
+
+                <!-- если пользователь залогинен - выводим email и кнопку Logout -->
+                <?php if ( Session::get('id') ) { ?>
+                    <ul class="nav navbar-nav">
+                        <li><a href='#'><?=Session::get('email')?></a></li>
+                        <li><a href = '/users/logout'>Logout</a></li>
+                    </ul>
+                <?php } ?>
+
+
             </div><!--/.nav-collapse -->
         </div>
     </nav>
@@ -43,9 +73,43 @@
 
             <?=$data['content']?>
 
+            <br>
+
+            <?php if ( Session::get('id') ) { ?>
+                <!-- Открыть модальное окно добавления новой ссылки -->
+                <a class="btn btn-primary" data-toggle="modal" data-target="#registerModal">Добавить ссылку</a>
+            <?php } ?>
+
+            <!-- Описание модального окна -->
+            <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Добавить новую ссылку</h4>
+                        </div>
+                        <div class="modal-body clearfix">
+
+                            <form method="post" action="/pages/link_add/">
+                                <div class="form-group">
+                                    <label for="link">Ссылка</label>
+                                    <input type="text" id="link" name="link" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Описание</label>
+                                    <input type="text" id="title" name="title" class="form-control" />
+                                </div>
+                                <input type="submit" class="btn btn-success" value="Добавить">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-    </div><!-- /.container -->
+    </div>
 
 
 </body>

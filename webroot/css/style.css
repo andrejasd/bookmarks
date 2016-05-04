@@ -5,8 +5,10 @@ body{
     padding: 40px 15px;
 }
 form{
-    width: 400px;
-    max-width: 400px;
+    width: 500px;
+    max-width: 600px;
+    display:inline-block;
+    margin-top: 6px;
 }
 .alert{
     width: 400px;
