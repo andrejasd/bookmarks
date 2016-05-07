@@ -8,9 +8,26 @@ class PagesController extends Controller{
     }
 
     public function index(){
-        $only_is_published = true;
-        // вывод списка закладок
-        $this->data['links'] = $this->model->getList($only_is_published);
+        $only_published = true;
+
+        // вывод стандартного списка закладок для незарегестрированного пользователя
+        if (!Session::get('id'))
+        {
+            $this->data['links'] = $this->model->getDefaultLinks($only_published);
+            $pic_prefix = "def_";
+        }
+        // выводсписка закладок пользователя
+        else{
+            $this->data['links'] = $this->model->getUserLinks($only_published);
+            $pic_prefix = "";
+        }
+
+        // добавляем в массив data путь к превьюхе при ее наличии
+        foreach($this->data['links'] as $key=>$value){
+            $pic_src = 'uploads'.DS.'preview'.DS.$pic_prefix.$this->data['links'][$key]['id'].'.jpg';
+            if ( file_exists ($pic_src) )
+                $this->data['links'][$key]['pic_src'] = $pic_src;
+        }
     }
 
     /*
@@ -25,7 +42,7 @@ class PagesController extends Controller{
     */
 
     public function admin_index(){
-        $this->data['pages'] = $this->model->getList();
+        $this->data['users'] = $this->model->getUsers();
     }
 
     // добавление статьи
@@ -40,7 +57,7 @@ class PagesController extends Controller{
             Router::redirect('/admin/pages/');
         }
     }
-
+/*
     // для редактирования статьи
     public function admin_edit(){
 
@@ -77,17 +94,49 @@ class PagesController extends Controller{
         Router::redirect('/admin/pages/');
     }
 
+*/
+
     // добавление ссылки пользователем
     public function link_add(){
         if ( $_POST ){
+            // запись даных в базу
             $result = $this->model->add_link($_POST);
+
+            //exit( '/uploads/preview/'."{$result[0][0]}".'.jpg' );
+            //exit ('<pre>'.print_r($result[0][0]));
+            
+            //if ($result !== false) {
+
+                // создание картинки
+                $api = 'http://mini.s-shot.ru/1280x800/400/jpeg/?';
+                $url = $_POST['link'];
+
+                    @$fp = fopen('uploads'.DS.'preview'.DS."{$result[0][0]}".'.jpg', 'w'); // Создаем файл с нужным нам именем в нужном месте
+                    @fwrite($fp, file_get_contents($api . $url)); // записываем в этот файл содержимое, которое отдал нам сервис
+                    @fclose($fp); // закрываем файл
+
+            //}
+
             if ( $result ){
                 Session::setFlash('Link was added.');
             } else {
                 Session::setFlash('Error.');
             }
-            Router::redirect('/pages/');
+            Router::redirect('/');
         }
+    }
+
+    // удаление юзера пользователем
+    public function admin_delete_user(){
+        if ( isset($this->params[0]) ){
+            $result = $this->model->delete_user($this->params[0]);
+            if ( $result ){
+                Session::setFlash('User was deleted.');
+            } else {
+                Session::setFlash('Error.');
+            }
+        }
+        Router::redirect('/admin/pages/');
     }
 
 }

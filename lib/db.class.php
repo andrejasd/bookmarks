@@ -34,6 +34,53 @@ class DB{
         return $data;
     }
 
+    public function multi_query($sql){
+        if ( !$this->connection ){
+            return false;
+        }
+
+        $result = $this->connection->multi_query($sql);
+
+        if ( mysqli_error($this->connection) ){
+            throw new Exception(mysqli_error($this->connection));
+        }
+
+        /*
+        // выдаем результаты последнего запроса
+        if ($result) {
+            do {
+
+                if (!$this->connection->more_results()) {
+                    exit ($this->connection->store_result());
+                }
+            } while ($this->connection->next_result());
+        }
+
+
+        if ( is_bool($this->connection->store_result()) ){
+            return $this->connection->store_result();
+        }
+        */
+
+        $data = array();
+
+        do {
+            if ($result = $this->connection->store_result()) {
+                while ($row = $result->fetch_row()) {
+                    $data[] = $row;
+                }
+            }
+        } while ($this->connection->next_result());
+
+        /*
+        while( $row = mysqli_fetch_assoc($this->connection->store_result()) ){
+            $data[] = $row;
+        }
+        */
+        return $data;
+
+    }
+
     // предотвращаем sql injection
     public function escape($str){
         return mysqli_escape_string($this->connection, $str);

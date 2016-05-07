@@ -1,11 +1,95 @@
-This is the pages/index.html
+<!-- This is the pages/index.html -->
 
 <br>
 
+<!--
 <?php foreach($data['links'] as $page_data) { ?>
+    <div style="margin-top: 10px;">
+        <a href="<?=$page_data['url']?>"><?=$page_data['title']?></a>
+    </div>
+<?php } ?>
+-->
 
-<div style="margin-top: 10px;">
-    <a href="<?=$page_data['url']?>"><?=$page_data['title']?></a>
+
+<!-- верхний блок "переглянути пізніше" -->
+<div class="add_bookmark">
+    <form class="form-inline" method="post" action=''>
+        <div class="form-group">
+            <label for="bookmark">Ссылка: </label>
+            <input type="text" class="form-control" id="bookmark" name="bookmark" placeholder="Link">
+        </div>
+        <div class="form-group">
+            <select class="form-control">
+                <option>Без категории</option>
+                <option>Категория - 1</option>
+                <option>Категория - 2</option>
+            </select>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Добавить">
+    </form>
+    <a class="btn btn-primary" href="">Просмотр ссылок</a>
 </div>
 
-<?php } ?>
+<!--
+<?php
+    echo '<pre>';
+    print_r ($data);
+    echo '</pre>';
+?>
+-->
+
+<div class="row">
+    <div style="margin-top: 10px;">
+        <?php foreach($data['links'] as $page_data) { ?>
+            <!-- <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"> -->
+            <div class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
+
+                <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
+
+                    <?php if ( isset($page_data['pic_src']) ) {?>
+                        <img src="<?=$page_data['pic_src']?>">
+                        <hr>
+                        <span class="text-primary"><?=$page_data['title']?></span>
+                    <?php } else { ?>
+                        <h3><?=$page_data['title']?></h3>
+                    <?php } ?>
+                </a>
+
+            </div>
+        <?php } ?>
+    </div>
+
+
+    <!-- Кнопка добавить ссылку-->
+    <?php if ( Session::get('id') ) { ?>
+        <!-- Открыть модальное окно добавления новой ссылки -->
+        <div class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
+            <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal"><h3>Добавить ссылку</h3></a>
+        </div>
+        <!-- Описание модального окна -->
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Добавить новую ссылку</h4>
+                    </div>
+                    <div class="modal-body clearfix">
+                        <form method="post" action="/pages/link_add/">
+                            <div class="form-group">
+                                <label for="link">Ссылка</label>
+                                <input type="text" id="link" name="link" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Описание</label>
+                                <input type="text" id="title" name="title" class="form-control" />
+                            </div>
+                            <input type="submit" class="btn btn-success" value="Добавить">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+</div>

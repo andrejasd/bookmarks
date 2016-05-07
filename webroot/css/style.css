@@ -14,3 +14,56 @@ form{
     width: 400px;
     max-width: 400px;
 }
+
+.my_thumbnail{
+    width: 184px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    max-height: 100%;
+}
+
+.container-fluid{
+    /*min-width: 1348px !important;*/
+}
+
+.linkk{
+   /* width: 14.2857%; /*     100% / 7 = 14.2857     */
+
+    /*max-width: 16.6666%;
+    min-width: 14.2857%;*/
+
+    float: left;
+    position: relative;
+    height: 140px;
+
+    margin-top: 10px;
+
+    /*
+    border-style: solid;
+    border-width: 2px;
+    background-color: #3e8f3e;
+    */
+}
+
+.add_bookmark{
+    width: 100%;
+    padding: 3px 10px 10px 10px;
+
+
+    border-style: solid;
+    border-width: 2px;
+}
+
+hr{
+    border: none; /* Убираем границу */
+    background-color: #9aadff; /* Цвет линии */
+    color: #9aadff; /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
+    margin: 1px 0 0 0;
+
+}

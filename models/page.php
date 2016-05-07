@@ -2,25 +2,24 @@
 
 class Page extends Model{
 
-
-    public function getList($only_published = false){
-
-        // вывод стандартного списка закладок для незарегестрированного пользователя
-        if (!Session::get('id'))
-        {
-            $sql = "select * from default_links where 1";
-        }
-        // выводсписка закладок пользователя
-        else{
-            $sql = "select * from favorites_links where user_id = $_SESSION[id]";
-        }
-
-        if ( $only_published ){
+    public function getDefaultLinks($only_published = false){
+    // вывод стандартного списка ссылок для незарегестрированного пользователя
+        $sql = "select * from default_links where 1";
+        if ( $only_published )
             $sql .= " and is_published = 1";
-        }
 
         return $this->db->query($sql);
     }
+
+    public function getUserLinks($only_published = false){
+    // вывод списка ссылок пользователя
+        $sql = "select * from favorites_links where user_id = $_SESSION[id]";
+        if ( $only_published )
+            $sql .= " and is_published = 1";
+
+        return $this->db->query($sql);
+    }
+
     
     public function getByAlias($alias){
         $alias = $this->db->escape($alias);
@@ -36,6 +35,7 @@ class Page extends Model{
         return isset($result[0]) ? $result[0] : null;
     }
 
+    /*
     // сохранение даных в БД
     public function save($data, $id = null){
         if ( !isset($data['alias']) || !isset($data['title']) || !isset($data['content']) ){
@@ -76,6 +76,7 @@ class Page extends Model{
         $sql = "delete from pages where id = {$id}";
         return $this->db->query($sql);
     }
+    */
 
     // запись в БД новой ссылки
     public function add_link($data){
@@ -83,7 +84,7 @@ class Page extends Model{
             return false;
         }
 
-        $id = Session::get('id') ;
+        $user_id = Session::get('id') ;
         $link = $this->db->escape($data['link']);
         $title = $this->db->escape($data['title']);
 
@@ -91,7 +92,35 @@ class Page extends Model{
             insert into favorites_links
                     set url = '{$link}',
                         title = '{$title}',
-                        user_id = '{$id}'
+                        user_id = '{$user_id}';
+                    select @@IDENTITY;
+                ";
+
+        return $this->db->multi_query($sql);
+    }
+
+    // список пользователей для админа
+    public function getUsers($is_active = true){
+
+        $sql = "select * from users where 1";
+
+        if ( $is_active ){
+            $sql .= " and is_active = 1";
+        }
+
+        return $this->db->query($sql);
+    }
+
+    // удаление пользователей из БД для админа
+    public function delete_user($id){
+        $id = (int)$id;
+
+        //$sql = "delete from users where id = {$id}";
+
+        $sql = "
+                update users
+                  set is_active = 0
+                where id = {$id}
                 ";
 
         return $this->db->query($sql);

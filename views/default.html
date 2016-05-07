@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title><?=Config::get('site_name')?></title>
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script src="/bootstrap/js/bootstrap.js"></script>
@@ -13,14 +13,6 @@
 </head>
 
 <body>
-
-<!--
-<script type="text/javascript">
-    $(document).ready(function(){
-        alert(jQuery.fn.jquery);
-    });
-</script>
--->
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -51,17 +43,21 @@
                 <!-- если пользователь залогинен - выводим email и кнопку Logout -->
                 <?php if ( Session::get('id') ) { ?>
                     <ul class="nav navbar-nav">
-                        <li><a href='#'><?=Session::get('email')?></a></li>
+
+                        <?php if (Session::get('role') == 'admin') : echo'/admin/'; else: echo'/settings/'; endif?>
+
+                        <li><a href='<?php if (Session::get('role') == 'admin') : echo'/admin/'; else: echo'/settings/'; endif?>'>
+                            <?=Session::get('email')?></a>
+                        </li>
                         <li><a href = '/users/logout'>Logout</a></li>
                     </ul>
                 <?php } ?>
-
 
             </div><!--/.nav-collapse -->
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="starter-template">
 
@@ -73,44 +69,48 @@
 
             <?=$data['content']?>
 
-            <br>
 
-            <?php if ( Session::get('id') ) { ?>
-                <!-- Открыть модальное окно добавления новой ссылки -->
-                <a class="btn btn-primary" data-toggle="modal" data-target="#registerModal">Добавить ссылку</a>
-            <?php } ?>
 
-            <!-- Описание модального окна -->
-            <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Добавить новую ссылку</h4>
-                        </div>
-                        <div class="modal-body clearfix">
+            <br> <br>
 
-                            <form method="post" action="/pages/link_add/">
-                                <div class="form-group">
-                                    <label for="link">Ссылка</label>
-                                    <input type="text" id="link" name="link" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="title">Описание</label>
-                                    <input type="text" id="title" name="title" class="form-control" />
-                                </div>
-                                <input type="submit" class="btn btn-success" value="Добавить">
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
+            <!--
+            <div class="col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="thumbnail">
+                    <h3>asd</h3>
+                </a>
             </div>
+            <div class="col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="thumbnail">
+                    <h3>asd</h3>
+                </a>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="thumbnail">
+                    <h3>asd</h3>
+                </a>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="thumbnail">
+                    <h3>asd</h3>
+                </a>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="thumbnail">
+                    <h3>asd</h3>
+                </a>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-2">
+                <a href="#" class="thumbnail">
+                    <h3>asd</h3>
+                </a>
+            </div>
+            -->
 
-        </div>
 
-    </div>
 
+        </div> <!-- starter-template -->
+
+    </div> <!-- container -->
 
 </body>
 </html>

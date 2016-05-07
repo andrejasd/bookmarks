@@ -80,6 +80,8 @@ class UsersController extends Controller{
     }
 
     public function user_is_added(/*$login, $id*/){
+
+
         //Session::set('login', $login);
         //Session::set('role', 'user');
         //Session::set('id', $id);
