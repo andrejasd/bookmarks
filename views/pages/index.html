@@ -13,7 +13,7 @@
 
 <!-- верхний блок "переглянути пізніше" -->
 <div class="add_bookmark">
-    <form class="form-inline" method="post" action=''>
+    <form class="form-inline add_form" method="post" action=''>
         <div class="form-group">
             <label for="bookmark">Ссылка: </label>
             <input type="text" class="form-control" id="bookmark" name="bookmark" placeholder="Link">
@@ -21,6 +21,7 @@
         <div class="form-group">
             <select class="form-control">
                 <option>Без категории</option>
+                <option>Новая категория</option>
                 <option>Категория - 1</option>
                 <option>Категория - 2</option>
             </select>
@@ -39,7 +40,9 @@
 ?>
 -->
 
+<!-- Блок з посиланнями ----------------------------------------------------------------------------------------------->
 <div class="row">
+
     <div style="margin-top: 10px;">
         <?php foreach($data['links'] as $page_data) { ?>
             <!-- <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"> -->
@@ -48,9 +51,15 @@
                 <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
 
                     <?php if ( isset($page_data['pic_src']) ) {?>
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
+                        <form action="/pages/link_delete/<?=$page_data['id']?>">
+                            <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
+                        </form>
+                        <button type="submit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button>
+                        <button type="submit" class="close my_close"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
                         <img src="<?=$page_data['pic_src']?>">
                         <hr>
-                        <span class="text-primary"><?=$page_data['title']?></span>
+                        <p class="text-primary size"><?=$page_data['title']?></p>
                     <?php } else { ?>
                         <h3><?=$page_data['title']?></h3>
                     <?php } ?>
@@ -61,14 +70,14 @@
     </div>
 
 
-    <!-- Кнопка добавить ссылку-->
+<!-- Кнопка добавить ссылку ------------------------------------------------------------------------------------------->
     <?php if ( Session::get('id') ) { ?>
         <!-- Открыть модальное окно добавления новой ссылки -->
         <div class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
-            <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal"><h3>Добавить ссылку</h3></a>
+            <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal"><p class="center-block glyphicon glyphicon-plus large_icon"></p></a>
         </div>
         <!-- Описание модального окна -->
-        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -92,4 +101,8 @@
             </div>
         </div>
     <?php } ?>
+
+
+
+
 </div>

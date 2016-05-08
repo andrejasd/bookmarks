@@ -4,12 +4,23 @@ body{
 .starter-template{
     padding: 40px 15px;
 }
+
+.add_form, .login_form, .registration_form, .admin_login{
+    width: 500px;
+    max-width: 600px;
+    display:inline-block;
+    margin-top: 6px;
+}
+
+/*
 form{
     width: 500px;
     max-width: 600px;
     display:inline-block;
     margin-top: 6px;
 }
+*/
+
 .alert{
     width: 400px;
     max-width: 400px;
@@ -25,6 +36,7 @@ form{
     right: 0;
     margin: auto;
     max-height: 100%;
+    text-align: center;
 }
 
 .container-fluid{
@@ -39,7 +51,8 @@ form{
 
     float: left;
     position: relative;
-    height: 140px;
+    height: 164px;
+
 
     margin-top: 10px;
 
@@ -53,8 +66,6 @@ form{
 .add_bookmark{
     width: 100%;
     padding: 3px 10px 10px 10px;
-
-
     border-style: solid;
     border-width: 2px;
 }
@@ -65,5 +76,25 @@ hr{
     color: #9aadff; /* Цвет линии для IE6-7 */
     height: 2px; /* Толщина линии */
     margin: 1px 0 0 0;
+}
 
+.size {
+    text-overflow: ellipsis;
+overflow: hidden;
+width: 100%;
+white-space: nowrap;
+}
+
+.my_close{
+    margin-left: 5px;
+}
+
+.large_icon{
+    font-size: 70px;
+    text-align: center;
+    line-height: 140px;
+}
+
+.plus:hover{
+    /* без подчеркивания */
 }

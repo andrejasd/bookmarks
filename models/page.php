@@ -126,4 +126,20 @@ class Page extends Model{
         return $this->db->query($sql);
     }
 
+    // удаление ссылки из БД пользователем
+    public function delete_link($id){
+        $id = (int)$id;
+
+        //$sql = "delete from favorites_links where id = {$id}";
+
+        $sql = "
+                update favorites_links
+                  set is_published = 0
+                where id = {$id}
+                ";
+
+        return $this->db->query($sql);
+    }
+
+
 }

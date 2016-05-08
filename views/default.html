@@ -10,6 +10,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script src="/bootstrap/js/bootstrap.js"></script>
 
+    <script src="/js/admin.js"></script>
+
 </head>
 
 <body>
@@ -25,7 +27,7 @@
                 <!-- если пользователь не залогинен - выводим поля для логина -->
                 <?php if ( !Session::get('id') ) { ?>
                     <ul class="navbar-header">
-                        <form class="form-inline" method="post" action='/users/login/'>
+                        <form class="form-inline login_form" method="post" action='/users/login/'>
                             <div class="form-group">
                                 <label class="sr-only" for="email">Email</label>
                                 <input type="text" class="form-control" id="email" name="email" placeholder="login">

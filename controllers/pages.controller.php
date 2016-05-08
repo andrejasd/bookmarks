@@ -126,6 +126,13 @@ class PagesController extends Controller{
         }
     }
 
+    public function link_delete(){
+        if ( isset($this->params[0]) ) {
+            $result = $this->model->delete_link($this->params[0]);
+            Router::redirect('/');
+        }
+    }
+
     // удаление юзера пользователем
     public function admin_delete_user(){
         if ( isset($this->params[0]) ){
