@@ -63,52 +63,11 @@
 
         <div class="starter-template">
 
-            <?php if( Session::hasFlash() ){ ?>
-            <div class="alert alert-info" role="alert">
-                <?php Session::flash(); ?>
-            </div>
-            <?php } ?>
+            <?php Session::flash(); ?>
+
+            <?php echo '<pre>'; print_r($_SESSION); echo '</pre>'; ?>
 
             <?=$data['content']?>
-
-
-
-            <br> <br>
-
-            <!--
-            <div class="col-sm-4 col-md-3 col-lg-2">
-                <a href="#" class="thumbnail">
-                    <h3>asd</h3>
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-3 col-lg-2">
-                <a href="#" class="thumbnail">
-                    <h3>asd</h3>
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-3 col-lg-2">
-                <a href="#" class="thumbnail">
-                    <h3>asd</h3>
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-3 col-lg-2">
-                <a href="#" class="thumbnail">
-                    <h3>asd</h3>
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-3 col-lg-2">
-                <a href="#" class="thumbnail">
-                    <h3>asd</h3>
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-3 col-lg-2">
-                <a href="#" class="thumbnail">
-                    <h3>asd</h3>
-                </a>
-            </div>
-            -->
-
-
 
         </div> <!-- starter-template -->
 

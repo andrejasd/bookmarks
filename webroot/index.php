@@ -45,15 +45,5 @@ try {
 }
 
 //echo '<pre>'; print_r($_SESSION);
-
-
-/*
-$api = 'http://mini.s-shot.ru/1280x800/400/jpeg/?' ;
-$count = 1 ;
-$url = 'http://myradio.ua/player/35';
-{
-    @$fp = fopen('uploads/radio.jpg', 'w'); // Создаем файл с нужным нам именем в нужном месте
-    @fwrite($fp, file_get_contents($api.$url)); // записываем в этот файл содержимое, которое отдал нам сервис
-    @fclose($fp); // закрываем файл
-}
-*/
+$_SESSION['flash_message'] = null;
+//Session::set('flash_message', null);

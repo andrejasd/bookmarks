@@ -7,7 +7,7 @@ class UsersController extends Controller{
         $this->model = new User();
     }
 
-    // обработка и вывод формы логина
+    // логин админа
     public function admin_login(){
         if ( $_POST && isset($_POST['email']) && isset($_POST['password']) ){
             $user = $this->model->getByLogin($_POST['email']);
@@ -21,13 +21,13 @@ class UsersController extends Controller{
         }
     }
 
-    // уничтожение сессии админа
+    // завершение сессии админа
     public function admin_logout(){
         Session::destroy();
         Router::redirect('/admin/');
     }
 
-    //login юзера
+    // login юзера
     public function login(){
         if ( $_POST && isset($_POST['email']) && isset($_POST['password']) ){
             $user = $this->model->getByLogin($_POST['email']);
@@ -41,13 +41,13 @@ class UsersController extends Controller{
         }
     }
 
-    // уничтожение сессии юзера
+    // завершение сессии юзера
     public function logout(){
         Session::destroy();
         Router::redirect('/');
     }
 
-    //registration new user
+    // регистрация нового пользователя
     public function registration(){
         if ( $_POST ){
             $flash_message=NULL;
@@ -72,19 +72,14 @@ class UsersController extends Controller{
             {
                 $result = $this->model->setNewUser( $_POST['email'], $_POST['psw']);
                 if ($result) {
-                    //Session::setFlash('New user is added. Please confirm your email.');
-                    Router::redirect('/users/user_is_added/');
+                    Session::setFlash('New user is added. Please confirm your email.');
+                    //Session::set('login', $login);
+                    //Session::set('role', 'user');
+                    //Session::set('id', $id);
+                    Router::redirect('/');
                 }
             }
         }
-    }
-
-    public function user_is_added(/*$login, $id*/){
-
-
-        //Session::set('login', $login);
-        //Session::set('role', 'user');
-        //Session::set('id', $id);
     }
 
 

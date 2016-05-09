@@ -4,7 +4,7 @@ class User extends Model {
 
     // получение записи из БД по полю login
     public function getByLogin($email){
-        $login = $this->db->escape($email);
+        $email = $this->db->escape($email);
         $sql = "select * from users where email = '{$email}' limit 1";
         $result = $this->db->query($sql);
         if ( isset($result[0]) ){
