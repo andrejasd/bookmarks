@@ -12,6 +12,10 @@ body{
     margin-top: 6px;
 }
 
+.add_form{
+    width: 520px !important;
+}
+
 /*
 form{
     width: 500px;

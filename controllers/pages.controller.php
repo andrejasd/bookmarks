@@ -16,18 +16,35 @@ class PagesController extends Controller{
             $this->data['links'] = $this->model->getDefaultLinks($only_published);
             $pic_prefix = "def_";
         }
-        // выводсписка закладок пользователя
         else{
+            // список линков пользователя
             $this->data['links'] = $this->model->getUserLinks($only_published);
             $pic_prefix = "";
+
+            // устанавливаем текущауюкатегорию из БД
+            Session::set('current_category', $this->model->getUserLastCategory()[0]['last_category']);
+
+            // список категорий закладок
+            $bookmarks_categoris = $this->model->getBookmarksCategories();
+            $this->data['select_category'] = '';
+            foreach ($bookmarks_categoris as $key=>$value){
+                $kaf = $value['title'];
+                $kaf_id = $value['id'];
+                $this->data['select_category'].='<option ';
+                if (Session::get('current_category') == $kaf)
+                    $this->data['select_category'].='selected ';
+                $this->data['select_category'].='value='.$kaf_id.'>'.$kaf.'</option>';
+            }
         }
 
-        // добавляем в массив data путь к превьюхе при ее наличии
+        // добавляем в массив data путь к рисунку-превьюхе при ее наличии
         foreach($this->data['links'] as $key=>$value){
             $pic_src = 'uploads'.DS.'preview'.DS.$pic_prefix.$this->data['links'][$key]['id'].'.jpg';
             if ( file_exists ($pic_src) )
                 $this->data['links'][$key]['pic_src'] = $pic_src;
         }
+        
+
     }
 
     /*
@@ -56,6 +73,19 @@ class PagesController extends Controller{
             }
             Router::redirect('/admin/pages/');
         }
+    }
+
+    // удаление юзера админом
+    public function admin_delete_user(){
+        if ( isset($this->params[0]) ){
+            $result = $this->model->delete_user($this->params[0]);
+            if ( $result ){
+                Session::setFlash('User was deleted.');
+            } else {
+                Session::setFlash('Error.');
+            }
+        }
+        Router::redirect('/admin/pages/');
     }
 /*
     // для редактирования статьи
@@ -101,12 +131,9 @@ class PagesController extends Controller{
         if ( $_POST ){
             // запись даных в базу
             $result = $this->model->add_link($_POST);
-
             //exit( '/uploads/preview/'."{$result[0][0]}".'.jpg' );
             //exit ('<pre>'.print_r($result[0][0]));
-            
             //if ($result !== false) {
-
                 // создание картинки
                 $api = 'http://mini.s-shot.ru/1280x800/400/jpeg/?';
                 $url = $_POST['link'];
@@ -114,14 +141,12 @@ class PagesController extends Controller{
                     @$fp = fopen('uploads'.DS.'preview'.DS."{$result[0][0]}".'.jpg', 'w'); // Создаем файл с нужным нам именем в нужном месте
                     @fwrite($fp, file_get_contents($api . $url)); // записываем в этот файл содержимое, которое отдал нам сервис
                     @fclose($fp); // закрываем файл
-
             //}
-
-            if ( $result ){
+            /*if ( $result ){
                 Session::setFlash('Link was added.');
             } else {
                 Session::setFlash('Error.');
-            }
+            }*/
             Router::redirect('/');
         }
     }
@@ -133,17 +158,28 @@ class PagesController extends Controller{
         }
     }
 
-    // удаление юзера пользователем
-    public function admin_delete_user(){
-        if ( isset($this->params[0]) ){
-            $result = $this->model->delete_user($this->params[0]);
-            if ( $result ){
-                Session::setFlash('User was deleted.');
-            } else {
-                Session::setFlash('Error.');
+    public function category_add(){
+        if( $_POST ){
+            $result = $this->model->add_category($_POST);
+            if ($result){
+                $this->model->setUserLastCategory($result);
             }
         }
-        Router::redirect('/admin/pages/');
+        Router::redirect('/');
+    }
+
+    public function bookmark_add(){
+        if( $_POST ){
+            $result = $this->model->add_bookmark( $_POST );
+            //echo '<pre>'; print_r($_POST); exit();
+        }
+
+        Router::redirect('/');
+    }
+
+    public function bookmarks(){
+        $this->data['bookmarks'] = $this->model->getUserBookmarks();
+ //       echo '<pre>'; print_r ($this->data['bookmarks']); exit();
     }
 
 }

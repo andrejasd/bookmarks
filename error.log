@@ -1,401 +1,82 @@
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AsdController : 1461513673
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AsdController : 1461513929
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 26: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1461513961
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: RuController : 1461523151
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Ñ„ð³ñœñˆñ‚Controller : 1461524991
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1461868456
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115013
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115044
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115045
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115045
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115045
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'is_published' in 'where clause' : 1462115426
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115438
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115894
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115894
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115895
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: EnController : 1462115895
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462177106
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 : 1462177430
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462177463
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462177613
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462177718
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462179694
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462179702
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462180653
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462180836
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462181313
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462183148
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462183349
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462183844
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462184045
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462184658
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462185043
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462185136
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462185333
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: LoginController : 1462185484
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462185519
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462186235
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462186308
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462186310
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462186311
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462186327
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462186382
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462186383
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462186395
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462186498
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462186517
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462186584
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462186704
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462186705
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462186735
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462186737
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462186738
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462186740
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\admin_logout.html : 1462186777
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462186783
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462186806
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462186811
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462188842
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462188900
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462189139
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462189144
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462189250
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462189258
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462257654
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462257710
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462257712
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462257713
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462257716
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462257720
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462257721
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462257722
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462258028
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462258029
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UserController : 1462258234
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UserController : 1462258273
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UserController : 1462258280
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UserController : 1462258281
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UserController : 1462258281
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UserController : 1462258281
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UserController : 1462258282
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method registration of class UsersController does not exist : 1462258287
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method registration of class PagesController does not exist : 1462258665
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method registration of class PagesController does not exist : 1462258747
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462258868
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method registration of class PagesController does not exist : 1462258869
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462261070
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462261075
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462261355
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462261360
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462261361
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462261362
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262048
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262050
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262055
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262056
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262089
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262092
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262134
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262136
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262254
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262258
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262261
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262262
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262599
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262601
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262602
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262602
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262603
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262604
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262605
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262606
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262607
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262608
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262616
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262617
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262618
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262619
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262620
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262621
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262627
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262628
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262629
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262630
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262636
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262637
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262638
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262638
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262647
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262648
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262649
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262649
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262655
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262656
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262661
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262662
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262664
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 1462262665
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 1462262675
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : Tue, 03 May 2016 10:07:34 +0200
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Ð°ð°ð°Controller : Tue, 03 May 2016 10:07:38 +0200
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: DddController : Tue May 2016
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: DddController : 03 May 2016
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: DddController : 03 May 2016, 10:12
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 10:15
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method view of class PagesController does not exist : 03 May 2016, 10:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 03 May 2016, 10:23
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method registration of class UsersController does not exist : 03 May 2016, 10:23
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\registration.html : 03 May 2016, 10:24
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\registration.html : 03 May 2016, 10:24
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\registration.html : 03 May 2016, 10:25
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method registration of class PagesController does not exist : 03 May 2016, 10:25
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method user_is_added of class PagesController does not exist : 03 May 2016, 11:38
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method user_is_added of class UsersController does not exist : 03 May 2016, 11:41
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 11:51
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 03 May 2016, 11:51
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'psw' in 'field list' : 03 May 2016, 20:01
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 20:05
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 03 May 2016, 20:34
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'is_active = 1' at line 5 : 03 May 2016, 20:34
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'is_active = '1'' at line 5 : 03 May 2016, 20:35
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'is_active = '1'' at line 5 : 03 May 2016, 20:35
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'login' in 'where clause' : 03 May 2016, 21:28
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'login' in 'where clause' : 03 May 2016, 21:28
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'login' in 'where clause' : 03 May 2016, 21:31
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'login' in 'where clause' : 03 May 2016, 21:31
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 21:32
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 21:32
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 21:32
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 21:33
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'login' in 'field list' : 03 May 2016, 21:34
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 21:36
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'login' in 'field list' : 03 May 2016, 21:36
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'is_active' in 'field list' : 03 May 2016, 21:37
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 21:44
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 03 May 2016, 21:44
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 03 May 2016, 22:06
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 03 May 2016, 22:06
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 08:43
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 08:49
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 08:51
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 08:57
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 08:57
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 09:23
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 09:23
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 09:38
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 09:38
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 10:19
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 10:20
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AssetsController : 04 May 2016, 10:45
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AssetsController : 04 May 2016, 10:45
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AssetsController : 04 May 2016, 10:45
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AssetsController : 04 May 2016, 10:45
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AssetsController : 04 May 2016, 10:46
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AssetsController : 04 May 2016, 10:46
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AssetsController : 04 May 2016, 10:46
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AssetsController : 04 May 2016, 10:46
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 11:01
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 11:23
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 11:23
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 11:23
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 11:30
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 12:02
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 12:03
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 12:03
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 12:04
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 12:05
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 12:05
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 12:05
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 12:05
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 12:07
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 12:07
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 12:08
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 12:08
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 12:08
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: BootstrapController : 04 May 2016, 12:08
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 12:24
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 16:39
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 04 May 2016, 17:14
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method link_add1 of class PagesController does not exist : 04 May 2016, 17:15
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 04 May 2016, 17:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 04 May 2016, 17:18
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 17:20
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 17:50
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 04 May 2016, 17:51
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 17:53
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 18:08
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: KljController : 04 May 2016, 18:10
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: AdmjhghjkgController : 04 May 2016, 18:10
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 18:52
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 19:10
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and is_active = 1' at line 1 : 04 May 2016, 19:18
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method admin_admin_delete_user of class PagesController does not exist : 04 May 2016, 19:27
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\admin_delete_user.html : 04 May 2016, 19:27
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\admin_delete_user.html : 04 May 2016, 19:36
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Table 'bookmarks.messages' doesn't exist : 04 May 2016, 21:19
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 04 May 2016, 21:52
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 04 May 2016, 21:52
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 05 May 2016, 08:42
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 08:42
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 10:01
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 05 May 2016, 10:02
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 10:24
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 05 May 2016, 10:24
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 10:24
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 05 May 2016, 11:56
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 11:56
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 05 May 2016, 11:56
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 11:56
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 05 May 2016, 11:56
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 12:01
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 12:02
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 05 May 2016, 12:02
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 12:36
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 05 May 2016, 12:37
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 05 May 2016, 12:37
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 05 May 2016, 12:37
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 05 May 2016, 20:13
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 05 May 2016, 20:59
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 09:57
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 10:06
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 10:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 10:18
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 10:18
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 10:18
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 10:18
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 10:19
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 10:19
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 10:47
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 10:47
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 10:48
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\settings\index.html : 06 May 2016, 12:32
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 12:55
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 12:55
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 12:56
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 12:56
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 12:56
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 13:20
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 13:20
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 15:36
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 16:07
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 18:43
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 18:48
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 06 May 2016, 18:52
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 06 May 2016, 18:54
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UploadsController : 06 May 2016, 19:01
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: UploadsController : 06 May 2016, 19:01
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 20:03
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:03
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:03
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:03
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:04
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 20:06
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:06
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:06
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:06
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method root.ds."uploads of class PagesController does not exist : 06 May 2016, 20:09
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:23
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:23
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:23
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:23
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:23
-Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method uploads of class PagesController does not exist : 06 May 2016, 20:23
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT @@IDENTITY' at line 5 : 06 May 2016, 20:24
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT @@IDENTITY' at line 5 : 06 May 2016, 21:02
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT @@IDENTITY' at line 5 : 06 May 2016, 21:03
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:16
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:16
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:16
-Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: 1Controller : 06 May 2016, 21:17
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select @@IDENTITY' at line 5 : 06 May 2016, 21:18
-Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT SCOPE_IDENTITY' at line 5 : 06 May 2016, 21:20
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:27
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:29
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:29
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:31
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:32
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:33
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:33
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:34
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:37
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:38
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:38
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:41
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:45
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:48
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:48
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:49
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:50
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:53
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 21:54
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:11
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:18
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:20
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:21
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:22
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:25
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:26
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:33
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 22:33
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 23:00
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 23:05
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 23:07
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 23:09
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 23:11
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 06 May 2016, 23:12
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 10:19
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 16:04
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 16:10
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 16:10
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 16:16
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 07 May 2016, 16:16
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 16:16
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 16:16
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 07 May 2016, 16:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 07 May 2016, 16:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 07 May 2016, 16:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 16:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 16:20
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 16:20
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 16:21
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 16:45
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 16:45
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 17:14
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 17:14
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 17:14
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 17:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 17:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 17:17
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 17:37
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 17:39
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 17:39
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 17:39
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 17:42
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 17:42
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 17:47
-Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 17:47
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 17:52
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 19:57
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 07 May 2016, 20:00
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 07 May 2016, 20:45
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 07 May 2016, 22:36
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 07 May 2016, 22:36
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 08 May 2016, 09:33
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:01
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:01
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:01
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:04
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:04
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:04
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:04
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:04
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:04
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:04
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:06
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:06
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:06
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:06
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:06
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:06
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 10:11
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 10:12
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 11:40
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 11:41
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 12:02
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 12:02
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 12:02
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 12:03
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 12:03
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 08 May 2016, 12:22
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 08 May 2016, 12:22
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 12:23
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 12:25
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 12:25
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 12:25
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 13:15
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 13:15
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 08 May 2016, 13:15
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 13:17
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_delete.html : 08 May 2016, 13:19
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 08 May 2016, 19:55
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Ñ„ð³ñœñˆñ‚Controller : 08 May 2016, 20:07
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 08 May 2016, 20:09
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 08 May 2016, 20:09
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 08 May 2016, 20:19
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 08 May 2016, 20:19
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 08 May 2016, 20:19
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 09 May 2016, 09:50
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 09:58
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 09:58
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 09:59
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 10:05
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 10:27
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 09 May 2016, 10:31
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'NEWW' in 'field list' : 09 May 2016, 10:47
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Unknown column 'NEWWW' in 'field list' : 09 May 2016, 10:50
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 10:53
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 10:54
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 10:55
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\category_add.html : 09 May 2016, 10:56
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 09 May 2016, 11:30
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 09 May 2016, 11:30
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 09 May 2016, 11:30
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 09 May 2016, 11:30
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\link_add.html : 09 May 2016, 11:57
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\bookmark_add.html : 09 May 2016, 11:59
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\bookmark_add.html : 09 May 2016, 11:59
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\bookmark_add.html : 09 May 2016, 11:59
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\bookmark_add.html : 09 May 2016, 11:59
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\bookmark_add.html : 09 May 2016, 12:01
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\bookmark_add.html : 09 May 2016, 12:01
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\bookmark_add.html : 09 May 2016, 18:12
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: Table 'bookmarks.messages' doesn't exist : 09 May 2016, 19:23
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\logout.html : 09 May 2016, 19:24
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\users\login.html : 09 May 2016, 19:24
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method bookmarks of class PagesController does not exist : 09 May 2016, 19:49
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method bookmarks of class PagesController does not exist : 09 May 2016, 19:49
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 43: (ASD)Method bookmarks of class PagesController does not exist : 09 May 2016, 19:50
+Error 0 in C:\xampp\htdocs\lib\view.class.php at line 29: (ASD)Template file is not found in path: C:\xampp\htdocs\views\pages\bookmark_add.html : 09 May 2016, 20:11
