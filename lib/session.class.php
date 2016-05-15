@@ -1,26 +1,19 @@
 <?php
 
 class Session{
-/*
-    public function __construct(){
-        if( is_null( $_SESSION['flash_message'] ) )
-            self::set('flash_message', NULL);
-    }
-*/
+
     public static function setFlash($message){
         self::set('flash_message', $message);
-        //$_SESSION['flash_message'] = $message;
-        //print_r($_SESSION['flash_message']); exit();
     }
 
     public static function flash(){
-        if ( self::get('flash_message') )
-            if( !is_null( $_SESSION['flash_message'] ) ){
-                echo '<div class="alert alert-info" role="alert">';
-                echo $_SESSION['flash_message'];
-                echo '</div>';
-                //$_SESSION['flash_message'] = null;
-            }
+        if ( self::get('flash_message') ){
+            echo '<div class="alert alert-info" role="alert">';
+            echo '<a href="#" class="close" data-dismiss="alert">×</a>';
+            echo $_SESSION['flash_message'];
+            echo '</div>';
+            self::delete('flash_message');
+        }
     }
 
     // запись даных в масив $_SESSION по ключу

@@ -1,5 +1,4 @@
 <?php
-
 // обрабатывает запросы и вызивает методы контроллера
 class App{
 
@@ -16,12 +15,10 @@ class App{
         self::$router = new Router($uri);
 
         self::$db = new DB(Config::get('db.host'), Config::get('db.user'), Config::get('db.password'), Config::get('db.db_name'));
-
-        //echo '<pre>';        print_r (self::$router);
-        //echo
+        
         $controller_class = ucfirst(self::$router->getController()).'Controller';
-        //echo
         $controller_method = strtolower(self::$router->getMethodPrefix().self::$router->getAction());
+
 
         // if admin then admin_login
         $layout = self::$router->getRoute();
@@ -45,10 +42,7 @@ class App{
 
         $layout = self::$router->getRoute();
         $layout_path = VIEWS_PATH.DS.$layout.'.html';
-        //echo $layout_path; echo '<br>';
-        //print_r (compact('content')); echo '<br>';
         $layout_view_object = new View(compact('content'), $layout_path);
         echo $layout_view_object->render();
     }
-
 }

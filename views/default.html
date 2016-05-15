@@ -55,6 +55,12 @@
                     </ul>
                 <?php } ?>
 
+                <!-- test button -->
+                <ul class="nav navbar-nav">
+                    <li><a href = '/pages/test'>Test</a></li>
+                </ul>
+
+
             </div><!--/.nav-collapse -->
         </div>
     </nav>
@@ -64,8 +70,6 @@
         <div class="starter-template">
 
             <?php Session::flash(); ?>
-
-            <?php echo '<pre>'; print_r($_SESSION); echo '</pre>'; ?>
 
             <?=$data['content']?>
 

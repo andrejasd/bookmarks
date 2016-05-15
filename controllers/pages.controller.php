@@ -43,7 +43,6 @@ class PagesController extends Controller{
             if ( file_exists ($pic_src) )
                 $this->data['links'][$key]['pic_src'] = $pic_src;
         }
-        
 
     }
 
@@ -62,19 +61,6 @@ class PagesController extends Controller{
         $this->data['users'] = $this->model->getUsers();
     }
 
-    // добавление статьи
-    public function admin_add(){
-        if ( $_POST ){
-            $result = $this->model->save($_POST);
-            if ( $result ){
-                Session::setFlash('Page was saved.');
-            } else {
-                Session::setFlash('Error.');
-            }
-            Router::redirect('/admin/pages/');
-        }
-    }
-
     // удаление юзера админом
     public function admin_delete_user(){
         if ( isset($this->params[0]) ){
@@ -87,66 +73,25 @@ class PagesController extends Controller{
         }
         Router::redirect('/admin/pages/');
     }
-/*
-    // для редактирования статьи
-    public function admin_edit(){
 
-        if ( $_POST ){
-            $id = isset($_POST['id']) ? $_POST['id'] : null;
-            $result = $this->model->save($_POST, $id);
-            if ( $result ){
-                Session::setFlash('Page was saved.');
-            } else {
-                Session::setFlash('Error.');
-            }
-            Router::redirect('/admin/pages/');
-        }
-
-        //отображение формы ред страници с заполнеными полями ввода
-        if ( isset($this->params[0]) ){
-            $this->data['page'] = $this->model->getById($this->params[0]);
-        } else {
-            Session::setFlash('Wrong page id.');
-            Router::redirect('/admin/pages/');
-        }
-    }
-
-    // удаление статьи
-    public function admin_delete(){
-        if ( isset($this->params[0]) ){
-            $result = $this->model->delete($this->params[0]);
-            if ( $result ){
-                Session::setFlash('Page was deleted.');
-            } else {
-                Session::setFlash('Error.');
-            }
-        }
-        Router::redirect('/admin/pages/');
-    }
-
-*/
-
-    // добавление ссылки пользователем
+    // добавление ссылки в визуальные закладки пользователем
     public function link_add(){
         if ( $_POST ){
             // запись даных в базу
             $result = $this->model->add_link($_POST);
-            //exit( '/uploads/preview/'."{$result[0][0]}".'.jpg' );
-            //exit ('<pre>'.print_r($result[0][0]));
-            //if ($result !== false) {
+            if ($result) {
                 // создание картинки
-                $api = 'http://mini.s-shot.ru/1280x800/400/jpeg/?';
                 $url = $_POST['link'];
+                $fname = $result[0][0];
+                Preview::create_image($url, $fname);
+                // выводим сообщение пользователю
 
-                    @$fp = fopen('uploads'.DS.'preview'.DS."{$result[0][0]}".'.jpg', 'w'); // Создаем файл с нужным нам именем в нужном месте
-                    @fwrite($fp, file_get_contents($api . $url)); // записываем в этот файл содержимое, которое отдал нам сервис
-                    @fclose($fp); // закрываем файл
-            //}
-            /*if ( $result ){
                 Session::setFlash('Link was added.');
-            } else {
+            }
+            else {
                 Session::setFlash('Error.');
-            }*/
+            }
+
             Router::redirect('/');
         }
     }
@@ -154,6 +99,18 @@ class PagesController extends Controller{
     public function link_delete(){
         if ( isset($this->params[0]) ) {
             $result = $this->model->delete_link($this->params[0]);
+            Router::redirect('/');
+        }
+    }
+
+    public function link_refresh(){
+        if ( isset($this->params[0]) ) {
+            $id = $this->params[0];
+            $link = $this->model->getLinkById($id);
+            $url = $link['url'] ;
+            //echo '<pre>'; var_dump($url); exit();
+            $fname = $id;
+            Preview::create_image($url, $fname);
             Router::redirect('/');
         }
     }
@@ -173,13 +130,16 @@ class PagesController extends Controller{
             $result = $this->model->add_bookmark( $_POST );
             //echo '<pre>'; print_r($_POST); exit();
         }
-
         Router::redirect('/');
     }
 
     public function bookmarks(){
         $this->data['bookmarks'] = $this->model->getUserBookmarks();
- //       echo '<pre>'; print_r ($this->data['bookmarks']); exit();
+    }
+
+    public function test(){
+        Session::setFlash('Test flash message');
+        Router::redirect('/');
     }
 
 }

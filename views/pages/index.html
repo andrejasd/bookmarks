@@ -58,15 +58,6 @@
     </div>
 </div>
 
-<!--
-<?php foreach($data['links'] as $page_data) { ?>
-    <div style="margin-top: 10px;">
-        <a href="<?=$page_data['url']?>"><?=$page_data['title']?></a>
-    </div>
-<?php } ?>
--->
-
-
 <!-- верхний блок "переглянути пізніше" -->
 <div class="add_bookmark">
     <form class="form-inline add_form" method="post" action='/pages/bookmark_add/'>
@@ -88,14 +79,6 @@
     <a class="btn btn-primary" href="/pages/bookmarks/">Просмотр ссылок</a>
 </div>
 
-<!--
-<?php
-    echo '<pre>';
-    print_r ($data);
-    echo '</pre>';
-?>
--->
-
 <!-- Блок з посиланнями ----------------------------------------------------------------------------------------------->
 <div class="row">
 
@@ -106,13 +89,18 @@
 
                 <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
 
-                    <?php if ( isset($page_data['pic_src']) ) {?>
-                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
-                        <form action="/pages/link_delete/<?=$page_data['id']?>">
-                            <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
-                        </form>
+                    <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
+                    <form action="/pages/link_delete/<?= $page_data['id'] ?>">
+                        <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
+                    </form>
+                    <form action="/<?= $page_data['id'] ?>">
                         <button type="submit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button>
+                    </form>
+                    <form action="/pages/link_refresh/<?= $page_data['id'] ?>">
                         <button type="submit" class="close my_close"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
+                    </form>
+
+                    <?php if ( isset($page_data['pic_src']) ) {?>
                         <img src="<?=$page_data['pic_src']?>">
                         <hr>
                         <p class="text-primary size"><?=$page_data['title']?></p>
@@ -126,15 +114,13 @@
     </div>
 
 
-<!-- Кнопка добавить ссылку ------------------------------------------------------------------------------------------->
+    <!-- Кнопка добавить ссылку ------------------------------------------------------------------------------------------->
     <?php if ( Session::get('id') ) { ?>
         <!-- Открыть модальное окно добавления новой ссылки -->
         <div class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
             <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal"><p class="center-block glyphicon glyphicon-plus large_icon"></p></a>
         </div>
     <?php } ?>
-
-
 
 
 </div>

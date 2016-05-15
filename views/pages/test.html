@@ -1,0 +1,12 @@
+<?php
+
+if (isset($_SESSION['var_name']))
+  {
+    echo $_SESSION['var_name'];
+    unset($_SESSION['var_name']);
+
+  }
+else $_SESSION['var_name']='Привед медвед!!!';
+?>
+
+test page
