@@ -84,6 +84,7 @@ class PagesController extends Controller{
                 $url = $_POST['link'];
                 $fname = $result[0][0];
                 Preview::create_image($url, $fname);
+                //Preview::create_image_phantomjs($url, $fname);
                 // выводим сообщение пользователю
 
                 Session::setFlash('Link was added.');
@@ -110,6 +111,9 @@ class PagesController extends Controller{
             $url = $link['url'] ;
             //echo '<pre>'; var_dump($url); exit();
             $fname = $id;
+            //?????????
+            //if (!Session::get('id'))
+                //$fname = 'def_'+$fname;
             Preview::create_image($url, $fname);
             Router::redirect('/');
         }
