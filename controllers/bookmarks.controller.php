@@ -47,7 +47,4 @@ class BookmarksController extends Controller{
         Router::redirect('/');
     }
 
-
-
-
 }

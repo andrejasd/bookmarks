@@ -45,3 +45,4 @@ Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in you
 Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
 Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
 Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method link_add of class PagesController does not exist : 22 May 2016, 21:22

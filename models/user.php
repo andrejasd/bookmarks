@@ -36,4 +36,28 @@ class User extends Model {
         //return user id
     }
 
+    // удаление пользователей из БД для админа
+    public function delete_user($id){
+        $id = (int)$id;
+        //$sql = "delete from users where id = {$id}";
+        $sql = "
+                update users
+                  set is_active = 0
+                where id = {$id}
+                ";
+        return $this->db->query($sql);
+    }
+
+    // список пользователей для админа
+    public function getUsers($is_active = true){
+
+        $sql = "select * from users where 1";
+
+        if ( $is_active ){
+            $sql .= " and is_active = 1";
+        }
+
+        return $this->db->query($sql);
+    }
+    
 }
