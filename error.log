@@ -7,3 +7,41 @@ Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in you
 Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'и настройка сервера XAMPP на Windows | Инструменты' at line 2 : 21 May 2016, 19:19
 Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id = '122'' at line 3 : 21 May 2016, 19:21
 Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: 136Controller : 22 May 2016, 09:02
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:04
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:05
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:05
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:05
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:05
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:05
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:05
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:05
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index of class BookmarksController does not exist : 22 May 2016, 17:05
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method index.html of class BookmarksController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method bookmarks of class PagesController does not exist : 22 May 2016, 17:06
+Error 0 in C:\xampp\htdocs\lib\app.class.php at line 40: (ASD)Method bookmarks of class PagesController does not exist : 22 May 2016, 17:07
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Bookmarks1 : 22 May 2016, 17:40
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Bookmarks1 : 22 May 2016, 17:40
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Bookmarks1 : 22 May 2016, 17:40
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Bookmarks1 : 22 May 2016, 17:40
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Bookmarks1 : 22 May 2016, 17:40
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Bookmarks1 : 22 May 2016, 17:40
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Bookmarks1 : 22 May 2016, 17:40
+Error 0 in C:\xampp\htdocs\lib\init.php at line 19: (ASD)Failed to include class: Bookmarks12 : 22 May 2016, 17:59
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 : 22 May 2016, 20:38
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55
+Error 0 in C:\xampp\htdocs\lib\db.class.php at line 23: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' category_id = 2' at line 1 : 22 May 2016, 20:55

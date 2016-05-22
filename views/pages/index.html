@@ -31,7 +31,7 @@
                 <h4 class="modal-title">Добавить новую категорию ссылок</h4>
             </div>
             <div class="modal-body clearfix">
-                <form method="post" action="/pages/category_add/">
+                <form method="post" action="/bookmarks/category_add/">
                     <div class="form-group">
                         <label for="category">Категория</label>
                         <input type="text" id="category" name="category" class="form-control">
@@ -95,15 +95,13 @@
 
 <!-- верхний блок "переглянути пізніше" -->
 <div class="add_bookmark">
-    <form class="form-inline add_form" method="post" action='/pages/bookmark_add/'>
+    <form class="form-inline add_form" method="post" action='/bookmarks/bookmark_add/'>
         <div class="form-group">
             <label for="bookmark">Ссылка: </label>
             <input type="text" class="form-control" id="bookmark" name="bookmark" placeholder="Link">
         </div>
         <div class="form-group">
             <select class="form-control" name="category_id">
-                <option>Без категории</option>
-                <option value="new_category" data-toggle="modal">Новая категория</option>
                 <?=$data['select_category']?>
             </select>
         </div>
@@ -111,7 +109,7 @@
         <input type="submit" class="btn btn-primary" name="add" value="Добавить">
         <!-- <input type="submit" class="btn btn-primary" name="view" value="Просмотр ссылок"> -->
     </form>
-    <a class="btn btn-primary" href="/pages/bookmarks/">Просмотр ссылок</a>
+    <a class="btn btn-primary" href="/bookmarks/">Просмотр ссылок</a>
 </div>
 
 <!-- Блок з посиланнями ----------------------------------------------------------------------------------------------->

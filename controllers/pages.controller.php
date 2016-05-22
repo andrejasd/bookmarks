@@ -10,6 +10,8 @@ class PagesController extends Controller{
     public function index(){
         $only_published = true;
 
+        $model_bookmark = new Bookmark();
+
         // вывод стандартного списка закладок для незарегестрированного пользователя
         if (!Session::get('id'))
         {
@@ -22,19 +24,24 @@ class PagesController extends Controller{
             $pic_prefix = "";
 
             // устанавливаем текущауюкатегорию из БД
-            Session::set('current_category', $this->model->getUserLastCategory()[0]['last_category']);
+            $current_category_id = $model_bookmark->getUserLastCategoryId();
+            Session::set('current_category_id', $current_category_id);
 
             // список категорий закладок
-            $bookmarks_categoris = $this->model->getBookmarksCategories();
+            $bookmarks_categoris = $model_bookmark->getBookmarksCategories();
             $this->data['select_category'] = '';
+
+            $this->data['select_category'].='<option value=0>'.VIEW_LATER.'</option>';
+
             foreach ($bookmarks_categoris as $key=>$value){
                 $kaf = $value['title'];
                 $kaf_id = $value['id'];
                 $this->data['select_category'].='<option ';
-                if (Session::get('current_category') == $kaf)
+                if ($current_category_id == $kaf_id)
                     $this->data['select_category'].='selected ';
                 $this->data['select_category'].='value='.$kaf_id.'>'.$kaf.'</option>';
             }
+            $this->data['select_category'].='<option value="new_category" data-toggle="modal">Новая категория</option>';
         }
 
         // добавляем в массив data путь к рисунку-превьюхе при ее наличии
@@ -43,7 +50,6 @@ class PagesController extends Controller{
             if ( file_exists ($pic_src) )
                 $this->data['links'][$key]['pic_src'] = $pic_src;
         }
-
     }
 
     /*
@@ -73,6 +79,8 @@ class PagesController extends Controller{
         }
         Router::redirect('/admin/pages/');
     }
+
+    //---------------------------------------------------------------------------------------------------------
 
     // добавление ссылки в визуальные закладки пользователем
     public function link_add(){
@@ -158,36 +166,7 @@ class PagesController extends Controller{
         }
     }
 
-    public function category_add(){
-        if( $_POST ){
-            $result = $this->model->add_category($_POST);
-            if ($result){
-                $this->model->setUserLastCategory($result);
-            }
-        }
-        Router::redirect('/');
-    }
-
-    public function bookmark_add(){
-        if( $_POST ){
-            $result = $this->model->add_bookmark( $_POST );
-            //echo '<pre>'; print_r($_POST); exit();
-        }
-        Router::redirect('/');
-    }
-
-    public function bookmarks(){
-/*
-        $bookmarks_categoris = $this->model->getBookmarksCategories();
-        foreach ($bookmarks_categoris as $key=>$value){
-            $kaf = $value['title'];
-            $kaf_id = $value['id'];
-            $this->data['categories'].=
-        }
-*/
-        $this->data['categories']=$this->model->getBookmarksCategories();
-        $this->data['bookmarks'] = $this->model->getUserBookmarks();
-    }
+   
 
     public function test(){
         Session::setFlash('Test flash message');
