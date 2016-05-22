@@ -82,11 +82,21 @@ class PagesController extends Controller{
             if ($result) {
                 // создание картинки
                 $url = $_POST['link'];
-                $fname = $result[0][0];
+                $id = $result[0][0];
+                $fname = $id;
                 Preview::create_image($url, $fname);
                 //Preview::create_image_phantomjs($url, $fname);
-                // выводим сообщение пользователю
 
+                if ($_POST['title']){
+                    $title = $_POST['title'];
+                    $this->model->set_link_title($id, $title);
+                }
+                else{
+                    $title = Preview::get_title($url);
+                    $this->model->set_link_title($id, $title);
+                }
+
+                // выводим сообщение пользователю
                 Session::setFlash('Link was added.');
             }
             else {
@@ -115,6 +125,35 @@ class PagesController extends Controller{
             //if (!Session::get('id'))
                 //$fname = 'def_'+$fname;
             Preview::create_image($url, $fname);
+
+            if (!$link['title']){
+                $title = Preview::get_title($url);
+                $this->model->set_link_title($id, $title);
+            }
+
+            Router::redirect('/');
+        }
+    }
+
+    public function link_edit(){
+        if ( $_POST ){
+            /*
+            // запись даных в базу
+            $result = $this->model->add_link($_POST);
+            if ($result) {
+                // создание картинки
+                $url = $_POST['link'];
+                $fname = $result[0][0];
+                Preview::create_image($url, $fname);
+                //Preview::create_image_phantomjs($url, $fname);
+                // выводим сообщение пользователю
+
+                Session::setFlash('Link was added.');
+            }
+            else {
+                Session::setFlash('Error.');
+            }
+            */
             Router::redirect('/');
         }
     }
@@ -138,6 +177,15 @@ class PagesController extends Controller{
     }
 
     public function bookmarks(){
+/*
+        $bookmarks_categoris = $this->model->getBookmarksCategories();
+        foreach ($bookmarks_categoris as $key=>$value){
+            $kaf = $value['title'];
+            $kaf_id = $value['id'];
+            $this->data['categories'].=
+        }
+*/
+        $this->data['categories']=$this->model->getBookmarksCategories();
         $this->data['bookmarks'] = $this->model->getUserBookmarks();
     }
 

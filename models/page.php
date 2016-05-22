@@ -31,7 +31,7 @@ class Page extends Model{
             return false;
         }
 
-        $user_id = Session::get('id') ;
+        $user_id = Session::get('id');
         $link = $this->db->escape($data['link']);
         $title = $this->db->escape($data['title']);
 
@@ -44,6 +44,28 @@ class Page extends Model{
                 ";
 
         return $this->db->multi_query($sql);
+    }
+
+    // удаление ссылки из БД пользователем
+    public function delete_link($id){
+        $id = (int)$id;
+        //$sql = "delete from favorites_links where id = {$id}";
+        $sql = "update favorites_links
+                  set is_published = 0
+                where id = {$id}
+                ";
+        return $this->db->query($sql);
+    }
+    
+    public function set_link_title($link_id, $title){
+        //$user_id = Session::get('id');
+        $id = (int)$link_id;
+        $sql = "
+                UPDATE favorites_links
+                SET title = '{$title}'
+                WHERE id = {$id}
+            ";
+        return $this->db->query($sql);
     }
 
     // список пользователей для админа
@@ -65,17 +87,6 @@ class Page extends Model{
         $sql = "
                 update users
                   set is_active = 0
-                where id = {$id}
-                ";
-        return $this->db->query($sql);
-    }
-
-    // удаление ссылки из БД пользователем
-    public function delete_link($id){
-        $id = (int)$id;
-        //$sql = "delete from favorites_links where id = {$id}";
-        $sql = "update favorites_links
-                  set is_published = 0
                 where id = {$id}
                 ";
         return $this->db->query($sql);

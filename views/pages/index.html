@@ -12,6 +12,16 @@
     });
 </script>
 
+<!-- скрипт откритя модального окна редактирования ссылки -->
+<script>
+    $(document).ready(function(){
+        $("#edit").click(function() {
+            $("#editModal").modal('show');
+            return false;
+        })
+    });
+</script>
+
 <!-- Описание модального окна добавления новой категории ссылок -->
 <div class="modal fade" id="new_Category" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
     <div class="modal-dialog">
@@ -39,7 +49,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Добавить новую ссылку</h4>
+                <h4 class="modal-title">Добавить новую ссылку</h4>
             </div>
             <div class="modal-body clearfix">
                 <form method="post" action="/pages/link_add/">
@@ -52,6 +62,31 @@
                         <input type="text" id="title" name="title" class="form-control" />
                     </div>
                     <input type="submit" class="btn btn-success" value="Добавить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Описание модального окна редактирования ссылки-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Редактировать ссылку</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form method="post" action="/pages/link_edit/">
+                    <div class="form-group">
+                        <label for="new_link">Ссылка</label>
+                        <input type="text" id="new_link" name="link" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="new_title">Описание</label>
+                        <input type="text" id="new_title" name="title" class="form-control" />
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Изменить">
                 </form>
             </div>
         </div>
@@ -85,6 +120,8 @@
     <div style="margin-top: 10px;">
         <?php foreach($data['links'] as $page_data) { ?>
 
+        <!-- <pre> <?php print_r ($data['links']); ?> </pre> -->
+
             <div class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
 
                 <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
@@ -93,9 +130,13 @@
                     <form action="/pages/link_delete/<?= $page_data['id'] ?>">
                         <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
                     </form>
-                    <form action="/<?= $page_data['id'] ?>">
-                        <button type="submit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button>
+
+
+                    <form>
+                        <button type="button" id="edit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button>
                     </form>
+                    <!-- <button type="button" class="close my_close" data-toggle="modal" data-target="#editModal"><span class="glyphicon glyphicon-cog"></span></button> -->
+
                     <form action="/pages/link_refresh/<?= $page_data['id'] ?>">
                         <button type="submit" class="close my_close"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
                     </form>
