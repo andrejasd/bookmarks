@@ -84,9 +84,13 @@ hr{
 
 .size {
     text-overflow: ellipsis;
-overflow: hidden;
-width: 100%;
-white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.breakword{
+    word-wrap: break-word;
 }
 
 .my_close{

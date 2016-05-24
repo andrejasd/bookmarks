@@ -82,5 +82,18 @@ class UsersController extends Controller{
         }
     }
 
+    // удаление юзера админом
+    public function admin_delete_user(){
+        if ( isset($this->params[0]) ){
+            $result = $this->model->delete_user($this->params[0]);
+            if ( $result ){
+                Session::setFlash('User was deleted.');
+            } else {
+                Session::setFlash('Error.');
+            }
+        }
+        Router::redirect('/admin/pages/');
+    }
+    
 
 }

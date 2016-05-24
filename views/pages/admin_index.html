@@ -5,7 +5,7 @@
         <td><b><?=$page_data['email']?></b></td>
         <td align="right">
             <!-- <a href="/admin/pages/edit/<?=$page_data['id']?>"><button class="btn btn-sm btn-primary">edit</button></a> -->
-            <a href="/admin/pages/delete_user/<?=$page_data['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Забанить!!!</button></a>
+            <a href="/admin/users/delete_user/<?=$page_data['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Забанить!!!</button></a>
         </td>
     </tr>
     <?php } ?>

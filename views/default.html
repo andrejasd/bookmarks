@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang>
+<html>
 <head>
     <meta charset="UTF-8">
     <title><?=Config::get('site_name')?></title>
@@ -46,9 +46,9 @@
                 <?php if ( Session::get('id') ) { ?>
                     <ul class="nav navbar-nav">
 
-                        <?php if (Session::get('role') == 'admin') : echo'/admin/'; else: echo'/settings/'; endif?>
+                        <?php if (Session::get('role') == 'admin') : echo'admin'; else: echo'settings'; endif?>
 
-                        <li><a href='<?php if (Session::get('role') == 'admin') : echo'/admin/'; else: echo'/settings/'; endif?>'>
+                        <li><a href='<?php if (Session::get('role') == 'admin') : echo'admin'; else: echo'settings'; endif?>'>
                             <?=Session::get('email')?></a>
                         </li>
                         <li><a href = '/users/logout'>Logout</a></li>
