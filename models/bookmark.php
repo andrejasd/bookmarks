@@ -16,10 +16,11 @@ class Bookmark extends Model{
         $category_title = $this->db->escape($data['category']);
         $sql = "insert into bookmarks_categories
                         set title = '{$category_title}',
-                            user_id = '{$user_id}'
+                            user_id = '{$user_id}';
+                     select @@IDENTITY;
                 ";
-        if ($this->db->query($sql))
-            return $category_title;
+        if ($resault = $this->db->multi_query($sql))
+            return $resault;
     }
 
     // запись последней используемой категории

@@ -52,11 +52,13 @@ class LinksController extends Controller{
             $id = $this->params[0];
             $link = $this->model->getLinkById($id);
             $url = $link['url'] ;
-            //echo '<pre>'; var_dump($url); exit();
             $fname = $id;
             //?????????
-            //if (!Session::get('id'))
-            //$fname = 'def_'+$fname;
+            if (!Session::get('id'))
+                $fname = 'def_'.$fname;
+
+            //echo '<pre>'; var_dump($fname);  exit();
+
             Preview::create_image($url, $fname);
 
             if (!$link['title']){
@@ -87,6 +89,9 @@ class LinksController extends Controller{
                 Session::setFlash('Error.');
             }
             */
+
+            print_r($_POST); exit();
+
             Router::redirect('/');
         }
     }
