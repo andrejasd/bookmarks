@@ -1,11 +1,13 @@
-test page
+function getXMLHttpRequest()
+{
+    if (window.XMLHttpRequest) {
+        return new XMLHttpRequest();
+    }
 
-<script src="/js/ajaxx.js"></script>
+    return new ActiveXObject('Microsoft.XMLHTTP');
+}
 
-<script>
-
-    console.log(getXMLHttpRequest());
-
+function getLink() {
     request = getXMLHttpRequest();
     request.onreadystatechange = function() {
         console.log(request.readyState);
@@ -20,10 +22,4 @@ test page
 
     request.open('GET', '/pages/test1', true);
     request.send(null);
-
-</script>
-
-<?php
-
-
-
+}

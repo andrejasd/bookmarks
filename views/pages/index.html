@@ -129,11 +129,9 @@
                         <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
                     </form>
 
-
                     <form>
-                        <button type="button" id="edit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button>
+                        <button type="button" class="close my_close" onclick="return edit_bookmark();"><span class="glyphicon glyphicon-cog"></span></button>
                     </form>
-                    <!-- <button type="button" class="close my_close" data-toggle="modal" data-target="#editModal"><span class="glyphicon glyphicon-cog"></span></button> -->
 
                     <form action="/links/link_refresh/<?= $page_data['id'] ?>">
                         <button type="submit" class="close my_close"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
