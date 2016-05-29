@@ -5,8 +5,3 @@ function confirmDelete(){
         return false;
     }
 }
-
-function edit_bookmark() {
-    $("#editModal").modal('show');
-    return false;
-}

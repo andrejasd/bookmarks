@@ -3,7 +3,7 @@
 class Bookmark extends Model{
 
     public function getBookmarksCategories(){
-        $sql = "select * from bookmarks_categories where user_id = $_SESSION[id]";
+        $sql = "select * from bookmarks_categories where user_id = {$_SESSION['id']}";
         return $this->db->query($sql);
     }
 

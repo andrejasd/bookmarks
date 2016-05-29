@@ -12,15 +12,7 @@
     });
 </script>
 
-<!-- скрипт откритя модального окна редактирования ссылки -->
-<script>
-    $(document).ready(function(){
-        $("#edit").click(function() {
-            $("#editModal").modal('show');
-            return false;
-        })
-    });
-</script>
+
 
 <!-- Описание модального окна добавления новой категории закладок -->
 <div class="modal fade" id="new_Category" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
@@ -52,7 +44,7 @@
                 <h4 class="modal-title">Добавить новую ссылку</h4>
             </div>
             <div class="modal-body clearfix">
-                <form method="post" action="/links/link_add/">
+                <form>  <!-- method="post"  onsubmit="return add_new_link();"  action="/links/link_add/" -->
                     <div class="form-group">
                         <label for="link">Ссылка</label>
                         <input type="text" id="link" name="link" class="form-control" />
@@ -61,7 +53,8 @@
                         <label for="title">Описание</label>
                         <input type="text" id="title" name="title" class="form-control" />
                     </div>
-                    <input type="submit" class="btn btn-success" value="Добавить">
+                    <!-- <input type="submit" class="btn btn-success" value="Добавить"> -->
+                    <input type="button" class="btn btn-success" onclick="return add_new_link();" value="Добавить">
                 </form>
             </div>
         </div>
@@ -80,12 +73,13 @@
                 <form method="post" action="/links/link_edit/">
                     <div class="form-group">
                         <label for="new_link">Ссылка</label>
-                        <input type="text" id="new_link" name="link" class="form-control" />
+                        <input type="text" id="new_link" name="link" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="new_title">Описание</label>
-                        <input type="text" id="new_title" name="title" class="form-control" />
+                        <input type="text" id="new_title" name="title" class="form-control">
                     </div>
+                    <input type="text" id="link_id" name="link_id" class = "fade">
                     <input type="submit" class="btn btn-success" value="Изменить">
                 </form>
             </div>
@@ -93,7 +87,9 @@
     </div>
 </div>
 
-<!-- верхний блок "переглянути пізніше" -->
+
+
+<!-- ------------------------------------ верхний блок "переглянути пізніше" ------------------------------------------>
 <div class="add_bookmark">
     <form class="form-inline add_form" method="post" action='/bookmarks/bookmark_add/'>
         <div class="form-group">
@@ -118,8 +114,6 @@
     <div style="margin-top: 10px;">
         <?php foreach($data['links'] as $page_data) { ?>
 
-        <!-- <pre> <?php print_r ($data['links']); ?> </pre> -->
-
             <div class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
 
                 <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
@@ -129,8 +123,9 @@
                         <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
                     </form>
 
-                    <form>
-                        <button type="button" class="close my_close" onclick="return edit_bookmark();"><span class="glyphicon glyphicon-cog"></span></button>
+                    <form method='post'>
+                        <!-- <button type="submit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button> -->
+                         <button type="button" class="close my_close" onclick="return get_link_data(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
                     </form>
 
                     <form action="/links/link_refresh/<?= $page_data['id'] ?>">

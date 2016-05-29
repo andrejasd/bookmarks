@@ -79,14 +79,6 @@ class PagesController extends Controller
 
     public function test1()
     {
-        $data = array(
-            'name' => 'Steven',
-            'email' => 'steve@junkie.com',
-            'phone' => '123-45-67',
-            'message' => 'Hello. I want to buy some weed.'
-        );
-
-        echo json_encode($data);
 
     }
 }

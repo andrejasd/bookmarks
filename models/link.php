@@ -63,8 +63,19 @@ class Link extends Model{
         $sql = "
                 UPDATE favorites_links
                 SET title = '{$title}'
-                WHERE id = {$id}
+                WHERE id = '{$id}'
             ";
         return $this->db->query($sql);
     }
+
+    public function set_link_url($link_id, $url){
+        $id = (int)$link_id;
+        $sql = "
+                UPDATE favorites_links
+                SET url = '{$url}'
+                WHERE id = '{$id}'
+            ";
+        return $this->db->query($sql);
+    }
+
 }
