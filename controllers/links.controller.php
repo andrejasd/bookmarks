@@ -95,20 +95,21 @@ class LinksController extends Controller{
                 'title' => $link['title']
             );
             echo json_encode($data);
+            Router::redirect('/');
         }
     }
 
     public function addNewLink(){ //for ajax
-        if (isset($this->params[0])) {
+        //echo ('addNewLink');
+        var_dump($_POST);
+        if ( $_POST ) {
             // запись даных в базу
-            $data = array(
-                'link' => $this->params[0],
-                'title' => ''
-            );
 
-            $result = $this->model->add_link($data);
 
-            var_dump($data);
+            //$result = $this->model->add_link($data);
+
+            var_dump($_POST);
+            Router::redirect('/');
 /*
             if ($result) {
                 // создание картинки

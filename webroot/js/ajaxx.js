@@ -56,21 +56,33 @@ function get_link_data(id) {
 
 function add_new_link() {
 
-    link = ($("#link").val()); //преобразовать!!!!!!!!! ??
+    link = $("#link").val();
     title = $('#title').val();
-    console.log(link+' '+title);
+    //console.log(link+' '+title);
 
-    //Передавать в пост запросе???
+    var data = {'link' : link, 'title' : title};
+    console.log(data);
+
+
 
     request = getXMLHttpRequest();
-
     request.onreadystatechange = function() {
         console.log(request.readyState);
-        responseBody = request.responseText;
-        console.log(responseBody);
+        if (request.readyState == 4) {
+            responseBody = request.responseText;
+            console.log(responseBody);
+        }
     }
+    request.open('POST', 'script.php', true);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send(data);
 
-    request.open('GET', '/links/addNewLink/'+link+'/'+title, true);
-    request.send(null);
+    // jQuery
+    //$.post('script.php', data, function (data) {
+    $.post('/links/link_add/', data, function (data) {
+        console.log(data);
+    });
+
+    $('#registerModal').modal('hide');
 
 }

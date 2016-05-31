@@ -1,16 +1,23 @@
-<!-- This is the pages/index.html -->
-
-<!-- скрипт откритя модального окна добавления новой категории ссылок -->
 <script>
     $(document).ready(function(){
+        <!-- скрипт откритя модального окна добавления новой категории ссылок -->
         var value_Opt= "new_category";
         $("select").change(function () {
             if($(this).val()!=value_Opt) return false;
             $("#new_Category").modal('show');
             return false;
-        })
+        });
+
+        <!-- установка фокуса на форме добавления новой ссылки -->
+        $('#registerModal').on('shown.bs.modal', function () {
+            $('#link').focus();
+        });
+
     });
+
 </script>
+
+
 
 
 
@@ -123,7 +130,7 @@
                         <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
                     </form>
 
-                    <form method='post'>
+                    <form>
                         <!-- <button type="submit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button> -->
                          <button type="button" class="close my_close" onclick="return get_link_data(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
                     </form>
@@ -150,7 +157,7 @@
     <?php if ( Session::get('id') ) { ?>
         <!-- Открыть модальное окно добавления новой ссылки -->
         <div class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
-            <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal"><p class="center-block glyphicon glyphicon-plus large_icon"></p></a>
+            <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal" tabindex="-1"><p class="center-block glyphicon glyphicon-plus large_icon"></p></a>
         </div>
     <?php } ?>
 
