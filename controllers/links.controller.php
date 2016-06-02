@@ -87,15 +87,15 @@ class LinksController extends Controller{
     }
 
     public function getLinkData(){ // for ajax
-        if (isset($this->params[0])) {
-            $id = $this->params[0];
+        if ( $_POST ) {
+            $id = $_POST['id'];
             $link = $this->model->getLinkById($id);
             $data = array(
                 'url' => $link['url'],
                 'title' => $link['title']
             );
             echo json_encode($data);
-            Router::redirect('/');
+            die;
         }
     }
 
@@ -123,6 +123,7 @@ class LinksController extends Controller{
             }
 */
         }
+        die;
     }
 
 }

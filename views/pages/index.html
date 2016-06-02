@@ -19,8 +19,6 @@
 
 
 
-
-
 <!-- Описание модального окна добавления новой категории закладок -->
 <div class="modal fade" id="new_Category" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
     <div class="modal-dialog">
@@ -86,7 +84,7 @@
                         <label for="new_title">Описание</label>
                         <input type="text" id="new_title" name="title" class="form-control">
                     </div>
-                    <input type="text" id="link_id" name="link_id" class = "fade">
+                    <input type="hidden" id="link_id" name="link_id">
                     <input type="submit" class="btn btn-success" value="Изменить">
                 </form>
             </div>
@@ -132,7 +130,7 @@
 
                     <form>
                         <!-- <button type="submit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button> -->
-                         <button type="button" class="close my_close" onclick="return get_link_data(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
+                         <button type="button" class="close my_close" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
                     </form>
 
                     <form action="/links/link_refresh/<?= $page_data['id'] ?>">

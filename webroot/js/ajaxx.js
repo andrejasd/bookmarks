@@ -8,29 +8,9 @@ function getXMLHttpRequest()
     return new ActiveXObject('Microsoft.XMLHTTP');
 }
 
-function getLink() {
-    request = getXMLHttpRequest();
-    request.onreadystatechange = function() {
-        console.log(request.readyState);
-        if (request.readyState == 4) {
-            responseBody = request.responseText;
-            console.log(responseBody);
-            data = JSON.parse(responseBody);
-            console.log(data);
-            alert(data['message']);
-        }
-    }
-
-    request.open('GET', '/pages/test1', true);
-    request.send(null);
-}
-
-function get_link_data(id) {
-
-    //alert(id);
-
-    console.log(getXMLHttpRequest());
-
+// данные о ссылке для окна редактирования ссылки
+function link_edit(id) {
+/*
     request = getXMLHttpRequest();
     request.onreadystatechange = function() {
         console.log(request.readyState);
@@ -48,6 +28,19 @@ function get_link_data(id) {
 
     request.open('GET', '/links/getLinkData/'+id, true);
     request.send(null);
+*/
+
+    var data = {'id' : id};
+    console.log(data);
+    $.post('/links/getLinkData/', data, function (data) {
+        data = JSON.parse(data);
+        console.log(data);
+        //alert(data['url']);
+        $("#new_link").attr('value',data['url']);
+        $("#new_title").attr('value',data['title']);
+        $("#link_id").attr('value',id);
+    });
+
 
     $("#editModal").modal('show');
 
@@ -63,22 +56,6 @@ function add_new_link() {
     var data = {'link' : link, 'title' : title};
     console.log(data);
 
-
-
-    request = getXMLHttpRequest();
-    request.onreadystatechange = function() {
-        console.log(request.readyState);
-        if (request.readyState == 4) {
-            responseBody = request.responseText;
-            console.log(responseBody);
-        }
-    }
-    request.open('POST', 'script.php', true);
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send(data);
-
-    // jQuery
-    //$.post('script.php', data, function (data) {
     $.post('/links/link_add/', data, function (data) {
         console.log(data);
     });

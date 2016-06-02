@@ -76,9 +76,5 @@ class PagesController extends Controller
         //Session::setFlash('Test flash message');
         //Router::redirect('/');
     }
-
-    public function test1()
-    {
-
-    }
+    
 }
