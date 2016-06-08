@@ -20,17 +20,12 @@ class LinksController extends Controller{
                 Preview::create_image($url, $fname);
                 //Preview::create_image_phantomjs($url, $fname);
 
-                if ($_POST['title']){
-                    $title = $_POST['title'];
-                    $this->model->set_link_title($id, $title);
-                }
-                else{
+                // записуем название сайта если незадано пользователем
+                if ( !isset($_POST['title'])){
                     $title = Preview::get_title($url);
                     $this->model->set_link_title($id, $title);
                 }
 
-                // выводим сообщение пользователю
-                Session::setFlash('Link was added.');
             }
             else {
                 Session::setFlash('Error.');
@@ -40,24 +35,23 @@ class LinksController extends Controller{
         }
     }
 
-    public function link_delete(){
-        if ( isset($this->params[0]) ) {
-            $result = $this->model->delete_link($this->params[0]);
-            Router::redirect('/');
+    public function link_delete(){ // for ajax
+        if ( $_POST ) {
+            $id = $_POST['id'];
+            $result = $this->model->delete_link($id);
+            die;
         }
     }
 
-    public function link_refresh(){
-        if ( isset($this->params[0]) ) {
-            $id = $this->params[0];
+    public function link_refresh(){ // for ajax
+        if ( $_POST ) {
+            $id = $_POST['id'];
             $link = $this->model->getLinkById($id);
             $url = $link['url'] ;
             $fname = $id;
-            //?????????
+
             if (!Session::get('id'))
                 $fname = 'def_'.$fname;
-
-            //echo '<pre>'; var_dump($fname);  exit();
 
             Preview::create_image($url, $fname);
 
@@ -66,11 +60,16 @@ class LinksController extends Controller{
                 $this->model->set_link_title($id, $title);
             }
 
-            Router::redirect('/');
+            $data = array(
+                'url' => $link['url'],
+                'title' => $link['title']
+            );
+            echo json_encode($data);
+            die;
         }
     }
 
-    public function link_edit(){
+    public function link_edit(){ // for ajax
         if ( $_POST ){
             //print_r($_POST); exit();
             $link_id = $_POST['link_id'];
@@ -97,33 +96,6 @@ class LinksController extends Controller{
             echo json_encode($data);
             die;
         }
-    }
-
-    public function addNewLink(){ //for ajax
-        //echo ('addNewLink');
-        var_dump($_POST);
-        if ( $_POST ) {
-            // запись даных в базу
-
-
-            //$result = $this->model->add_link($data);
-
-            var_dump($_POST);
-            Router::redirect('/');
-/*
-            if ($result) {
-                // создание картинки
-                $id = $result[0][0];
-                Preview::create_image($link, $id);
-
-                if ($title == '') {
-                    $title = Preview::get_title($link);
-                    $this->model->set_link_title($id, $title);
-                }
-            }
-*/
-        }
-        die;
     }
 
 }

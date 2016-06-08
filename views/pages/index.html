@@ -123,19 +123,20 @@
 
                 <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
 
-                    <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
+                    <!--
                     <form action="/links/link_delete/<?= $page_data['id'] ?>">
                         <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
                     </form>
+                    -->
+                    <button type="button" class="close my_close" onclick="return link_delete(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-remove"></span></button>
+                    <button type="button" class="close my_close" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
+                    <button type="button" class="close my_close" onclick="return link_refresh(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
 
-                    <form>
-                        <!-- <button type="submit" class="close my_close"><span class="glyphicon glyphicon-cog"></span></button> -->
-                         <button type="button" class="close my_close" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
-                    </form>
-
+                    <!--
                     <form action="/links/link_refresh/<?= $page_data['id'] ?>">
                         <button type="submit" class="close my_close"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
                     </form>
+                    -->
 
                     <?php if ( isset($page_data['pic_src']) ) {?>
                         <img src="<?=$page_data['pic_src']?>">

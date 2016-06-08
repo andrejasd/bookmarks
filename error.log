@@ -7,3 +7,6 @@ Error 0 in /var/www/html/lib/view.class.php at line 28: (ASD)Template file is no
 Error 0 in /var/www/html/lib/view.class.php at line 28: (ASD)Template file is not found in path: /var/www/html/views/links/getlinkdata.html : 02 Jun 2016, 21:20
 Error 0 in /var/www/html/lib/view.class.php at line 28: (ASD)Template file is not found in path: /var/www/html/views/links/getlinkdata.html : 02 Jun 2016, 21:20
 Error 0 in /var/www/html/lib/app.class.php at line 40: (ASD)Method test1 of class PagesController does not exist : 02 Jun 2016, 21:44
+Error 0 in /var/www/html/lib/view.class.php at line 28: (ASD)Template file is not found in path: /var/www/html/views/links/link_delete.html : 08 Jun 2016, 21:28
+Error 0 in /var/www/html/lib/view.class.php at line 28: (ASD)Template file is not found in path: /var/www/html/views/links/link_delete.html : 08 Jun 2016, 21:28
+Error 0 in /var/www/html/lib/view.class.php at line 28: (ASD)Template file is not found in path: /var/www/html/views/links/link_delete.html : 08 Jun 2016, 21:28

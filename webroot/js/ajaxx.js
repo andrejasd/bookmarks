@@ -1,4 +1,3 @@
-
 function getXMLHttpRequest()
 {
     if (window.XMLHttpRequest) {
@@ -10,26 +9,6 @@ function getXMLHttpRequest()
 
 // данные о ссылке для окна редактирования ссылки
 function link_edit(id) {
-/*
-    request = getXMLHttpRequest();
-    request.onreadystatechange = function() {
-        console.log(request.readyState);
-        if (request.readyState == 4) {
-            responseBody = request.responseText;
-            console.log(responseBody);
-            data = JSON.parse(responseBody);
-            console.log(data);
-            //alert(data['url']);
-            $("#new_link").attr('value',data['url']);
-            $("#new_title").attr('value',data['title']);
-            $("#link_id").attr('value',id);
-        }
-    }
-
-    request.open('GET', '/links/getLinkData/'+id, true);
-    request.send(null);
-*/
-
     var data = {'id' : id};
     console.log(data);
     $.post('/links/getLinkData/', data, function (data) {
@@ -40,7 +19,6 @@ function link_edit(id) {
         $("#new_title").attr('value',data['title']);
         $("#link_id").attr('value',id);
     });
-
 
     $("#editModal").modal('show');
 
@@ -62,4 +40,31 @@ function add_new_link() {
 
     $('#registerModal').modal('hide');
 
+}
+
+function link_refresh(id) {
+    var data = {'id' : id};
+    console.log(data);
+    $.post('/links/link_refresh/', data, function (data) {
+        data = JSON.parse(data);
+        console.log(data);
+        /*alert(data['url']);
+        $("#new_link").attr('value',data['url']);
+        $("#new_title").attr('value',data['title']);
+        $("#link_id").attr('value',id);
+        */
+    });
+    return false;
+}
+
+function link_delete(id) {
+    if ( confirm("Удалить закладку?") ){
+        var data = {'id' : id};
+        console.log(data);
+        $.post('/links/link_delete/', data, function(data){
+            console.log(data);
+        });
+    };
+
+    return false;
 }
