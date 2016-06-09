@@ -1,11 +1,12 @@
-function getXMLHttpRequest()
-{
-    if (window.XMLHttpRequest) {
-        return new XMLHttpRequest();
+function confirmDelete(){
+    if ( confirm("Delete this item?") ){
+        return true;
+    } else {
+        return false;
     }
-
-    return new ActiveXObject('Microsoft.XMLHTTP');
 }
+
+// ----------------- AJAX ----------------------
 
 // данные о ссылке для окна редактирования ссылки
 function link_edit(id) {

@@ -113,6 +113,19 @@
     <a class="btn btn-primary" href="/bookmarks/">Просмотр ссылок</a>
 </div>
 
+
+<!-- Вкладки ----------------------------------------------------------------------------------------------->
+<ul class="nav nav-tabs" role="tablist" id="myTabExample">
+    <li class="active"><a href="#homeExample" role="tab" data-toggle="tab">Главная</a></li>
+    <li><a href="#questionsExample" role="tab" data-toggle="tab">Вкладка 2</a></li>
+    <li><a href="#articlesExample" role="tab" data-toggle="tab">Вкладка 3</a></li>
+</ul>
+
+<!-- Содержимое вкладок -->
+<div class="tab-content">
+    <!-- Содержимое 1 вкладки -->
+    <div class="tab-pane active" id="homeExample">
+
 <!-- Блок з посиланнями ----------------------------------------------------------------------------------------------->
 <div class="row">
 
@@ -123,20 +136,9 @@
 
                 <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
 
-                    <!--
-                    <form action="/links/link_delete/<?= $page_data['id'] ?>">
-                        <button type="submit" class="close my_close" onclick="return confirmDelete();"><span class="glyphicon glyphicon-remove"></span></button>
-                    </form>
-                    -->
                     <button type="button" class="close my_close" onclick="return link_delete(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-remove"></span></button>
                     <button type="button" class="close my_close" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
                     <button type="button" class="close my_close" onclick="return link_refresh(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
-
-                    <!--
-                    <form action="/links/link_refresh/<?= $page_data['id'] ?>">
-                        <button type="submit" class="close my_close"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
-                    </form>
-                    -->
 
                     <?php if ( isset($page_data['pic_src']) ) {?>
                         <img src="<?=$page_data['pic_src']?>">
@@ -160,5 +162,16 @@
         </div>
     <?php } ?>
 
+</div>
 
+
+    </div>
+
+    <div class="tab-pane" id="questionsExample">
+        Содержимое 2 вкладки
+    </div>
+
+    <div class="tab-pane" id="articlesExample">
+        Содержимое 3 вкладки
+    </div>
 </div>
