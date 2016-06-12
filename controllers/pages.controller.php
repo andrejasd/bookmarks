@@ -52,6 +52,9 @@ class PagesController extends Controller
             if (file_exists($pic_src))
                 $this->data['links'][$key]['pic_src'] = $pic_src;
         }
+
+        //echo '<pre>'; var_dump(($this->data['links'])); echo '</pre>'; die;
+
     }
 
     /*

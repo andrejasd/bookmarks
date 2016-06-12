@@ -8,7 +8,7 @@ class LinksController extends Controller{
     }
 
     // добавление ссылки в визуальные закладки пользователем
-    public function link_add(){
+    public function link_add(){ // for ajax
         if ( $_POST ){
             // запись даных в базу
             $result = $this->model->add_link($_POST);
@@ -21,17 +21,16 @@ class LinksController extends Controller{
                 //Preview::create_image_phantomjs($url, $fname);
 
                 // записуем название сайта если незадано пользователем
-                if ( !isset($_POST['title'])){
+                if ( !isset($_POST['title']) || empty($_POST['title']) ){
                     $title = Preview::get_title($url);
                     $this->model->set_link_title($id, $title);
                 }
-
             }
             else {
                 Session::setFlash('Error.');
             }
 
-            Router::redirect('/');
+            die;
         }
     }
 
@@ -39,8 +38,9 @@ class LinksController extends Controller{
         if ( $_POST ) {
             $id = $_POST['id'];
             $result = $this->model->delete_link($id);
-            die;
+            return ($result) ? true : false;
         }
+        return false;
     }
 
     public function link_refresh(){ // for ajax
@@ -62,7 +62,8 @@ class LinksController extends Controller{
 
             $data = array(
                 'url' => $link['url'],
-                'title' => $link['title']
+                'title' => $title,
+                'fname' => 'uploads'.DS.'preview'.DS.$fname.'.jpg'
             );
             echo json_encode($data);
             die;

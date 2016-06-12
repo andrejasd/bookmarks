@@ -27,8 +27,6 @@ class Preview{
 
         preg_match_all("|<title(.*)>(.*)</title>|sUSi", $content, $matches);
 
-        //echo '<pre>'; print_r($matches);
-
         $title = $matches[2][0];
         $title = mb_convert_encoding($title, "UTF-8", "auto");
 
