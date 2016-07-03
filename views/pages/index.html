@@ -1,5 +1,8 @@
 <script>
     $(document).ready(function(){
+        <!-- установка фокуса на поле добавления новой закладки -->
+        $('#bookmark').focus();
+
         <!-- скрипт откритя модального окна добавления новой категории ссылок -->
         var value_Opt= "new_category";
         $("select").change(function () {
@@ -9,18 +12,24 @@
         });
 
         <!-- установка фокуса на форме добавления новой ссылки -->
-        $('#registerModal').on('shown.bs.modal', function () {
+        $('#newLink').on('shown.bs.modal', function (event) {
             $('#link').focus();
+            var tab = $(event.relatedTarget)
+            var tab_id = tab.data('content')
+            console.log(tab_id);
+            $("#link_tab [value='"+tab_id+"']").prop("selected", "selected");
+
         });
 
+        <!-- установка фокуса на форме добавления новой вкладки -->
+        $('#newTab').on('shown.bs.modal', function () {
+            $('#tab').focus();
+        });
     });
-
 </script>
 
-
-
 <!-- Описание модального окна добавления новой категории закладок -->
-<div class="modal fade" id="new_Category" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
+<div class="modal fade" id="new_Category" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -40,8 +49,29 @@
     </div>
 </div>
 
+<!-- Описание модального окна добавления новой вкладки ссылок -->
+<div class="modal fade" id="newTab" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Добавить новую вкладку</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form>
+                    <div class="form-group">
+                        <label for="tab">Вкладка</label>
+                        <input type="text" id="tab" name="tab" class="form-control">
+                    </div>
+                    <input type="button" class="btn btn-success" onclick="return add_new_tab();" value="Добавить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Описание модального окна добавления новой ссылки-->
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
+<div class="modal fade" id="newLink" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,7 +88,12 @@
                         <label for="title">Описание</label>
                         <input type="text" id="title" name="title" class="form-control" />
                     </div>
-                    <!-- <input type="submit" class="btn btn-success" value="Добавить"> -->
+                    <div class="form-group">
+                        <label for="link_tab">Вкладка</label>
+                        <select class="form-control" id="link_tab" name="link_tab">
+                            <?=$data['select_tab']?>
+                        </select>
+                    </div>
                     <input type="button" class="btn btn-success" onclick="return add_new_link();" value="Добавить">
                 </form>
             </div>
@@ -67,7 +102,7 @@
 </div>
 
 <!-- Описание модального окна редактирования ссылки-->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
+<div class="modal fade" id="editLink" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -114,119 +149,47 @@
 
 
 <!-- Вкладки ----------------------------------------------------------------------------------------------->
-<ul class="nav nav-tabs" role="tablist" id="myTabExample">
-    <li class="active"><a href="#homeExample" role="tab" data-toggle="tab">Главная</a></li>
-    <li><a href="#questionsExample" role="tab" data-toggle="tab">Вкладка 2</a></li>
-    <li><a href="#articlesExample" role="tab" data-toggle="tab">Вкладка 3</a></li>
+<ul class="nav nav-tabs" role="tablist">
+    <?php foreach($data['tabs'] as $tab) { ?>
+        <li class="<?= ($tab['id'] == 2) ? 'active' : '' ?>"><a href="#tab<?= $tab['id'] ?>" role="tab" data-toggle="tab"><?= $tab['title'] ?></a></li>
+    <?php } ?>
+    <li class=""><a class="glyphicon glyphicon-plus" href="" role="tab" data-toggle="modal" data-target="#newTab" tabindex="-1"></a></li>
 </ul>
 
 <!-- Содержимое вкладок -->
 <div class="tab-content">
-    <!-- Содержимое 1 вкладки -->
-    <div class="tab-pane active" id="homeExample">
 
-<!-- Блок з посиланнями ----------------------------------------------------------------------------------------------->
-        <div class="row">
+    <?php foreach($data['tabs'] as $tab) { ?>
+        <div class="tab-pane <?= ($tab['id'] == 2) ? 'active' : '' ?>" id="tab<?= $tab['id'] ?>">
+            <!-- Блок з посиланнями ----------------------------------------------------------------------------------------------->
+            <div class="row">
+            <?php foreach($data['links'] as $page_data) { if ($page_data['tab_id'] == $tab['id'] || ($page_data['tab_id'] == 0 && $tab['id'] == 2) ) {?>
+                    <div class="l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2" data-index="<?= $page_data['id'] ?>">
+                        <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
+                            <button type="button" class="close my_close" onclick="return link_delete(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button type="button" class="close my_close" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
+                            <button type="button" class="close my_close" onclick="return link_refresh(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
+                            <?php if ( isset($page_data['pic_src']) ) {?>
+                                <img src="<?=$page_data['pic_src']?>">
+                            <?php } else { ?>
+                                <img src="">
+                                <h3><?=$page_data['title']?></h3>
+                            <?php } ?>
+                            <hr>
+                            <p id="link-title" class="text-primary size"><?=$page_data['title']?></p>
+                        </a>
+                    </div>
+                <?php }} ?>
 
-        <?php foreach($data['links'] as $page_data) { ?>
-            <div class="l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2" data-index="<?= $page_data['id'] ?>">
-                <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
-                    <button type="button" class="close my_close" onclick="return link_delete(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-remove"></span></button>
-                    <button type="button" class="close my_close" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
-                    <button type="button" class="close my_close" onclick="return link_refresh(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
-                    <?php if ( isset($page_data['pic_src']) ) {?>
-                        <img src="<?=$page_data['pic_src']?>">
-                    <?php } else { ?>
-                        <img src="">
-                        <h3><?=$page_data['title']?></h3>
-                    <?php } ?>
-                    <hr>
-                    <p id="link-title" class="text-primary size"><?=$page_data['title']?></p>
-                </a>
+                <!-- Кнопка добавить ссылку --------------------------------------------------------------------------------------->
+                <?php if ( Session::get('id') ) { ?>
+                    <!-- Открыть модальное окно добавления новой ссылки -->
+                    <div id="plus<?=$tab['id']?>" class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <a class="thumbnail my_thumbnail" data-content="<?=$tab['id']?>" data-toggle="modal" data-target="#newLink" tabindex="-1"><p class="center-block glyphicon glyphicon-plus large_icon"></p></a>
+                    </div>
+                <?php } ?>
             </div>
-        <?php } ?>
+        </div>
+    <?php } ?>
 
-        <!-- Кнопка добавить ссылку ------------------------------------------------------------------------------------------->
-        <?php if ( Session::get('id') ) { ?>
-            <!-- Открыть модальное окно добавления новой ссылки -->
-            <div id="plus" class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal" tabindex="-1"><p class="center-block glyphicon glyphicon-plus large_icon"></p></a>
-            </div>
-        <?php } ?>
-
-    </div>
-
-    </div>
-
-    <div class="tab-pane" id="questionsExample">
-        Содержимое 2 вкладки
-
-        <script>
-            var dataItems1 = [];
-            var picsrc;
-            var dataItems = [
-                {
-                    id: 1,
-                    title: 'asd',
-                    url: 'google.com',
-                    pic_src: '3.jpg'
-                },
-                {
-                    id: 2,
-                    title: 'dsa',
-                    url: 'google.com',
-                    pic_src: '4.jpg'
-                }
-            ];
-        </script>
-
-        <script id="movieTmpl" type="text/x-jquery-tmpl">
-            <div class="l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2" data-index=${id}>
-               <a href="${url}" class="thumbnail my_thumbnail">
-                    <button type="button" class="close my_close" onclick="return link_delete( ${id} );"><span class="glyphicon glyphicon-remove"></span></button>
-                    <button type="button" class="close my_close" onclick="return link_edit( ${id} );"><span class="glyphicon glyphicon-cog"></span></button>
-                    <button type="button" class="close my_close" onclick="return link_refresh( ${id} );"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
-
-                    {%if pic_src == ''%}
-                         <img src="">
-                         <h3>${title}</h3>
-                    {%else%}
-                        <img src="${pic_src}">
-                    {%/if%}
-
-                    <hr>
-                    <p id="link-title" class="text-primary size">${title}</p>
-                </a>
-            </div>
-        </script>
-
-<!--        <pre> <?php var_dump($data['links']) ?> </pre>      .replace('\\', '/') -->
-
-
-        <?php foreach($data['links'] as $page_data) { ?>
-            <script>
-                console.log( ' <?= $page_data['pic_src'] ?> ');
-                picsrc = '{ <?= $page_data['pic_src'] ?> }';
-                console.log(picsrc);
-                dataItems1.push ({'id': '<?=$page_data['id']?>', 'title': '<?=$page_data['title']?>', 'url': '<?=$page_data['url']?>', 'pic_src': '<?=$page_data['pic_src']?>'});
-            </script>
-        <?php } ?>
-
-
-        <script type="text/javascript">
-            console.log(dataItems1);
-            $(function () {
-                $('#movieTmpl').tmpl(dataItems1).appendTo('#movieListBag');
-            });
-        </script>
-
-        <div id="movieListBag"></div>
-
-
-
-    </div>
-
-    <div class="tab-pane" id="articlesExample">
-        Содержимое 3 вкладки
-    </div>
 </div>

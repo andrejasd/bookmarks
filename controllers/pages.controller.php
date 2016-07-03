@@ -11,18 +11,27 @@ class PagesController extends Controller
 
     public function index()
     {
-        $only_published = true;
-
         $model_bookmark = new Bookmark();
         $model_link = new Link();
 
         // вывод стандартного списка закладок для незарегестрированного пользователя
         if (!Session::get('id')) {
-            $this->data['links'] = $model_link->getDefaultLinks($only_published);
+            $this->data['links'] = $model_link->getDefaultLinks();
             $pic_prefix = "def_";
         } else {
             // список линков пользователя
-            $this->data['links'] = $model_link->getUserLinks($only_published);
+            $this->data['links'] = $model_link->getUserLinks();
+            $this->data['tabs'] = $model_link->getUserTabs();
+/*
+            foreach ($this->data['tabs'] as &$tabs){
+                static $i=0;
+                $i++;
+                $tabs['index'] = $i;
+                print_r($tabs); echo '<br>';
+            }
+*/
+            $this->data['tabs_count'] = count($this->data['tabs']);
+            //echo '<pre>';print_r($this->data['tabs']);print_r($this->data['tabs_count']);die;
             $pic_prefix = "";
 
             // устанавливаем текущауюкатегорию из БД
@@ -44,6 +53,18 @@ class PagesController extends Controller
                 $this->data['select_category'] .= 'value=' . $kaf_id . '>' . $kaf . '</option>';
             }
             $this->data['select_category'] .= '<option value="new_category" data-toggle="modal">Новая категория</option>';
+
+            $this->data['select_tab'] = '';
+            foreach ($this->data['tabs'] as $key => $value){
+                $kaf = $value['title'];
+                $kaf_id = $value['id'];
+                $this->data['select_tab'] .= '<option ';
+                if ($kaf_id === 1)
+                    $this->data['select_tab'] .= 'selected ';
+                $this->data['select_tab'] .= 'value=' . $kaf_id . '>' . $kaf . '</option>';
+            }
+
+
         }
 
         // добавляем в массив data путь к рисунку-превьюхе при ее наличии
@@ -56,17 +77,6 @@ class PagesController extends Controller
         //echo '<pre>'; var_dump(($this->data['links'])); echo '</pre>'; die;
 
     }
-
-    /*
-    public function view(){
-        $params = App::getRouter()->getParams();
-
-        if ( isset($params[0]) ){
-            $alias = strtolower($params[0]);
-            $this->data['page'] = $this->model->getByAlias($alias);
-        }
-    }
-    */
 
     public function admin_index()
     {

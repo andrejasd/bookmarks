@@ -1,0 +1,215 @@
+<script>
+    $(document).ready(function(){
+        <!-- скрипт откритя модального окна добавления новой категории ссылок -->
+        var value_Opt= "new_category";
+        $("select").change(function () {
+            if($(this).val()!=value_Opt) return false;
+            $("#new_Category").modal('show');
+            return false;
+        });
+
+        <!-- установка фокуса на форме добавления новой ссылки -->
+        $('#registerModal').on('shown.bs.modal', function () {
+            $('#link').focus();
+        });
+    });
+
+</script>
+
+
+<!-- Описание модального окна добавления новой категории закладок -->
+<div class="modal fade" id="new_Category" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Добавить новую категорию ссылок</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form method="post" action="/bookmarks/category_add/">
+                    <div class="form-group">
+                        <label for="category">Категория</label>
+                        <input type="text" id="category" name="category" class="form-control">
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Добавить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Описание модального окна добавления новой ссылки-->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Добавить новую ссылку</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form>  <!-- method="post"  onsubmit="return add_new_link();"  action="/links/link_add/" -->
+                    <div class="form-group">
+                        <label for="link">Ссылка</label>
+                        <input type="text" id="link" name="link" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Описание</label>
+                        <input type="text" id="title" name="title" class="form-control" />
+                    </div>
+                    <!-- <input type="submit" class="btn btn-success" value="Добавить"> -->
+                    <input type="button" class="btn btn-success" onclick="return add_new_link();" value="Добавить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Описание модального окна редактирования ссылки-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labeslledby="myModalLabel" aria-hidden="true" style="">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Редактировать ссылку</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form method="post" action="/links/link_edit/">
+                    <div class="form-group">
+                        <label for="new_link">Ссылка</label>
+                        <input type="text" id="new_link" name="link" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_title">Описание</label>
+                        <input type="text" id="new_title" name="title" class="form-control">
+                    </div>
+                    <input type="hidden" id="link_id" name="link_id">
+                    <input type="submit" class="btn btn-success" value="Изменить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ------------------------------------ верхний блок "переглянути пізніше" ------------------------------------------>
+<div class="add_bookmark">
+    <form class="form-inline add_form" method="post" action='/bookmarks/bookmark_add/'>
+        <div class="form-group">
+            <label for="bookmark">Ссылка: </label>
+            <input type="text" class="form-control" id="bookmark" name="bookmark" placeholder="Link">
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="category_id">
+                <?=$data['select_category']?>
+            </select>
+        </div>
+
+        <input type="submit" class="btn btn-primary" name="add" value="Добавить">
+        <!-- <input type="submit" class="btn btn-primary" name="view" value="Просмотр ссылок"> -->
+    </form>
+    <a class="btn btn-primary" href="/bookmarks/">Просмотр ссылок</a>
+</div>
+
+
+<!-- Вкладки ----------------------------------------------------------------------------------------------->
+<ul class="nav nav-tabs" role="tablist" id="myTabExample">
+    <li class="active"><a href="#tab1" role="tab" data-toggle="tab">Вкладка 1</a></li>
+    <li><a href="#js" role="tab" data-toggle="tab">JScript</a></li>
+</ul>
+
+<!-- Содержимое вкладок -->
+<div class="tab-content">
+    <!-- Содержимое 1 вкладки -->
+    <div class="tab-pane active" id="tab1">
+        <!-- Блок з посиланнями ----------------------------------------------------------------------------------------------->
+        <div class="row">
+        <?php foreach($data['links'] as $page_data) { ?>
+                <div class="l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2" data-index="<?= $page_data['id'] ?>">
+                    <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
+                        <button type="button" class="close my_close" onclick="return link_delete(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button type="button" class="close my_close" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
+                        <button type="button" class="close my_close" onclick="return link_refresh(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
+                        <?php if ( isset($page_data['pic_src']) ) {?>
+                            <img src="<?=$page_data['pic_src']?>">
+                        <?php } else { ?>
+                            <img src="">
+                            <h3><?=$page_data['title']?></h3>
+                        <?php } ?>
+                        <hr>
+                        <p id="link-title" class="text-primary size"><?=$page_data['title']?></p>
+                    </a>
+                </div>
+            <?php } ?>
+
+            <!-- Кнопка добавить ссылку ------------------------------------------------------------------------------------------->
+            <?php if ( Session::get('id') ) { ?>
+                <!-- Открыть модальное окно добавления новой ссылки -->
+                <div id="plus" class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                    <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal" tabindex="-1"><p class="center-block glyphicon glyphicon-plus large_icon"></p></a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+
+    <!-- Содержимое 2 вкладки -->
+    <div class="tab-pane row" id="js">
+
+        <script>
+            var dataItems = [];
+            var picsrc;
+            var session_id;
+        </script>
+
+        <!-- шаблон ссылки -->
+        <script id="movieTmpl" type="text/x-jquery-tmpl">
+            <div class="l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2" data-index=${id}>
+               <a href="${url}" class="thumbnail my_thumbnail">
+                    <button type="button" class="close my_close" onclick="return link_delete( ${id} );"><span class="glyphicon glyphicon-remove"></span></button>
+                    <button type="button" class="close my_close" onclick="return link_edit( ${id} );"><span class="glyphicon glyphicon-cog"></span></button>
+                    <button type="button" class="close my_close" onclick="return link_refresh( ${id} );"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
+
+                    {%if pic_src == ''%}
+                         <img src="">
+                         <h3>${title}</h3>
+                    {%else%}
+                        <img src="${pic_src}">
+                    {%/if%}
+
+                    <hr>
+                    <p id="link-title" class="text-primary size">${title}</p>
+                </a>
+            </div>
+        </script>
+
+        <!-- шаблон кнопки плюс -->
+        <script id="plusTmpl" type="text/x-jquery-tmpl">
+            <div id="plus" class="linkk col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a class="thumbnail my_thumbnail" data-toggle="modal" data-target="#registerModal" tabindex="-1"><p class="center-block glyphicon glyphicon-plus large_icon"></p></a>
+            </div>
+        </script>
+
+        <?php foreach( $data['links'] as $page_data ) { ?>
+            <script>
+                picsrc = '{ <?= addslashes($page_data['pic_src']) ?> }';
+                dataItems.push ({'id': '<?=$page_data['id']?>', 'title': '<?=$page_data['title']?>', 'url': '<?=$page_data['url']?>', 'pic_src': '<?=addslashes($page_data['pic_src'])?>'});
+            </script>
+        <?php } ?>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#movieTmpl').tmpl(dataItems).appendTo('#js');
+            });
+        </script>
+
+        <?php if ( Session::get('id') ) { ?>
+            <!-- Добавить кнопку добавления новой ссылки -->
+            <script>
+                $(function () {
+                    $('#plusTmpl').tmpl().appendTo('#js');
+                });
+            </script>
+        <?php } ?>
+
+    </div>
+
+</div>

@@ -21,7 +21,7 @@ function link_edit(id) {
         $("#link_id").attr('value',id);
     });
 
-    $("#editModal").modal('show');
+    $("#editLink").modal('show');
 
     return false;
 }
@@ -29,28 +29,51 @@ function link_edit(id) {
 function add_new_link() {
     link = $("#link").val();
     title = $('#title').val();
-    //console.log(link+' '+title);
-
-    var data = {'link' : link, 'title' : title};
+    tab_id = $("#link_tab option:selected").val();
+    var data = {'link' : link, 'title' : title, 'tab_id' : tab_id};
     console.log(data);
-/*
-    $.post('/links/link_add/', data, function (data) {
-        console.log(data);
+
+    $('#newLink').modal('hide');
+
+    var jqxhr = $.post('/links/link_add/', data, function (data) {});
+
+    jqxhr.function (){
+        console.log('Пошел ЗЗЗААПППРОССССССС!!!');
+        /*
+        console.log("ДОБАВЛЕНО "+data);
+        data = JSON.parse(data);
+        id = data['id'];
+        title = data['title'];
+        console.log(id);
+
+        var last_link = $('#plus'+tab_id);
+
+        load = '<div class=\"l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2\" data-index=\"' + id + '\">\
+            <a href=\"' + link + '\" class=\"thumbnail my_thumbnail\">\
+            <button type=\"button\" class=\"close my_close\" onclick=\"return link_delete(' + id + ');\"><span class=\"glyphicon glyphicon-remove\"></span></button>\
+            <button type=\"button\" class=\"close my_close\" onclick=\"return link_edit(' + id + ');\"><span class=\"glyphicon glyphicon-cog\"></span></button>\
+            <button type=\"button\" class=\"close my_close\" onclick=\"return link_refresh(' + id + ');\"><span class=\"glyphicon glyphicon glyphicon-refresh\"></span></button>\
+            <img src=\"uploads\/ajax-loader.gif\">\
+            <hr>\
+            <p id="link-title" class="text-primary size">' + title + '</p>\
+        </a>\
+        </div>\
+        ';
+
+        $(last_link).before(load);
+        */
     });
-*/
-    $('#registerModal').modal('hide');
 
-    var last_link = $('#plus');
-    console.log(last_link);
+    jqxhr.complete(function() {
+        console.log('Есть КАРТИНКА!!!!!!!!!!!');
+        /*
+        load =  '<img src=\"uploads\/preview\/'+id+'.jpg\">';
+        console.log(load);
+        var new_link = $('[data-index=' + id + ']');
+  //      $(new_link).find("img").attr('src','uploads/preview/'+id+'.jpg');
+//        console.log(new_link);*/
+    });
 
-    load = '<div class="l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2" style= "border-style: solid; border-width: 2px;">asd</div>';
-
-
-
-
-
-
-    $(last_link).before(load);
 
 }
 
@@ -93,4 +116,33 @@ function link_delete(id) {
     };
 
     return false;
+}
+
+function add_new_tab() {
+    title = $('#tab').val();
+    var data = {'title' : title};
+    $('#newTab').modal('hide');
+
+    $.post('/links/tab_add/', data, function (data) {
+        console.log("ДОБАВЛЕНО "+data);
+        data = JSON.parse(data);
+        id = data['id'];
+        title = data['title'];
+/*
+        var last_tab = $('#plus');
+        load = '<div class=\"l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2\" data-index=\"' + id + '\">\
+            <a href=\"' + link + '\" class=\"thumbnail my_thumbnail\">\
+            <button type=\"button\" class=\"close my_close\" onclick=\"return link_delete(' + id + ');\"><span class=\"glyphicon glyphicon-remove\"></span></button>\
+            <button type=\"button\" class=\"close my_close\" onclick=\"return link_edit(' + id + ');\"><span class=\"glyphicon glyphicon-cog\"></span></button>\
+            <button type=\"button\" class=\"close my_close\" onclick=\"return link_refresh(' + id + ');\"><span class=\"glyphicon glyphicon glyphicon-refresh\"></span></button>\
+            <img src=\"\">\
+            <h3>' + title + '</h3>\
+            <hr>\
+            <p id="link-title" class="text-primary size">' + title + '</p>\
+        </a>\
+        </div>\
+        ';
+        $(last_link).before(load);
+  */
+    });
 }

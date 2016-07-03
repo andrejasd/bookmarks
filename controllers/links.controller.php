@@ -30,6 +30,13 @@ class LinksController extends Controller{
                 Session::setFlash('Error.');
             }
 
+            $data = array(
+                'id' => $id,
+                'url' => $url,
+                'title' => $title
+            );
+            echo json_encode($data);
+
             die;
         }
     }
@@ -38,7 +45,11 @@ class LinksController extends Controller{
         if ( $_POST ) {
             $id = $_POST['id'];
             $result = $this->model->delete_link($id);
-            return ($result) ? true : false;
+            if ($result){
+                $fname = $id;
+                Preview::delete_image($fname);
+                return true;
+            }
         }
         return false;
     }
@@ -58,6 +69,9 @@ class LinksController extends Controller{
             if (!$link['title']){
                 $title = Preview::get_title($url);
                 $this->model->set_link_title($id, $title);
+            }
+            else{
+                $title = $link['title'];
             }
 
             $data = array(
@@ -95,6 +109,28 @@ class LinksController extends Controller{
                 'title' => $link['title']
             );
             echo json_encode($data);
+            die;
+        }
+    }
+
+    public function tab_add(){ // for ajax
+        if ( $_POST ){
+            // запись даных в базу
+            $result = $this->model->add_tab($_POST);
+            if ($result) {
+                $id = $result[0][0];
+                $title = $_POST['title'];
+            }
+            else {
+                Session::setFlash('Error.');
+            }
+
+            $data = array(
+                'id' => $id,
+                'title' => $title
+            );
+            echo json_encode($data);
+
             die;
         }
     }

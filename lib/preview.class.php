@@ -14,6 +14,16 @@ class Preview{
         return true;
     }
 
+    public static function delete_image($fname){
+        $fname = 'uploads'.DS.'preview'.DS.$fname.'.jpg';
+        if (unlink ($fname)){
+            return true;
+        }
+        else{
+            //пишем лог
+        }
+    }
+
     // превьюха через phantomjs в linux
     public static function create_image_phantomjs($url, $fname){
         $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/rasterize.js '.$url.' '.ROOT.'/webroot/uploads/preview/'.$fname.'.jpg';
