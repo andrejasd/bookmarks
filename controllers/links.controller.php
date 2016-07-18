@@ -15,6 +15,7 @@ class LinksController extends Controller{
             if ($result) {
                 // создание картинки
                 $url = $_POST['link'];
+                $title = $_POST['title'];
                 $id = $result[0][0];
                 $fname = $id;
                 Preview::create_image($url, $fname);
@@ -27,7 +28,8 @@ class LinksController extends Controller{
                 }
             }
             else {
-                Session::setFlash('Error.');
+                echo 'ERROR';
+                die;
             }
 
             $data = array(
@@ -35,6 +37,7 @@ class LinksController extends Controller{
                 'url' => $url,
                 'title' => $title
             );
+
             echo json_encode($data);
 
             die;

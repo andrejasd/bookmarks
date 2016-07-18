@@ -33,6 +33,7 @@ class Controller {
         echo '<pre>';
         $this->var_dump($var);
         echo '</pre>';
+        die;
     }
 
 }

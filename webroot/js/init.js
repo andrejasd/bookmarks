@@ -32,48 +32,45 @@ function add_new_link() {
     tab_id = $("#link_tab option:selected").val();
     var data = {'link' : link, 'title' : title, 'tab_id' : tab_id};
     console.log(data);
-
     $('#newLink').modal('hide');
 
-    var jqxhr = $.post('/links/link_add/', data, function (data) {});
-
-    jqxhr.function (){
+    var jqxhr = $.post('/links/link_add/', data, function (data) {
         console.log('Пошел ЗЗЗААПППРОССССССС!!!');
-        /*
-        console.log("ДОБАВЛЕНО "+data);
+        console.log("ДОБАВЛЕНО " + data);
         data = JSON.parse(data);
-        id = data['id'];
-        title = data['title'];
-        console.log(id);
+        id1 = data['id'];
+        //title = data['title'];
+    });
 
-        var last_link = $('#plus'+tab_id);
+//    temp_id = Math.random().toString(36);
+//    console.log(temp_id);
+    id = 0;
+    if ( title = ''){ title = link };
+    var last_link = $('#plus'+tab_id);
 
-        load = '<div class=\"l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2\" data-index=\"' + id + '\">\
-            <a href=\"' + link + '\" class=\"thumbnail my_thumbnail\">\
-            <button type=\"button\" class=\"close my_close\" onclick=\"return link_delete(' + id + ');\"><span class=\"glyphicon glyphicon-remove\"></span></button>\
-            <button type=\"button\" class=\"close my_close\" onclick=\"return link_edit(' + id + ');\"><span class=\"glyphicon glyphicon-cog\"></span></button>\
-            <button type=\"button\" class=\"close my_close\" onclick=\"return link_refresh(' + id + ');\"><span class=\"glyphicon glyphicon glyphicon-refresh\"></span></button>\
-            <img src=\"uploads\/ajax-loader.gif\">\
-            <hr>\
-            <p id="link-title" class="text-primary size">' + title + '</p>\
-        </a>\
-        </div>\
+    load = '<div class=\"l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2\" data-index=\"' + id + '\">\
+                <a href=\"' + link + '\" class=\"thumbnail my_thumbnail\">\
+                <button type=\"button\" class=\"close my_close\" onclick=\"return link_delete(' + id + ');\"><span class=\"glyphicon glyphicon-remove\"></span></button>\
+                <button type=\"button\" class=\"close my_close\" onclick=\"return link_edit(' + id + ');\"><span class=\"glyphicon glyphicon-cog\"></span></button>\
+                <button type=\"button\" class=\"close my_close\" onclick=\"return link_refresh(' + id + ');\"><span class=\"glyphicon glyphicon glyphicon-refresh\"></span></button>\
+                <img src=\"uploads\/ajax-loader_1.gif\">\
+                <hr>\
+                <p id="link-title" class="text-primary size">' + title + '</p>\
+                </a>\
+                </div>\
         ';
 
-        $(last_link).before(load);
-        */
-    });
+    $(last_link).before(load);
 
     jqxhr.complete(function() {
         console.log('Есть КАРТИНКА!!!!!!!!!!!');
-        /*
-        load =  '<img src=\"uploads\/preview\/'+id+'.jpg\">';
+
+        load =  '<img src=\"uploads\/preview\/' + id1 + '.jpg\">';
         console.log(load);
         var new_link = $('[data-index=' + id + ']');
-  //      $(new_link).find("img").attr('src','uploads/preview/'+id+'.jpg');
-//        console.log(new_link);*/
-    });
-
+        $(new_link).find("img").attr('src','uploads\/preview\/' + id1 + '.jpg');
+        console.log(new_link);
+    })
 
 }
 
