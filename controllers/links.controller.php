@@ -17,8 +17,8 @@ class LinksController extends Controller{
                 $url = $_POST['link'];
                 $title = $_POST['title'];
                 $id = $result[0][0];
-                $fname = $id;
-                Preview::create_image($url, $fname);
+                //$fname = $id;
+                //Preview::create_image($url, $fname);
                 //Preview::create_image_phantomjs($url, $fname);
 
                 // записуем название сайта если незадано пользователем
@@ -26,21 +26,29 @@ class LinksController extends Controller{
                     $title = Preview::get_title($url);
                     $this->model->set_link_title($id, $title);
                 }
+
+                $data = array(
+                    'id' => $id,
+                    'url' => $url,
+                    'title' => $title
+                );
+
+                echo json_encode($data);
             }
             else {
-                echo 'ERROR';
-                die;
+                echo false;
             }
 
-            $data = array(
-                'id' => $id,
-                'url' => $url,
-                'title' => $title
-            );
-
-            echo json_encode($data);
-
             die;
+        }
+    }
+
+    // создание превьшки после аякс запроса
+    public function create_image(){ // for ajax
+        if ( $_POST ){
+            $url = $_POST['url'];
+            $fname = $_POST['id'];
+            Preview::create_image($url, $fname);
         }
     }
 
@@ -99,7 +107,8 @@ class LinksController extends Controller{
             else {
                 Session::setFlash('Error.');
             }
-            Router::redirect('/');
+          //  Router::redirect('/');
+            die;
         }
     }
 
@@ -132,8 +141,18 @@ class LinksController extends Controller{
                 'id' => $id,
                 'title' => $title
             );
+
             echo json_encode($data);
 
+            die;
+        }
+    }
+
+    public function tab_rename(){ // for ajax
+        if ( $_POST ){
+            $id = $_POST['id'];
+            $title = $_POST['title'];
+            $result = $this->model->rename_tab($id, $title);
             die;
         }
     }

@@ -6,7 +6,6 @@ class PagesController extends Controller
     public function __construct($data = array())
     {
         parent::__construct($data);
-        //$this->model = new Page();
     }
 
     public function index()
@@ -34,7 +33,7 @@ class PagesController extends Controller
             //echo '<pre>';print_r($this->data['tabs']);print_r($this->data['tabs_count']);die;
             $pic_prefix = "";
 
-            // устанавливаем текущауюкатегорию из БД
+            // устанавливаем текущую категорию из БД
             $current_category_id = $model_bookmark->getUserLastCategoryId();
             Session::set('current_category_id', $current_category_id);
 
@@ -43,7 +42,6 @@ class PagesController extends Controller
             $this->data['select_category'] = '';
 
             $this->data['select_category'] .= '<option value=0>' . VIEW_LATER . '</option>';
-
             foreach ($bookmarks_categoris as $key => $value) {
                 $kaf = $value['title'];
                 $kaf_id = $value['id'];
@@ -63,7 +61,6 @@ class PagesController extends Controller
                     $this->data['select_tab'] .= 'selected ';
                 $this->data['select_tab'] .= 'value=' . $kaf_id . '>' . $kaf . '</option>';
             }
-
 
         }
 

@@ -3,26 +3,26 @@
 class Link extends Model{
 
     public function getDefaultLinks(){
-        // вывод стандартного списка ссылок для незарегестрированного пользователя
-        $sql = "select * from default_links where 1";
+        // возвращает список стандартных ссылок для незарегестрированного пользователя
+        $sql = "select * from `default_links` where 1";
         return $this->db->query($sql);
     }
 
-    // вывод списка ссылок пользователя
+    // возвращает список ссылок пользователя
     public function getUserLinks(){
-        $sql = "select * from favorites_links where user_id = $_SESSION[id]";
+        $sql = "select * from `favorites_links` where `user_id` = '$_SESSION[id]'";
         return $this->db->query($sql);
     }
 
     // выыод ссылки по ID
     public function getLinkById($id){
-        $sql = "select * from favorites_links where id = {$id}";
+        $sql = "select * from `favorites_links` where `id` = '{$id}' limit 1";
         return $this->db->query($sql)[0];
     }
 
     // вывод списка вкладок пользователя
     public function getUserTabs(){
-        $sql = "select `id`,`title` from tabs where user_id = $_SESSION[id]";
+        $sql = "select `id`,`title` from `tabs` where `user_id` = '$_SESSION[id]'";
         return $this->db->query($sql);
     }
 
@@ -92,4 +92,15 @@ class Link extends Model{
         return $this->db->multi_query($sql);
     }
 
+    // запись в БД нового имени вкладки
+    public function rename_tab($id, $title){
+        $id = $this->db->escape($id);
+        $title = $this->db->escape($title);
+        $sql =  "
+                UPDATE tabs
+                SET title = '{$title}'
+                WHERE id = '{$id}'
+                ";
+        return $this->db->query($sql);
+    }
 }

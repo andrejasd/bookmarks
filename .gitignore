@@ -4,7 +4,8 @@
 
 # IntelliJ project files
 .idea
-webroot/uploads/preview/
+webroot\uploads\preview\
 *.iml
 out
 gen
+*.log

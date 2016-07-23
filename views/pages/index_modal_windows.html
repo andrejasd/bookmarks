@@ -1,0 +1,145 @@
+<!-- Описание модального окна добавления новой категории закладок -->
+<div class="modal fade" id="new_Category" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Добавить новую категорию ссылок</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form method="post" action="/bookmarks/category_add/">
+                    <div class="form-group">
+                        <label for="category">Категория</label>
+                        <input type="text" id="category" name="category" class="form-control">
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Добавить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Описание модального окна добавления новой вкладки ссылок -->
+<div class="modal fade" id="newTab" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Добавить новую вкладку</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form>
+                    <div class="form-group">
+                        <label for="tab">Имя вкладки</label>
+                        <input type="text" id="tab" name="tab" class="form-control">
+                    </div>
+                    <input type="button" class="btn btn-success" onclick="return add_new_tab();" value="Добавить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Описание модального окна добавления новой ссылки-->
+<div class="modal fade" id="newLink" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Добавить новую ссылку</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form>  <!-- method="post"  onsubmit="return add_new_link();"  action="/links/link_add/" -->
+                    <div class="form-group">
+                        <label for="link">Ссылка</label>
+                        <input type="text" id="link" name="link" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Описание</label>
+                        <input type="text" id="title" name="title" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="link_tab">Вкладка</label>
+                        <select class="form-control" id="link_tab" name="link_tab">
+                            <?=$data['select_tab']?>
+                        </select>
+                    </div>
+                    <input type="button" class="btn btn-success" onclick="return add_new_link();" value="Добавить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Описание модального окна редактирования ссылки-->
+<div class="modal fade" id="editLink" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Редактировать ссылку</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form method="post" action="/links/link_edit/">
+                    <div class="form-group">
+                        <label for="new_link">Ссылка</label>
+                        <input type="text" id="new_link" name="link" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_title">Описание</label>
+                        <input type="text" id="new_title" name="title" class="form-control">
+                    </div>
+                    <input type="hidden" id="link_id" name="link_id">
+                    <input type="submit" class="btn btn-success" value="Изменить">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Описание модального окна редактирования/удаления вкладки-->
+<div class="modal fade" id="editTab" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Редактировать/удалить вкладку...</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form>
+                    <div class="form-group">
+                        <label for="new_tab_title">Имя вкладки</label>
+                        <input type="text" id="new_tab_title" name="new_tab_title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" id="tab_rename" class="btn btn-success" onclick="return rename_tab();" data-dismiss="modal" value="Переименвать">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Удалить вкладку вместе с закладками
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                Переместить закладки на вкладку
+                                <select class="form-control" id="move_link_tab" name="move_link_tab">
+                                    <?=$data['select_tab']?>
+                                </select>
+                            </label>
+                        </div>
+                        <input type="button" id="tab_delete" class="btn btn-danger" onclick="return delete_tab();" data-dismiss="modal" value="Удалить">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="hidden" id="tab_id" name="tab_id">
+                        <input type="button" class="btn btn-success pull-right" data-dismiss="modal" value="Отмена">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

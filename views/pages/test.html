@@ -4,9 +4,7 @@ test page
 
 <script>
 
-    console.log(getXMLHttpRequest());
-
-    request = getXMLHttpRequest();
+    var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         console.log(request.readyState);
         if (request.readyState == 4) {
@@ -18,12 +16,9 @@ test page
         }
     }
 
-    request.open('GET', '/pages/test1', true);
-    request.send(null);
+    //request.open('GET', '/pages/test1', true);
+    //request.send(null);
 
 </script>
 
 <?php
-
-
-

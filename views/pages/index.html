@@ -14,11 +14,11 @@
         <!-- установка фокуса на форме добавления новой ссылки -->
         $('#newLink').on('shown.bs.modal', function (event) {
             $('#link').focus();
-            var tab = $(event.relatedTarget)
-            var tab_id = tab.data('content')
+            <!-- считываем с какого tab data-content пришел запрос -->
+            var tab = $(event.relatedTarget);
+            var tab_id = tab.data('content');
             console.log(tab_id);
             $("#link_tab [value='"+tab_id+"']").prop("selected", "selected");
-
         });
 
         <!-- установка фокуса на форме добавления новой вкладки -->
@@ -28,105 +28,10 @@
     });
 </script>
 
-<!-- Описание модального окна добавления новой категории закладок -->
-<div class="modal fade" id="new_Category" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Добавить новую категорию ссылок</h4>
-            </div>
-            <div class="modal-body clearfix">
-                <form method="post" action="/bookmarks/category_add/">
-                    <div class="form-group">
-                        <label for="category">Категория</label>
-                        <input type="text" id="category" name="category" class="form-control">
-                    </div>
-                    <input type="submit" class="btn btn-success" value="Добавить">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Описание модального окна добавления новой вкладки ссылок -->
-<div class="modal fade" id="newTab" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Добавить новую вкладку</h4>
-            </div>
-            <div class="modal-body clearfix">
-                <form>
-                    <div class="form-group">
-                        <label for="tab">Вкладка</label>
-                        <input type="text" id="tab" name="tab" class="form-control">
-                    </div>
-                    <input type="button" class="btn btn-success" onclick="return add_new_tab();" value="Добавить">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Описание модального окна добавления новой ссылки-->
-<div class="modal fade" id="newLink" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Добавить новую ссылку</h4>
-            </div>
-            <div class="modal-body clearfix">
-                <form>  <!-- method="post"  onsubmit="return add_new_link();"  action="/links/link_add/" -->
-                    <div class="form-group">
-                        <label for="link">Ссылка</label>
-                        <input type="text" id="link" name="link" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Описание</label>
-                        <input type="text" id="title" name="title" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label for="link_tab">Вкладка</label>
-                        <select class="form-control" id="link_tab" name="link_tab">
-                            <?=$data['select_tab']?>
-                        </select>
-                    </div>
-                    <input type="button" class="btn btn-success" onclick="return add_new_link();" value="Добавить">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Описание модального окна редактирования ссылки-->
-<div class="modal fade" id="editLink" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Редактировать ссылку</h4>
-            </div>
-            <div class="modal-body clearfix">
-                <form method="post" action="/links/link_edit/">
-                    <div class="form-group">
-                        <label for="new_link">Ссылка</label>
-                        <input type="text" id="new_link" name="link" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="new_title">Описание</label>
-                        <input type="text" id="new_title" name="title" class="form-control">
-                    </div>
-                    <input type="hidden" id="link_id" name="link_id">
-                    <input type="submit" class="btn btn-success" value="Изменить">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
+<!-- подключение файла с модальными окнами -->
+<?php
+    include("index_modal_windows.html");
+?>
 
 <!-- ------------------------------------ верхний блок "переглянути пізніше" ------------------------------------------>
 <div class="add_bookmark">
@@ -149,11 +54,12 @@
 
 
 <!-- Вкладки ----------------------------------------------------------------------------------------------->
-<ul class="nav nav-tabs" role="tablist">
+<ul id="tab_panel" class="nav nav-tabs" role="tablist">
     <?php foreach($data['tabs'] as $tab) { ?>
-        <li class="<?= ($tab['id'] == 2) ? 'active' : '' ?>"><a href="#tab<?= $tab['id'] ?>" role="tab" data-toggle="tab"><?= $tab['title'] ?></a></li>
+        <li<?= ($tab['id'] == 2) ? ' class="active"' : '' ?>> <a href="#tab<?= $tab['id'] ?>" role="tab" data-toggle="tab"><?= $tab['title'] ?></a> </li>
     <?php } ?>
-    <li class=""><a class="glyphicon glyphicon-plus" href="" role="tab" data-toggle="modal" data-target="#newTab" tabindex="-1"></a></li>
+    <li id="plus_tab"><a class="glyphicon glyphicon-plus" title="Добавить новую вкладку" role="tab" data-toggle="modal" data-target="#newTab" tabindex="-1"></a></li>
+    <li><a class="glyphicon glyphicon-cog" title="Редактировать/удалить текущую вкладку" role="tab" onclick="return edit_tab();" tabindex="-1"></a></li>
 </ul>
 
 <!-- Содержимое вкладок -->
