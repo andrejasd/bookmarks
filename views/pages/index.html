@@ -3,6 +3,15 @@
         <!-- установка фокуса на поле добавления новой закладки -->
         $('#bookmark').focus();
 
+        <!-- активация последней активной вкладки -->
+        if ($.cookie('last_tab')){
+            console.log($.cookie('last_tab'));
+            var tab = $( 'a[href="' + $.cookie('last_tab') + '"]' );
+            console.log(tab);
+            tab.tab('show');
+            $($.cookie('last_tab')).tab('show');
+        }
+
         <!-- скрипт откритя модального окна добавления новой категории ссылок -->
         var value_Opt= "new_category";
         $("select").change(function () {
@@ -25,6 +34,19 @@
         $('#newTab').on('shown.bs.modal', function () {
             $('#tab').focus();
         });
+
+        <!-- установка куки при смене вкладки -->
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var activeTab = $(e.target).attr('href');
+            $.cookie('last_tab', activeTab, { expires: 365});
+            console.log('смена вкладки на ' + activeTab);
+        })
+
+        //$.cookie('cookie_name', 'cookie_value', { expires: 365});
+        //$.cookie('username', null, { expires: -1});
+        //console.log( document.cookie );
+        //console.log($.cookie('cookie_name'));
+
     });
 </script>
 
@@ -58,8 +80,8 @@
     <?php foreach($data['tabs'] as $tab) { ?>
         <li<?= ($tab['id'] == 2) ? ' class="active"' : '' ?>> <a href="#tab<?= $tab['id'] ?>" role="tab" data-toggle="tab"><?= $tab['title'] ?></a> </li>
     <?php } ?>
-    <li id="plus_tab"><a class="glyphicon glyphicon-plus" title="Добавить новую вкладку" role="tab" data-toggle="modal" data-target="#newTab" tabindex="-1"></a></li>
-    <li><a class="glyphicon glyphicon-cog" title="Редактировать/удалить текущую вкладку" role="tab" onclick="return edit_tab();" tabindex="-1"></a></li>
+    <li id="plus_tab"> <a class="glyphicon glyphicon-plus" title="Добавить новую вкладку" role="tab" data-toggle="modal" data-target="#newTab" tabindex="-1"></a> </li>
+    <li> <a class="glyphicon glyphicon-cog" title="Редактировать/удалить текущую вкладку" role="tab" onclick="return edit_tab();" tabindex="-1"></a> </li>
 </ul>
 
 <!-- Содержимое вкладок -->

@@ -148,6 +148,7 @@ class LinksController extends Controller{
         }
     }
 
+    // переименовывает вкладку
     public function tab_rename(){ // for ajax
         if ( $_POST ){
             $id = $_POST['id'];
@@ -157,4 +158,27 @@ class LinksController extends Controller{
         }
     }
 
-}
+    // удалляет вкладку
+    public function tab_delete(){ // for ajax
+        if ( $_POST ){
+            $tab_id = $_POST['tab_id'];
+            $full_delete = $_POST['full_delete'];
+            $links_of_tab = $this->model->getUserLinksByTabId($tab_id);
+            echo json_encode($links_of_tab);
+            if ($full_delete === true){ // удаляем все ссылки
+                foreach ($links_of_tab as $link){
+                    $link_id = $link['id'];
+                    $this->model->delete_link($link_id);
+                }
+            }else{ // переносим ссылки на другую вкладку
+                $move_link_tab = $_POST['move_link_tab'];
+                foreach ($links_of_tab as $link) {
+                    $link_id = $link['id'];
+                    $this->model->link_change_tab($link_id, $move_link_tab);
+                }
+            }
+            $this->model->delete_tab($tab_id);
+        }
+    }
+
+} //end of class

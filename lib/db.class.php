@@ -12,7 +12,7 @@ class DB{
         }
     }
 
-    public function query($sql){
+    public function query($sql){  // сделать всему escape???
         if ( !$this->connection ){
             return false;
         }

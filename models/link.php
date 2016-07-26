@@ -2,15 +2,28 @@
 
 class Link extends Model{
 
+    protected $user_id;
+
+    public function __construct(){
+        parent::__construct();
+        $this->user_id = $_SESSION['id'];
+    }
+
     public function getDefaultLinks(){
         // возвращает список стандартных ссылок для незарегестрированного пользователя
         $sql = "select * from `default_links` where 1";
         return $this->db->query($sql);
     }
 
-    // возвращает список ссылок пользователя
+    // возвращает список всех ссылок пользователя
     public function getUserLinks(){
-        $sql = "select * from `favorites_links` where `user_id` = '$_SESSION[id]'";
+        $sql = "select * from `favorites_links` where `user_id` = '{$this->user_id}'";
+        return $this->db->query($sql);
+    }
+
+    // возвращает список ссылок пользователя принадлежащих вкладке
+    public function getUserLinksByTabId($tab_id){
+        $sql = "select * from `favorites_links` where `user_id` = '{$this->user_id}' and `tab_id` = '{$tab_id}'";
         return $this->db->query($sql);
     }
 
@@ -22,7 +35,7 @@ class Link extends Model{
 
     // вывод списка вкладок пользователя
     public function getUserTabs(){
-        $sql = "select `id`,`title` from `tabs` where `user_id` = '$_SESSION[id]'";
+        $sql = "select `id`,`title` from `tabs` where `user_id` = '{$this->user_id}'";
         return $this->db->query($sql);
     }
 
@@ -31,7 +44,6 @@ class Link extends Model{
         if ( !isset($data['link']) ){
             return false;
         }
-        $user_id = Session::get('id');
         $link = $this->db->escape($data['link']);
         $title = $this->db->escape($data['title']);
         $tab_id = $this->db->escape($data['tab_id']);
@@ -39,7 +51,7 @@ class Link extends Model{
             insert into favorites_links
                     set url = '{$link}',
                         title = '{$title}',
-                        user_id = '{$user_id}',
+                        user_id = '{$this->user_id}',
                         tab_id = '{$tab_id}';
                     select @@IDENTITY;
                 ";
@@ -47,15 +59,14 @@ class Link extends Model{
     }
 
     // удаление ссылки из БД пользователем
-    public function delete_link($id){
-        $id = (int)$id;
-        $sql = "delete from favorites_links where id = {$id}";
+    public function delete_link($link_id){
+        $link_id = (int)$link_id;
+        $sql = "delete from favorites_links where id = {$link_id} AND `user_id` = {$this->user_id}";
         return $this->db->query($sql);
     }
 
     // записывает в БД тайтл ссылки
     public function set_link_title($link_id, $title){
-        //$user_id = Session::get('id');
         $id = (int)$link_id;
         $sql = "
                 UPDATE favorites_links
@@ -81,12 +92,11 @@ class Link extends Model{
         if ( !isset($data['title']) ){
             return false;
         }
-        $user_id = Session::get('id');
         $title = $this->db->escape($data['title']);
         $sql = "
             insert into tabs
                     set title = '{$title}',
-                        user_id = '{$user_id}';
+                        user_id = '{$this->user_id}';
                     select @@IDENTITY;
                 ";
         return $this->db->multi_query($sql);
@@ -103,4 +113,23 @@ class Link extends Model{
                 ";
         return $this->db->query($sql);
     }
+
+    // удаление вкладки из БД
+    public function delete_tab($tab_id){
+        $tab_id = (int)$tab_id;
+        $sql = "delete from `tabs` where id = {$tab_id} AND `user_id` = {$this->user_id}";
+        return $this->db->query($sql);
+    }
+
+    public function link_change_tab($link_id, $tab_id){
+        $sql =  "
+                UPDATE `favorites_links`
+                SET `tab_id` = '{$tab_id}'
+                WHERE `id` = '{$link_id}'
+                AND `user_id` = '$this->user_id'
+                ";
+        return $this->db->query($sql);
+    }
+
+
 }

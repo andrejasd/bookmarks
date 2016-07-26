@@ -6,6 +6,14 @@ function confirmDelete(){
     }
 }
 
+// удаление куки по имени
+function delete_cookie (cookie_name)
+{
+    var cookie_date = new Date ( );  // Текущая дата и время
+    cookie_date.setTime ( cookie_date.getTime() - 1 );
+    document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+}
+
 // ----------------- AJAX ----------------------
 
 // данные о ссылке для окна редактирования ссылки
@@ -150,7 +158,7 @@ function add_new_tab() {
 
         // активируем вкладку
         var tab = $('#tab' + id);
-        console.log('ТТААББ '+tab);
+        //console.log('ТТААББ '+tab);
         tab.tab('show');
 
         tab_id_str = '#tab' + id;
@@ -191,9 +199,30 @@ function rename_tab() {
 // удаление вкладки
 function delete_tab() {
     editTab = $("#editTab");
-    id = editTab.find('#tab_id').val();
+    tab_id = editTab.find('#tab_id').val();
+    console.log(tab_id);
     option = editTab.find('input[type="radio"]:checked').val();
     console.log(option);
-    tab_id = editTab.find("#move_link_tab option:selected").val();
-    console.log(tab_id);
+    if (option == 'option1'){
+        full_delete = true
+    }else{
+        full_delete = false}
+    console.log(full_delete);
+    move_link_tab = editTab.find("#move_link_tab option:selected").val();
+    console.log(move_link_tab);
+    var data = {'tab_id' : tab_id,
+                'full_delete' : full_delete,
+                'move_link_tab' : move_link_tab};
+    $.post('/links/tab_delete/', data, function (data) {
+        console.log(data);
+
+        if (option == 'option2'){
+            // активируем вкладку
+            var tab = $( 'a[href="#tab' + move_link_tab + '"]' );
+            tab.tab('show');
+        }
+        // обновляем страницу
+        window.location.href = "/";
+
+    });
 }

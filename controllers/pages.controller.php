@@ -52,6 +52,7 @@ class PagesController extends Controller
             }
             $this->data['select_category'] .= '<option value="new_category" data-toggle="modal">Новая категория</option>';
 
+            // список вкладок
             $this->data['select_tab'] = '';
             foreach ($this->data['tabs'] as $key => $value){
                 $kaf = $value['title'];
@@ -70,9 +71,6 @@ class PagesController extends Controller
             if (file_exists($pic_src))
                 $this->data['links'][$key]['pic_src'] = $pic_src;
         }
-
-        //echo '<pre>'; var_dump(($this->data['links'])); echo '</pre>'; die;
-
     }
 
     public function admin_index()
