@@ -64,7 +64,7 @@
                             <?=$data['select_tab']?>
                         </select>
                     </div>
-                    <input type="button" class="btn btn-success" onclick="return add_new_link();" value="Добавить">
+                    <input type="button" id="add_new_link_button" class="btn btn-success" value="Добавить"> <!-- onclick="return add_new_link();" -->
                 </form>
             </div>
         </div>
@@ -80,7 +80,7 @@
                 <h4 class="modal-title">Редактировать ссылку</h4>
             </div>
             <div class="modal-body clearfix">
-                <form method="post" action="/links/link_edit/">
+                <form>
                     <div class="form-group">
                         <label for="new_link">Ссылка</label>
                         <input type="text" id="new_link" name="link" class="form-control">
@@ -90,7 +90,7 @@
                         <input type="text" id="new_title" name="title" class="form-control">
                     </div>
                     <input type="hidden" id="link_id" name="link_id">
-                    <input type="submit" class="btn btn-success" value="Изменить">
+                    <input type="button" class="btn btn-success" data-dismiss="modal" onclick="return link_finish_edit();" value="Изменить">
                 </form>
             </div>
         </div>

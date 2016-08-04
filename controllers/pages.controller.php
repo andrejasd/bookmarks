@@ -16,19 +16,13 @@ class PagesController extends Controller
         // вывод стандартного списка закладок для незарегестрированного пользователя
         if (!Session::get('id')) {
             $this->data['links'] = $model_link->getDefaultLinks();
+            $this->data['tabs'] = $model_link->getDefaultTabs();
             $pic_prefix = "def_";
         } else {
             // список линков пользователя
             $this->data['links'] = $model_link->getUserLinks();
             $this->data['tabs'] = $model_link->getUserTabs();
-/*
-            foreach ($this->data['tabs'] as &$tabs){
-                static $i=0;
-                $i++;
-                $tabs['index'] = $i;
-                print_r($tabs); echo '<br>';
-            }
-*/
+
             $this->data['tabs_count'] = count($this->data['tabs']);
             //echo '<pre>';print_r($this->data['tabs']);print_r($this->data['tabs_count']);die;
             $pic_prefix = "";
@@ -81,7 +75,6 @@ class PagesController extends Controller
 
     public function test()
     {
-        //Session::setFlash('Test flash message');
         //Router::redirect('/');
     }
     

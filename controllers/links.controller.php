@@ -49,6 +49,7 @@ class LinksController extends Controller{
             $url = $_POST['url'];
             $fname = $_POST['id'];
             Preview::create_image($url, $fname);
+            echo $fname;
         }
     }
 
@@ -59,7 +60,7 @@ class LinksController extends Controller{
             if ($result){
                 $fname = $id;
                 Preview::delete_image($fname);
-                return true;
+                return true; // echo??
             }
         }
         return false;
@@ -101,15 +102,9 @@ class LinksController extends Controller{
             $link_id = $_POST['link_id'];
             $result1 = $this->model->set_link_url($link_id, $_POST['link']);
             $result2 = $this->model->set_link_title($link_id, $_POST['title']);
-            if ( $result1 && $result2) {
-                Session::setFlash('Link was edited.');
-            }
-            else {
-                Session::setFlash('Error.');
-            }
-          //  Router::redirect('/');
-            die;
+            echo ( $result1 && $result2);
         }
+        echo false;
     }
 
     public function getLinkData(){ // for ajax

@@ -2,16 +2,24 @@
 
 class Link extends Model{
 
-    protected $user_id;
+    protected $user_id;  // в model??
 
     public function __construct(){
         parent::__construct();
-        $this->user_id = $_SESSION['id'];
+        if ( Session::get('id') )
+            $this->user_id = Session::get('id');
     }
 
+    // получение списка ссылок для незарегестрированного пользователя
     public function getDefaultLinks(){
         // возвращает список стандартных ссылок для незарегестрированного пользователя
         $sql = "select * from `default_links` where 1";
+        return $this->db->query($sql);
+    }
+
+    // получение списка вкладок для незарегестрированного пользователя
+    public function getDefaultTabs(){
+        $sql = "select `id`,`title` from `default_tabs`";
         return $this->db->query($sql);
     }
 
@@ -29,7 +37,8 @@ class Link extends Model{
 
     // выыод ссылки по ID
     public function getLinkById($id){
-        $sql = "select * from `favorites_links` where `id` = '{$id}' limit 1";
+        $table = ($this->user_id) ? 'favorites_links' : 'default_links';
+        $sql = "select * from {$table} where `id` = '{$id}' limit 1";
         return $this->db->query($sql)[0];
     }
 
@@ -47,8 +56,8 @@ class Link extends Model{
         $link = $this->db->escape($data['link']);
         $title = $this->db->escape($data['title']);
         $tab_id = $this->db->escape($data['tab_id']);
-        $sql = "
-            insert into favorites_links
+        $sql =  /** @lang text */
+            "insert into favorites_links
                     set url = '{$link}',
                         title = '{$title}',
                         user_id = '{$this->user_id}',
@@ -68,8 +77,8 @@ class Link extends Model{
     // записывает в БД тайтл ссылки
     public function set_link_title($link_id, $title){
         $id = (int)$link_id;
-        $sql = "
-                UPDATE favorites_links
+        $sql = /** @lang text */
+            "   UPDATE favorites_links
                 SET title = '{$title}'
                 WHERE id = '{$id}'
             ";
@@ -79,8 +88,8 @@ class Link extends Model{
     // записывает в БД юрл ссылки
     public function set_link_url($link_id, $url){
         $id = (int)$link_id;
-        $sql = "
-                UPDATE favorites_links
+        $sql = /** @lang text */
+            "   UPDATE favorites_links
                 SET url = '{$url}'
                 WHERE id = '{$id}'
             ";

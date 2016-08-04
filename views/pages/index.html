@@ -4,12 +4,10 @@
         $('#bookmark').focus();
 
         <!-- активация последней активной вкладки -->
-        if ($.cookie('last_tab')){
-            console.log($.cookie('last_tab'));
-            var tab = $( 'a[href="' + $.cookie('last_tab') + '"]' );
-            console.log(tab);
-            tab.tab('show');
-            $($.cookie('last_tab')).tab('show');
+        if ($.cookie('last_tab_id')){
+            tab_activate($.cookie('last_tab_id'))
+        } else{ // или первой
+            first_tab_activate();
         }
 
         <!-- скрипт откритя модального окна добавления новой категории ссылок -->
@@ -38,14 +36,38 @@
         <!-- установка куки при смене вкладки -->
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             var activeTab = $(e.target).attr('href');
-            $.cookie('last_tab', activeTab, { expires: 365});
+            var activeTabId = activeTab.replace('#tab', '');
+            $.cookie('last_tab_id', activeTabId, { expires: 365});
             console.log('смена вкладки на ' + activeTab);
-        })
+        });
 
-        //$.cookie('cookie_name', 'cookie_value', { expires: 365});
-        //$.cookie('username', null, { expires: -1});
-        //console.log( document.cookie );
-        //console.log($.cookie('cookie_name'));
+        $('#add_new_link_button').click(function () {
+            add_new_link();
+        });
+
+        /*
+        $('.my_close').mouseout(function () {
+            this.hidden;
+            console.log('Вы убрази курсор из зоны элемента'+this);
+            //$(this).animate({ opacity: "hide" }, "slow");
+            $(this).addClass('invisible');
+        });
+         */
+
+        // отображение и скрытие кнопок рефреш/едит/делете
+        var thumbnail = $('.my_thumbnail');
+        thumbnail.mouseover(function () {
+            $(this).children('.my_close').removeClass('invisible');
+        });
+        thumbnail.mouseout(function () {
+            $(this).children('.my_close').addClass('invisible');
+        });
+
+        //работа с куками
+        //$.cookie('cookie_name', 'cookie_value', { expires: 365}); //add cookie
+        //$.cookie('username', null, { expires: -1}); //delete cookie
+        console.log( document.cookie );
+        //console.log($.cookie('cookie_name'));  //get cookie
 
     });
 </script>
@@ -78,10 +100,13 @@
 <!-- Вкладки ----------------------------------------------------------------------------------------------->
 <ul id="tab_panel" class="nav nav-tabs" role="tablist">
     <?php foreach($data['tabs'] as $tab) { ?>
-        <li<?= ($tab['id'] == 2) ? ' class="active"' : '' ?>> <a href="#tab<?= $tab['id'] ?>" role="tab" data-toggle="tab"><?= $tab['title'] ?></a> </li>
+        <li> <a href="#tab<?= $tab['id'] ?>" role="tab" data-toggle="tab"><?= $tab['title'] ?></a> </li>
     <?php } ?>
-    <li id="plus_tab"> <a class="glyphicon glyphicon-plus" title="Добавить новую вкладку" role="tab" data-toggle="modal" data-target="#newTab" tabindex="-1"></a> </li>
-    <li> <a class="glyphicon glyphicon-cog" title="Редактировать/удалить текущую вкладку" role="tab" onclick="return edit_tab();" tabindex="-1"></a> </li>
+    <!-- Кнопки добавления и редактирования вкладок -->
+    <?php if ( Session::get('id') ) { ?>
+        <li id="plus_tab"> <a class="glyphicon glyphicon-plus" title="Добавить новую вкладку" role="tab" data-toggle="modal" data-target="#newTab" tabindex="-1"></a> </li>
+        <li> <a class="glyphicon glyphicon-cog" title="Редактировать/удалить текущую вкладку" role="tab" onclick="return edit_tab();" tabindex="-1"></a> </li>
+    <?php } ?>
 </ul>
 
 <!-- Содержимое вкладок -->
@@ -93,10 +118,10 @@
             <div class="row">
             <?php foreach($data['links'] as $page_data) { if ($page_data['tab_id'] == $tab['id'] || ($page_data['tab_id'] == 0 && $tab['id'] == 2) ) {?>
                     <div class="l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2" data-index="<?= $page_data['id'] ?>">
-                        <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail">
-                            <button type="button" class="close my_close" onclick="return link_delete(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-remove"></span></button>
-                            <button type="button" class="close my_close" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
-                            <button type="button" class="close my_close" onclick="return link_refresh(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
+                        <a href="<?=$page_data['url']?>" class="thumbnail my_thumbnail" target="_blank">
+                            <button type="button" class="close my_close invisible" onclick="return link_delete(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button type="button" class="close my_close invisible" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
+                            <button type="button" class="close my_close invisible" onclick="return link_refresh(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
                             <?php if ( isset($page_data['pic_src']) ) {?>
                                 <img src="<?=$page_data['pic_src']?>">
                             <?php } else { ?>
@@ -104,7 +129,7 @@
                                 <h3><?=$page_data['title']?></h3>
                             <?php } ?>
                             <hr>
-                            <p id="link-title" class="text-primary size"><?=$page_data['title']?></p>
+                            <p class="text-primary size"><?=$page_data['title']?></p>
                         </a>
                     </div>
                 <?php }} ?>

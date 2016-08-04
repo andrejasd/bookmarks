@@ -50,9 +50,7 @@ class BookmarksController extends Controller{
             $category_id = $_POST['category_id'];
             if ($this->model->add_bookmark( $_POST )){
                 $this->model->setUserLastCategoryId($category_id);
-                Session::setFlash('Bookmark was added');
-            }else Session::setFlash('Error');
-
+            }
         }
         Router::redirect('/');
     }

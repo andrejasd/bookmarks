@@ -1,21 +1,6 @@
 <?php
 
 class Session{
-
-    public static function setFlash($message){
-        self::set('flash_message', $message);
-    }
-
-    public static function flash(){
-        if ( self::get('flash_message') ){
-            echo '<div class="alert alert-info" role="alert">';
-            echo '<a href="#" class="close" data-dismiss="alert">×</a>';
-            echo $_SESSION['flash_message'];
-            echo '</div>';
-            self::delete('flash_message');
-        }
-    }
-
     // запись даных в масив $_SESSION по ключу
     // добавление даных в сессию
     public static function set($key, $value){

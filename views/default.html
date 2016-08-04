@@ -15,6 +15,7 @@
 
     <script src="/js/init.js"></script>
 
+    <script src="/js/underscore-min.js"></script>
 </head>
 
 <body>
@@ -49,35 +50,31 @@
                 <?php if ( Session::get('id') ) { ?>
                     <ul class="nav navbar-nav">
 
-                        <?php if (Session::get('role') == 'admin') : echo'admin'; else: echo'settings'; endif?>
+                        <?php if (Session::get('role') == 'admin') : echo'admin'; else: echo'/settings'; endif?>
 
-                        <li><a href='<?php if (Session::get('role') == 'admin') : echo'admin'; else: echo'settings'; endif?>'>
+                        <li><a href='<?php if (Session::get('role') == 'admin') : echo'admin'; else: echo'/settings'; endif?>'>
                             <?=Session::get('email')?></a>
                         </li>
-                        <li><a href = '/users/logout'>Logout</a></li>
+                        <li><a href = '/users/logout' onclick="return logout();">Logout</a></li>
                     </ul>
                 <?php } ?>
 
-                <!-- test button -->
+                <!-- test button
                 <ul class="nav navbar-nav">
                     <li><a href = '/pages/test'>Test</a></li>
                 </ul>
-
+                -->
 
             </div><!--/.nav-collapse -->
         </div>
     </nav>
 
     <div class="container-fluid">
-
         <div class="starter-template">
-
-            <?php Session::flash(); ?>
 
             <?=$data['content']?>
 
         </div> <!-- starter-template -->
-
     </div> <!-- container -->
 
 </body>

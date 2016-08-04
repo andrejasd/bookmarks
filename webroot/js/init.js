@@ -1,17 +1,24 @@
-function confirmDelete(){
-    if ( confirm("Delete this item?") ){
-        return true;
-    } else {
-        return false;
+
+$.ajaxSetup({
+    cache: true
+});
+
+// tab activation by ID
+function tab_activate(id) {
+    if  ( $('#tab_panel a[href="#tab' + id + '"]').length>0 ){
+        $('#tab_panel a[href="#tab' + id + '"]').tab('show');
+    } else{
+        first_tab_activate()
     }
 }
 
-// удаление куки по имени
-function delete_cookie (cookie_name)
-{
-    var cookie_date = new Date ( );  // Текущая дата и время
-    cookie_date.setTime ( cookie_date.getTime() - 1 );
-    document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+//first tab activation
+function first_tab_activate() {
+    $('#tab_panel li:first a').tab('show');
+}
+
+function logout() {
+    $.cookie('last_tab_id', null, { expires: -1}); //delete cookie
 }
 
 // ----------------- AJAX ----------------------
@@ -23,62 +30,92 @@ function link_edit(id) {
     $.post('/links/getLinkData/', data, function (data) {
         data = JSON.parse(data);
         console.log(data);
-        //alert(data['url']);
-        $("#new_link").attr('value',data['url']);
-        $("#new_title").attr('value',data['title']);
-        $("#link_id").attr('value',id);
+        $("#new_link").val(data['url']);
+        $("#new_title").val(data['title']);
+        $("#link_id").val(id);
     });
-
     $("#editLink").modal('show');
-
     return false;
 }
 
-function add_new_link() {
-    link = $("#link").val();
-    title = $('#title').val();
-    tab_id = $("#link_tab option:selected").val();
-    var data = {'link' : link, 'title' : title, 'tab_id' : tab_id};
+// редактирование ссылки после нажатия кнопки ИЗМЕНИТЬ
+function link_finish_edit() {
+    link = $("#new_link").val();
+    title = $("#new_title").val();
+    link_id = $("#link_id").val();
+    var data = {'link' : link, 'title' : title, 'link_id' : link_id};
     console.log(data);
-    $('#newLink').modal('hide');
+    $.post('/links/link_edit/', data, function (data) {
+        if (data)
+            console.log('OK');
+        else
+            console.log('ERROR');
+        // изменение DOM
+        var div_link = $('[data-index = ' + link_id + ']');
+        var title_element = div_link.find('p');
+        title_element.html(title);
+        var a_element = div_link.find('a');
+        a_element.attr('href', link);
+    });
+}
 
-    // запрос на добавление в базу
-    $.post('/links/link_add/', data, function (data) {
-        if (data == false){
-            console.log("ОШИБКА!!!!!");
-            alert("ОШИБКА!!!!!");
-        }
-        else{
+function add_new_link() {
+        link = $("#link").val();
+        title = $('#title').val();
+        tab_id = $("#link_tab option:selected").val();
+        var data = {'link': link, 'title': title, 'tab_id': tab_id};
+        console.log(data);
+        $('#newLink').modal('hide');
+
+        // запрос на добавление в базу
+        $.post('/links/link_add/', data, function (data) {
+            if (data == false) {
+                console.log("ОШИБКА!!!!!");
+                alert("ОШИБКА!!!!!");
+                return false;
+            }
+
             console.log("ДОБАВЛЕНО В БАЗУ!!!!!!!!!! " + data);
             data = JSON.parse(data);
             id = data['id'];
             title = data['title'];
 
-            var last_link = $('#plus'+tab_id);
+            var last_link$ = $('#plus' + tab_id);
             load = '<div class=\"l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2\" data-index=\"' + id + '\">\
-                    <a href=\"' + link + '\" class=\"thumbnail my_thumbnail\">\
-                    <button type=\"button\" class=\"close my_close\" onclick=\"return link_delete(' + id + ');\"><span class=\"glyphicon glyphicon-remove\"></span></button>\
-                    <button type=\"button\" class=\"close my_close\" onclick=\"return link_edit(' + id + ');\"><span class=\"glyphicon glyphicon-cog\"></span></button>\
-                    <button type=\"button\" class=\"close my_close\" onclick=\"return link_refresh(' + id + ');\"><span class=\"glyphicon glyphicon glyphicon-refresh\"></span></button>\
-                    <img src=\"uploads\/ajax-loader_1.gif\">\
-                    <hr>\
-                    <p id="link-title" class="text-primary size">' + title + '</p>\
-                    </a>\
-                    </div>\
-            ';
-            $(last_link).before(load);
+                <a href=\"' + link + '\" class=\"thumbnail my_thumbnail\">\
+                <button type=\"button\" class=\"close my_close\" onclick=\"return link_delete(' + id + ');\"><span class=\"glyphicon glyphicon-remove\"></span></button>\
+                <button type=\"button\" class=\"close my_close\" onclick=\"return link_edit(' + id + ');\"><span class=\"glyphicon glyphicon-cog\"></span></button>\
+                <button type=\"button\" class=\"close my_close\" onclick=\"return link_refresh(' + id + ');\"><span class=\"glyphicon glyphicon glyphicon-refresh\"></span></button>\
+                <img src=\"uploads\/ajax-loader_1.gif\">\
+                <hr>\
+                <p class="text-primary size">' + title + '</p>\
+                </a>\
+                </div>\
+        ';
+            $(last_link$).before(load);
 
+
+            // сделать отдельной функцией. сначала имя файла рандом а потом ренейм на ид.
             // запрос на создание превьхи
+
+            console.log(data);
+            return data;
+
+
+            var func = function () {
             $.post('/links/create_image/', data, function (data) {
-                console.log('Есть КАРТИНКА!!!!!!!!!!!');
-                load =  '<img src=\"uploads\/preview\/' + id + '.jpg\">';
+                console.log('Есть КАРТИНКА!!!!!!!!!!! ' + data);
+                id = data;
+                load = '<img src=\"uploads\/preview\/' + id + '.jpg\">';
                 console.log(load);
                 var new_link = $('[data-index=' + id + ']');
-                $(new_link).find("img").attr('src','uploads\/preview\/' + id + '.jpg');
+                $(new_link).find("img").attr('src', 'uploads\/preview\/' + id + '.jpg');
                 console.log(new_link);
             });
-        }
-    });
+            };
+
+
+        });
 
 }
 
@@ -93,18 +130,16 @@ function link_refresh(id) {
         title = data['title'];
         fname = data['fname'];
         console.log(url + ' ' + title + ' ' + fname);
-
-        var img_element = $('[data-index = ' + id + ']').find('img').first();
-        var h3_element = $('[data-index = ' + id + ']').find('h3').first();
+        var div_link = $('[data-index = ' + id + ']');
+        var img_element = div_link.find('img').first();
+        var h3_element = div_link.find('h3').first();
         console.log(img_element);
         $(img_element).removeAttr('src');
         $(img_element).attr('src', fname + '?' + Math.random());
         $(h3_element).remove();
-
-        var title_element = $('[data-index = ' + id + ']').find('#link-title');
+        var title_element = div_link.find('p');
         console.log(title_element);
         $(title_element).text(title);
-
     });
     return false;
 }
@@ -118,7 +153,7 @@ function link_delete(id) {
             console.log(element);
             $(element).remove();
         });
-    };
+    }
 
     return false;
 }
@@ -145,6 +180,8 @@ function add_new_tab() {
         console.log(load);
         $(tab_content).append(load);
 
+        // сделать редирект на новую вкладку??? или добавить куку с новой вкладкой
+
         // добавляем вкладку в список выбора вкладок
         var link_tab = $('#link_tab');
         load = '<option value=' + id + '>' + title + '</option>';
@@ -157,13 +194,7 @@ function add_new_tab() {
         $(last_tab).before(load);
 
         // активируем вкладку
-        var tab = $('#tab' + id);
-        //console.log('ТТААББ '+tab);
-        tab.tab('show');
-
-        tab_id_str = '#tab' + id;
-        $('#tab_panel a[href="' + tab_id_str + '"]').tab('show');
-
+        tab_activate(id);
     });
 }
 
@@ -176,9 +207,14 @@ function edit_tab() {
     console.log(tab_id);
     console.log(tab_title);
     editTab = $("#editTab");
-    editTab.find('#tab_id').val(tab_id);
-    editTab.find('.modal-header').find('h4').html('Редактировать/удалить вкладку ' + tab_title);
-    editTab.find('.modal-body').find('#new_tab_title').val(tab_title);
+    editTab.find('#tab_id').val(tab_id); // заполняем скрытое поле #tab_id
+    editTab.find('.modal-header').find('h4').html('Редактировать/удалить вкладку ' + tab_title); // добавляем в шапку имя вкладки
+    editTab.find('.modal-body').find('#new_tab_title').val(tab_title); // заполняем поле #new_tab_title именем вкладки
+    $('#editTab option:disabled').each(function(){ // разблокирум ранее заблокированный select
+        this.disabled=false;
+    });
+    editTab.find('option[value="'+tab_id+'"]').prop("disabled",true); // блокирум выбор активной вкладки
+    // отобразить модальное окно
     editTab.modal('show');
 }
 
@@ -193,6 +229,7 @@ function rename_tab() {
     $.post('/links/tab_rename/', data, function (data) {
         var active_tab = $('#tab_panel').find('.active').children('a');
         active_tab.html(title);
+        $('option[value="'+id+'"]').html(title);
     });
 }
 
@@ -203,10 +240,7 @@ function delete_tab() {
     console.log(tab_id);
     option = editTab.find('input[type="radio"]:checked').val();
     console.log(option);
-    if (option == 'option1'){
-        full_delete = true
-    }else{
-        full_delete = false}
+    full_delete = (option == 'option1');
     console.log(full_delete);
     move_link_tab = editTab.find("#move_link_tab option:selected").val();
     console.log(move_link_tab);
@@ -215,14 +249,13 @@ function delete_tab() {
                 'move_link_tab' : move_link_tab};
     $.post('/links/tab_delete/', data, function (data) {
         console.log(data);
-
         if (option == 'option2'){
             // активируем вкладку
             var tab = $( 'a[href="#tab' + move_link_tab + '"]' );
             tab.tab('show');
         }
+
         // обновляем страницу
         window.location.href = "/";
-
     });
 }
