@@ -7,51 +7,48 @@ class BookmarksController extends Controller{
         $this->model = new Bookmark();
     }
 
-    public function getUserLastCategory(){
-        return $this->model->getUserLastCategoryId()[0]['last_category'];
-    }
-
     public function index(){
 
-        if ( isset($this->params[0]) ) {
-            $current_category_id = $this->params[0];
-        }else
-            $current_category_id = Session::get('current_category_id');
-
-        $this->data['categories'] = '<a href="/bookmarks/index/0" class="breakword list-group-item';
-        if (!$current_category_id)
-            $this->data['categories'].= ' active';
-        $this->data['categories'].= '">'.VIEW_LATER.'</a>';
+        $this->data['categories'] = '<a class="breakword list-group-item tabnav" data-toggle="tab" href="#panel0">'.VIEW_LATER.'<a>';
+        $this->data['bookmarks'][0] = '';
         $categories = $this->model->getBookmarksCategories();
-
         foreach($categories as $page_data) {
-            $this->data['categories'].='<a href="/bookmarks/index/'.$page_data['id'].'" class="breakword list-group-item';
-            if ( ($current_category_id) && ($current_category_id == $page_data['id']) )
-                $this->data['categories'].=' active';
+            $this->data['categories'].='<a class="breakword list-group-item tabnav" data-toggle="tab" href="#panel'.$page_data['id'].'">'.$page_data['title'].'</a>';
+            if ( !isset($this->data['bookmarks'][$page_data['id']]) ){
+                $this->data['bookmarks'][$page_data['id']] = array();
+            };
 
-            $this->data['categories'].='">'.$page_data['title'].'</a>';
+        };
+
+        $a=1;
+        ++$a;
+
+        $user_bookmarks = $this->model->getUserBookmarks();
+        foreach ($user_bookmarks as $bookmark){
+            $category_id = $bookmark['category_id'];
+            $id = $bookmark['id'];
+            $url = $bookmark['url'];
+            $title = $bookmark['title'];
+            if ($title == NULL){
+                $title = '';
+            }
+            // $this->data['bookmarks'][$category_id][]['url'] = "<p><a href='$url'>$url</a></p>";
+            // $this->data['bookmarks'][$category_id][]['title'] = "<p><a href='$url'>$title</a></p>";
+            $this->data['bookmarks'][$category_id][] = array('url' => "<p><a href='$url'>$url</a></p>", 'title' => "<p><a href='$url'>$title</a></p>");
         }
-
-        $this->data['bookmarks'] = $this->model->getUserBookmarksByCategory($current_category_id);
     }
 
     public function category_add(){
         if( $_POST ){
             $result = $this->model->add_category($_POST);
-            if ($result){
-                $this->model->setUserLastCategoryId($result);
-            }
         }
         Router::redirect('/');
     }
 
     public function bookmark_add(){
         if( $_POST ){
-            $category_id = $_POST['category_id'];
-            if ($this->model->add_bookmark( $_POST )){
-                $this->model->setUserLastCategoryId($category_id);
+            $result = $this->model->add_bookmark( $_POST );
             }
-        }
         Router::redirect('/');
     }
 

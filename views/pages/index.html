@@ -1,76 +1,3 @@
-<script>
-    $(document).ready(function(){
-        <!-- установка фокуса на поле добавления новой закладки -->
-        $('#bookmark').focus();
-
-        <!-- активация последней активной вкладки -->
-        if ($.cookie('last_tab_id')){
-            tab_activate($.cookie('last_tab_id'))
-        } else{ // или первой
-            first_tab_activate();
-        }
-
-        <!-- скрипт откритя модального окна добавления новой категории ссылок -->
-        var value_Opt= "new_category";
-        $("select").change(function () {
-            if($(this).val()!=value_Opt) return false;
-            $("#new_Category").modal('show');
-            return false;
-        });
-
-        <!-- установка фокуса на форме добавления новой ссылки -->
-        $('#newLink').on('shown.bs.modal', function (event) {
-            $('#link').focus();
-            <!-- считываем с какого tab data-content пришел запрос -->
-            var tab = $(event.relatedTarget);
-            var tab_id = tab.data('content');
-            console.log(tab_id);
-            $("#link_tab [value='"+tab_id+"']").prop("selected", "selected");
-        });
-
-        <!-- установка фокуса на форме добавления новой вкладки -->
-        $('#newTab').on('shown.bs.modal', function () {
-            $('#tab').focus();
-        });
-
-        <!-- установка куки при смене вкладки -->
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-            var activeTab = $(e.target).attr('href');
-            var activeTabId = activeTab.replace('#tab', '');
-            $.cookie('last_tab_id', activeTabId, { expires: 365});
-            console.log('смена вкладки на ' + activeTab);
-        });
-
-        $('#add_new_link_button').click(function () {
-            add_new_link();
-        });
-
-        /*
-        $('.my_close').mouseout(function () {
-            this.hidden;
-            console.log('Вы убрази курсор из зоны элемента'+this);
-            //$(this).animate({ opacity: "hide" }, "slow");
-            $(this).addClass('invisible');
-        });
-         */
-
-        // отображение и скрытие кнопок рефреш/едит/делете
-        var thumbnail = $('.my_thumbnail');
-        thumbnail.mouseover(function () {
-            $(this).children('.my_close').removeClass('invisible');
-        });
-        thumbnail.mouseout(function () {
-            $(this).children('.my_close').addClass('invisible');
-        });
-
-        //работа с куками
-        //$.cookie('cookie_name', 'cookie_value', { expires: 365}); //add cookie
-        //$.cookie('username', null, { expires: -1}); //delete cookie
-        console.log( document.cookie );
-        //console.log($.cookie('cookie_name'));  //get cookie
-
-    });
-</script>
 
 <!-- подключение файла с модальными окнами -->
 <?php
@@ -78,7 +5,7 @@
 ?>
 
 <!-- ------------------------------------ верхний блок "переглянути пізніше" ------------------------------------------>
-<div class="add_bookmark">
+<div id="add_bookmark">
     <form class="form-inline add_form" method="post" action='/bookmarks/bookmark_add/'>
         <div class="form-group">
             <label for="bookmark">Ссылка: </label>
@@ -95,7 +22,6 @@
     </form>
     <a class="btn btn-primary" href="/bookmarks/">Просмотр ссылок</a>
 </div>
-
 
 <!-- Вкладки ----------------------------------------------------------------------------------------------->
 <ul id="tab_panel" class="nav nav-tabs" role="tablist">

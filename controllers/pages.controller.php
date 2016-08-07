@@ -27,22 +27,18 @@ class PagesController extends Controller
             //echo '<pre>';print_r($this->data['tabs']);print_r($this->data['tabs_count']);die;
             $pic_prefix = "";
 
-            // устанавливаем текущую категорию из БД
-            $current_category_id = $model_bookmark->getUserLastCategoryId();
-            Session::set('current_category_id', $current_category_id);
-
             // список категорий закладок
             $bookmarks_categoris = $model_bookmark->getBookmarksCategories();
             $this->data['select_category'] = '';
-
             $this->data['select_category'] .= '<option value=0>' . VIEW_LATER . '</option>';
             foreach ($bookmarks_categoris as $key => $value) {
                 $kaf = $value['title'];
                 $kaf_id = $value['id'];
-                $this->data['select_category'] .= '<option ';
-                if ($current_category_id == $kaf_id)
-                    $this->data['select_category'] .= 'selected ';
-                $this->data['select_category'] .= 'value=' . $kaf_id . '>' . $kaf . '</option>';
+                $this->data['select_category'] .= '<option value="' . $kaf_id . '">' . $kaf . '</option>';
+                //$this->data['select_category'] .= '<option ';
+                //if ($current_category_id == $kaf_id)
+                //    $this->data['select_category'] .= 'selected ';
+                //$this->data['select_category'] .= 'value=' . $kaf_id . '>' . $kaf . '</option>';
             }
             $this->data['select_category'] .= '<option value="new_category" data-toggle="modal">Новая категория</option>';
 

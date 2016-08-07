@@ -14,6 +14,8 @@
     <script src="/bootstrap/js/bootstrap.js"></script>
 
     <script src="/js/init.js"></script>
+    <script src="/js/links.js"></script>
+    <script src="/js/bookmarks.js"></script>
 
     <script src="/js/underscore-min.js"></script>
 </head>
@@ -55,7 +57,7 @@
                         <li><a href='<?php if (Session::get('role') == 'admin') : echo'admin'; else: echo'/settings'; endif?>'>
                             <?=Session::get('email')?></a>
                         </li>
-                        <li><a href = '/users/logout' onclick="return logout();">Logout</a></li>
+                        <li><a href='/users/logout' id="logout_buttton">Logout</a></li>
                     </ul>
                 <?php } ?>
 

@@ -1,30 +1,63 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        // при смене вкладки
+        $('#bookmarks_tabs').on('shown.bs.tab', function(e){
+            // убираем подсветку предыдущей категории
+            $(this).find('.active').removeClass('active');
+            // подсветка выбранной категории
+            $(e.target).addClass('active');
+
+            // установка куки с ID категории
+            var activeCategoryId = $(e.target).attr('href');
+            $.cookie('last_bookmarks_tab_id', activeCategoryId, {expires: 365});
+            console.log('смена категории ' + activeCategoryId);
+
+        });
+
+        if ($.cookie('last_bookmarks_tab_id')){
+
+            var element$ = $('#bookmarks_tabs a[href="' + $.cookie('last_bookmarks_tab_id') + '"]');
+            if  ( element$.length>0 ){
+                element$.tab('show');
+            } else{
+                $('#bookmarks_tabs a:first').tab('show');
+            }
+
+        } else{ // или первой
+            $('#bookmarks_tabs a:first').tab('show');
+        }
+
+    });
+</script>
+
 
 <div class="container">
 
+    <!-- вкладки -->
     <div class="col-xs-4 col-sm-3 col-md-2 col-lg-3 well">
-        <div class="list-group">
 
-            <h3 class="text-center">Категории</h3>
+          <div id="bookmarks_tabs" class="list-group">
+              <h3 class="text-center">Категории</h3>
+              <?= $data['categories'] ?>
+          </div>
 
-            <?= $data['categories'] ?>
-
-            <!--
-            <?php foreach($data['categories'] as $page_data) { ?>
-                <a href="" class="breakword list-group-item active">
-                    <?=$page_data['title']?>
-                </a>
-            <?php } ?>
-            -->
-        </div>
     </div>
 
+    <!-- Содержимое вкладок -->
+    <div class="tab-content col-xs-8 col-sm-9 col-md-10 col-lg-9">
 
-    <div class="col-xs-8 col-sm-9 col-md-10 col-lg-9">
-        <?php foreach($data['bookmarks'] as $page_data) { ?>
-            <div style="margin-top: 10px;">
-                <a href="<?=$page_data['url']?>"><?=$page_data['url']?></a>
-            </div>
+        <?php foreach($data['bookmarks'] as $key=>$value) { ?>
+          <div id="panel<?= $key ?>" class="tab-pane fade ">
+              <h3>Панель <?= $key ?></h3>
+              <?php foreach($value as $key1=>$value1) { ?>
+                    <?=($value1['url']) ?>
+                    <?=($value1['title']) ?>
+                    <hr>
+              <?php } ?>
+          </div>
         <?php } ?>
+
     </div>
 
 

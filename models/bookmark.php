@@ -23,29 +23,6 @@ class Bookmark extends Model{
             return $resault;
     }
 
-    // запись последней используемой категории
-    // результат после функции add_category
-    public function setUserLastCategoryId($CategoryId){
-        $user_id = Session::get('id') ;
-        $sql = "update users
-                  set last_category_id = '{$CategoryId}'
-                where id = {$user_id}
-                ";
-        return ($this->db->query($sql));
-    }
-
-    // чтение последней используемой категории
-    public function getUserLastCategoryId(){
-        $user_id = Session::get('id') ;
-        $sql = "select last_category_id from users where id = '{$user_id}' limit 1";
-        //return ($this->db->query($sql));
-
-        $result = $this->db->query($sql);
-        if ($result)
-            return $result[0]['last_category_id'];
-        return false;
-    }
-
     public function add_bookmark($data){
         $user_id = Session::get('id') ;
         $category_id = $data['category_id'];
@@ -66,4 +43,12 @@ class Bookmark extends Model{
 
         return $this->db->query($sql);
     }
+
+    // вывод всех закладок пользователя по категориям
+    public function getUserBookmarks(){
+        $user_id = Session::get('id');
+        $sql = "SELECT * FROM `bookmarks` WHERE `user_id` = '{$user_id}'";
+        return $this->db->query($sql);
+    }
+
 }
