@@ -19,6 +19,7 @@ function first_tab_activate() {
 // данные о ссылке для окна редактирования ссылки
 function link_edit(id) {
     var data = {'id' : id};
+    console.log('data');
     console.log(data);
     $.post('/links/getLinkData/', data, function (data) {
         data = JSON.parse(data);
