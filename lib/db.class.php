@@ -45,23 +45,6 @@ class DB{
             throw new Exception(mysqli_error($this->connection));
         }
 
-        /*
-        // выдаем результаты последнего запроса
-        if ($result) {
-            do {
-
-                if (!$this->connection->more_results()) {
-                    exit ($this->connection->store_result());
-                }
-            } while ($this->connection->next_result());
-        }
-
-
-        if ( is_bool($this->connection->store_result()) ){
-            return $this->connection->store_result();
-        }
-        */
-
         $data = array();
 
         do {
@@ -72,11 +55,6 @@ class DB{
             }
         } while ($this->connection->next_result());
 
-        /*
-        while( $row = mysqli_fetch_assoc($this->connection->store_result()) ){
-            $data[] = $row;
-        }
-        */
         return $data;
 
     }

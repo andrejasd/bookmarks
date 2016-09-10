@@ -41,6 +41,8 @@ form{
     margin: auto;
     max-height: 100%;
     text-align: center;
+
+    background-color: #e7ebff;
 }
 
 .container-fluid{
@@ -56,7 +58,6 @@ form{
     float: left;
     position: relative;
     height: 164px;
-
 
     margin-top: 10px;
 
@@ -92,6 +93,13 @@ hr{
 .breakword{
     word-wrap: break-word;
 }
+
+/*текст обрезается, если целиком не помещается в заданную область*/
+/*работает в том случае, если для блока значение свойства overflow установлено как auto, scroll или hidden*/
+.overflow{
+    text-overflow: ellipsis;
+}
+
 
 .my_close{
     margin-left: 5px;

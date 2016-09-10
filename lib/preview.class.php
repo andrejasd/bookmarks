@@ -1,30 +1,49 @@
 <?php
 
 class Preview{
+    // отримання контенту за допомогою curl
+    private function curl_get_file_contents($url)
+    {
+        $c = curl_init();
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($c, CURLOPT_URL, $url);
+        $contents = curl_exec($c);
+        curl_close($c);
+        return $contents;
+    }
 
     // превьюха
-    public static function create_image($url, $fname){
+    public static function create_image($url, $file_name){
 
-        // превьюха через www.mini.s-shot.ru
+/*        // превьюха через www.mini.s-shot.ru
         $api = 'http://mini.s-shot.ru/1280x800/400/jpeg/?';
-        $url =  urlencode($url);
-        $fp = fopen('uploads'.DS.'preview'.DS.$fname.'.jpg', 'w'); // Создаем файл с нужным нам именем в нужном месте
-        fwrite($fp, file_get_contents($api.$url)); // записываем в этот файл содержимое, которое отдал нам сервис
-        //fwrite($fp, 'asd');
-        fclose($fp); // закрываем файл
-/*
+
+        //$url =  urlencode($url);
+        //$content = file_get_contents($api.$url); // получение картинки
+        $content = self::curl_get_file_contents($api.$url);
+
+        if ($content){
+            $fp = fopen('uploads'.DS.'preview'.DS.$file_name.'.jpg', 'w'); // Создаем файл с нужным нам именем в нужном месте
+            fwrite($fp, $content); // записываем в этот файл содержимое, которое отдал нам сервис
+            fclose($fp); // закрываем файл
+            return true;
+        }else{
+            return false;
+        }*/
+
         // превьюха через phantomjs в linux
-        $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/rasterize.js '.$url.' '.ROOT.'/webroot/uploads/preview/'.$fname.'.jpg';
+        $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/rasterize.js '.$url.' '.ROOT.'/webroot/uploads/preview/'.$file_name.'.jpg'.' '.'400px*250px 0.3125';
         //echo $shell; exit();
         shell_exec($shell);
         // добавить обрезку картинки
-*/
+
         return true;
     }
 
-    public static function delete_image($fname){
-        $fname = 'uploads'.DS.'preview'.DS.$fname.'.jpg';
-        if (unlink ($fname)){
+    // удаление картинки
+    public static function delete_image($file_name){
+        $file_name = 'uploads'.DS.'preview'.DS.$file_name.'.jpg';
+        if (unlink ($file_name)){
             return true;
         }
         else{
@@ -32,20 +51,25 @@ class Preview{
         }
     }
 
-
     // определение заголовка страници
     public static function get_title($url){
-        $content = file_get_contents($url);
 
-        preg_match_all("|<title(.*)>(.*)</title>|sUSi", $content, $matches);
+        //$url =  urlencode($url);
+        //$content = file_get_contents($url);
 
-        $title = $matches[2][0];
-        //$title = mb_convert_encoding($title, "UTF-8", "auto");
+        $content = self::curl_get_file_contents($url);
+//        Controller::ddd($content);
 
+        if ($content === False){
+            $title = "Перевірте посилання";
+        }
+        else{
+            preg_match_all("|<title(.*)>(.*)</title>|sUSi", $content, $matches);
+            $title = $matches[2][0];
+            $title = mb_convert_encoding($title, "UTF-8", "auto");
+            // зробити: якщо в title є ?? то виводимо url
+        }
         return $title;
     }
-
-
-
 
 }

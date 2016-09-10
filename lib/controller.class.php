@@ -29,9 +29,9 @@ class Controller {
     }
 
     // функция для отладки
-    public function ddd($var){
+    public static function ddd($var){
         echo '<pre>';
-        $this->var_dump($var);
+        var_dump($var);
         echo '</pre>';
         die;
     }

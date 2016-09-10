@@ -48,12 +48,25 @@
                             <button type="button" class="close my_close invisible" onclick="return link_delete(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-remove"></span></button>
                             <button type="button" class="close my_close invisible" onclick="return link_edit(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon-cog"></span></button>
                             <button type="button" class="close my_close invisible" onclick="return link_refresh(<?= $page_data['id'] ?>);"><span class="glyphicon glyphicon glyphicon-refresh"></span></button>
-                            <?php if ( isset($page_data['pic_src']) ) {?>
-                                <img src="<?=$page_data['pic_src']?>">
-                            <?php } else { ?>
-                                <img src="">
-                                <h3><?=$page_data['title']?></h3>
-                            <?php } ?>
+
+
+
+
+                               <?php if ( isset($page_data['pic_src']) ) {?>
+                                   <img src="<?=$page_data['pic_src']?>">
+                               <?php } else { ?>
+                                    <div class="loader-wrapper">
+                                       <img src="">
+                                       <h4 class="overflow">Перевірте правильність введеної адреси</h4>
+                                    </div>
+                                        <!--
+                                       <img src="">
+                                       <h3><?=$page_data['title']?></h3>
+                                        -->
+                               <?php } ?>
+
+
+
                             <hr>
                             <p class="text-primary size"><?=$page_data['title']?></p>
                         </a>

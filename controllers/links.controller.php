@@ -11,15 +11,19 @@ class LinksController extends Controller{
     public function link_add(){ // for ajax
         if ( $_POST ){
             // запись даных в базу
+
+            $scheme = 'http://';
+            $_POST['link'] = parse_url($_POST['link'], PHP_URL_SCHEME) === null ? $scheme . $_POST['link'] : $_POST['link'];
+
             $result = $this->model->add_link($_POST);
             if ($result) {
-                // создание картинки
                 $url = $_POST['link'];
                 $title = $_POST['title'];
                 $id = $result[0][0];
-                //$fname = $id;
-                //Preview::create_image($url, $fname);
-                //Preview::create_image_phantomjs($url, $fname);
+
+                // создание картинки
+                //$file_name = $id;
+                //Preview::create_image($url, $file_name);
 
                 // записуем название сайта если незадано пользователем
                 if ( !isset($_POST['title']) || empty($_POST['title']) ){
@@ -71,12 +75,12 @@ class LinksController extends Controller{
             $id = $_POST['id'];
             $link = $this->model->getLinkById($id);
             $url = $link['url'] ;
-            $fname = $id;
+            $file_name = $id;
 
             if (!Session::get('id'))
-                $fname = 'def_'.$fname;
+                $file_name = 'def_'.$file_name;
 
-            Preview::create_image($url, $fname);
+            Preview::create_image($url, $file_name);
 
             if (!$link['title']){
                 $title = Preview::get_title($url);
@@ -89,7 +93,7 @@ class LinksController extends Controller{
             $data = array(
                 'url' => $link['url'],
                 'title' => $title,
-                'fname' => 'uploads'.DS.'preview'.DS.$fname.'.jpg'
+                'file_name' => 'uploads'.DS.'preview'.DS.$file_name.'.jpg'
             );
             echo json_encode($data);
             die;

@@ -19,7 +19,6 @@ class App{
         $controller_class = ucfirst(self::$router->getController()).'Controller';
         $controller_method = strtolower(self::$router->getMethodPrefix().self::$router->getAction());
 
-
         // if admin then admin_login
         $layout = self::$router->getRoute();
         if ( $layout == 'admin' && Session::get('role') != 'admin' ){
