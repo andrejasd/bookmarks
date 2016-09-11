@@ -1,0 +1,8 @@
+<script>
+    $(document).ready(function(){
+        $("#edit").click(function() {
+            $("#editModal").modal('show');
+            return false;
+        })
+    });
+</script>

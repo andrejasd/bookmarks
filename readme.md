@@ -4,7 +4,7 @@
     - last_category_id [bookmark]
     - last_bookmarks_tab_id [bookmark]
 
-**page data:**
+**page data:** 
 
     - for Page
       - links (..., pic_src)

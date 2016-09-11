@@ -17,40 +17,57 @@ function first_tab_activate() {
 // ----------------- AJAX ----------------------
 
 // данные о ссылке для окна редактирования ссылки
-function link_edit(id) {
-    var data = {'id' : id};
-    console.log('data');
-    console.log(data);
-    $.post('/links/getLinkData/', data, function (data) {
-        data = JSON.parse(data);
-        console.log(data);
-        $("#new_link").val(data['url']);
-        $("#new_title").val(data['title']);
-        $("#link_id").val(id);
-    });
+function link_edit(link_id) {
+
+    // отримання даних з DOM
+    var div_link = $('[data-index = ' + link_id + ']');
+    var url = $(div_link).find('a').attr('href');
+    var title = $(div_link).find('p').html();
+    console.log(url + ' ' + title);
+    $("#new_link").val(url);
+    $("#new_title").val(title);
+    $("#link_id").val(link_id);
+
+    // отримання даних із бази - недоцільно
+    // var data = {'id' : link_id};
+    // console.log('data');
+    // console.log(data);
+    // $.post('/links/getLinkData/', data, function (data) {
+    //     data = JSON.parse(data);
+    //     console.log(data);
+    //     $("#new_link").val(data['url']);
+    //     $("#new_title").val(data['title']);
+    //     $("#link_id").val(link_id);
+    // });
+
     $("#editLink").modal('show');
     return false;
 }
 
 // редактирование ссылки после нажатия кнопки ИЗМЕНИТЬ
 function link_finish_edit() {
-    var link = $("#new_link").val();
-    link = encodeURI(link); //для кирилиці
-    var title = $("#new_title").val();
+    var new_link = $("#new_link").val();
+        new_link = encodeURI(new_link); //для кирилиці
+    var new_title = $("#new_title").val();
     var link_id = $("#link_id").val();
-    var data = {'link' : link, 'title' : title, 'link_id' : link_id};
-    console.log(data);
+    var data = {'new_link' : new_link, 'new_title' : new_title, 'link_id' : link_id};
     $.post('/links/link_edit/', data, function (data) {
-        if (data)
-            console.log('OK');
-        else
-            console.log('ERROR');
-        // изменение DOM
+        console.log('OK ' + data);
+        data = JSON.parse(data);
         var div_link = $('[data-index = ' + link_id + ']');
-        var title_element = div_link.find('p');
-        title_element.html(title);
-        var a_element = div_link.find('a');
-        a_element.attr('href', link);
+        if (data['title_ed']){
+            var title_element = div_link.find('p');
+            if (data['title_null']){
+                title_element.html(new_link);
+            }else{
+                title_element.html(new_title);
+            }
+        }
+        if (data['link_ed']){
+            var a_element = div_link.find('a');
+            a_element.attr('href', new_link);
+            link_refresh(link_id);
+        }
     });
 }
 
@@ -117,21 +134,30 @@ function link_refresh(id) {
     var data = {'id' : id};
     console.log(data);
 
-    var load = '<div class="loader"></div>';
+    var load = '<div class="loader-wrapper">\
+                    <div class="loader"></div>\
+                </div>';
+    // var load = '<div class="loader">';
     var div_link = $('[data-index = ' + id + ']');
     var img_element = div_link.find('img').first();
-    var h4_element = div_link.find('h4').first();
+    // var h4_element = div_link.find('h4').first();
+    var hr_element = div_link.find('hr').first();
+    var loader = div_link.find('.loader-wrapper');
 
-    if (h4_element.length > 0)
-        $(h4_element).remove();
+    // if ($(h4_element).length > 0)
+    //     $(h4_element).remove();
 
     $(img_element).removeAttr('src');
+    // if ($(img_element).length > 0)
+    //     $(img_element).remove();
 
-    var loader = div_link.find('.loader');
-    if (loader.length <= 0){
-        $(img_element).after(load);
-        loader = div_link.find('.loader');
+    if ($(loader).length <= 0){
+        $(loader).remove();
+        $(hr_element).before(load);
+        loader = div_link.find('.loader-wrapper');
     }
+
+
 
     console.log(loader);
 
@@ -142,9 +168,13 @@ function link_refresh(id) {
         var url = data['url'];
         var title = data['title'];
         var file_name = data['file_name'];
+        // var load = '<img src="' + file_name + '?' + Math.random() + '">';
         console.log(url + ' ' + title + ' ' + file_name);
         loader.remove();
+
+        // $(hr_element).before(load);
         $(img_element).attr('src', file_name + '?' + Math.random());
+
         var title_element = div_link.find('p');
         console.log(title_element);
         $(title_element).text(title);

@@ -41,17 +41,18 @@ class User extends Model {
         $id = (int)$id;
         //$sql = "delete from users where id = {$id}";
         $sql = "
-                update users
-                  set is_active = 0
-                where id = {$id}
+                update `users`
+                  set `is_active` = 0,
+                      `delete_date` = CURRENT_TIMESTAMP
+                where `id` = {$id}
                 ";
         return $this->db->query($sql);
     }
 
     // список пользователей для админа
-    public function getUsers($is_active = true){
+    public function getUsers($is_active = false){
 
-        $sql = "select * from users where 1";
+        $sql = "select `id`, `email`, `role`, `registration_date`, `is_active`, `delete_date` from `users` where 1";
 
         if ( $is_active ){
             $sql .= " and is_active = 1";

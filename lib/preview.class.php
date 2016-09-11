@@ -29,11 +29,11 @@ class Preview{
             return true;
         }else{
             return false;
-        }*/
+        }
+*/
 
-        // превьюха через phantomjs в linux
+        // превьюха через phantomjs
         $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/rasterize.js '.$url.' '.ROOT.'/webroot/uploads/preview/'.$file_name.'.jpg'.' '.'400px*250px 0.3125';
-        //echo $shell; exit();
         shell_exec($shell);
         // добавить обрезку картинки
 
@@ -57,19 +57,24 @@ class Preview{
         //$url =  urlencode($url);
         //$content = file_get_contents($url);
 
-        $content = self::curl_get_file_contents($url);
-//        Controller::ddd($content);
+        //$content = self::curl_get_file_contents($url);
 
-        if ($content === False){
-            $title = "Перевірте посилання";
-        }
-        else{
-            preg_match_all("|<title(.*)>(.*)</title>|sUSi", $content, $matches);
-            $title = $matches[2][0];
-            $title = mb_convert_encoding($title, "UTF-8", "auto");
-            // зробити: якщо в title є ?? то виводимо url
-        }
+        $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/title.js '.$url;
+        $title = shell_exec($shell);
+        $title = mb_convert_encoding($title, "UTF-8");
         return $title;
+
+
+//        if ($content === False){
+//            $title = "Перевірте посилання";
+//        }
+//        else{
+//            preg_match_all("|<title(.*)>(.*)</title>|sUSi", $content, $matches);
+//            $title = $matches[2][0];
+//            $title = mb_convert_encoding($title, "UTF-8");
+//            // зробити: якщо в title є ?? то виводимо url
+//        }
+//        return $title;
     }
 
 }

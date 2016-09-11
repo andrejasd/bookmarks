@@ -85,6 +85,13 @@ class Link extends Model{
         return $this->db->query($sql);
     }
 
+    // получение из БД тайтла ссылки
+    public function get_link_title($link_id){
+        $id = (int)$link_id;
+        $sql = "SELECT `title` FROM `favorites_links` WHERE `user_id` = '{$this->user_id}' AND `id` = '{$id}' LIMIT 1";
+        return $this->db->query($sql)[0]['title'];
+    }
+
     // записывает в БД юрл ссылки
     public function set_link_url($link_id, $url){
         $id = (int)$link_id;
@@ -94,6 +101,13 @@ class Link extends Model{
                 WHERE id = '{$id}'
             ";
         return $this->db->query($sql);
+    }
+
+    // получение из БД юрл ссылки
+    public function get_link_url($link_id){
+        $id = (int)$link_id;
+        $sql = "SELECT `url` FROM `favorites_links` WHERE `user_id` = '{$this->user_id}' AND `id` = '{$id}' LIMIT 1";
+        return $this->db->query($sql)[0]['url'];
     }
 
     // запись в БД новой вкладки

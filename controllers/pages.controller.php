@@ -67,6 +67,12 @@ class PagesController extends Controller
     {
         $model_user = new User();
         $this->data['users'] = $model_user->getUsers();
+        $i = 0;
+        foreach ($this->data['users'] as &$user){
+            $i++;
+            $user['number'] = $i;
+        }
+        // Controller::ddd($this->data['users']);
     }
 
     public function test()

@@ -1,5 +1,8 @@
 
 $(document).ready(function(){
+
+    console.log($('title').html());
+
     <!-- установка фокуса на поле добавления новой закладки -->
     $('#bookmark').focus();
 

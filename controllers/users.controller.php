@@ -72,7 +72,7 @@ class UsersController extends Controller{
             {
                 $result = $this->model->setNewUser( $_POST['email'], $_POST['psw']);
                 if ($result) {
-                    Session::setFlash('New user is added. Please confirm your email.');
+                    // New user is added. Please confirm your email
                     //Session::set('login', $login);
                     //Session::set('role', 'user');
                     //Session::set('id', $id);
@@ -87,13 +87,12 @@ class UsersController extends Controller{
         if ( isset($this->params[0]) ){
             $result = $this->model->delete_user($this->params[0]);
             if ( $result ){
-                Session::setFlash('User was deleted.');
+                // User was deleted
             } else {
-                Session::setFlash('Error.');
+                // Error
             }
         }
         Router::redirect('/admin/pages/');
     }
-    
 
 }

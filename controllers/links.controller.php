@@ -102,13 +102,34 @@ class LinksController extends Controller{
 
     public function link_edit(){ // for ajax
         if ( $_POST ){
-            //print_r($_POST); exit();
             $link_id = $_POST['link_id'];
-            $result1 = $this->model->set_link_url($link_id, $_POST['link']);
-            $result2 = $this->model->set_link_title($link_id, $_POST['title']);
-            echo ( $result1 && $result2);
+            $new_link = $_POST['new_link'];
+            $new_title = $_POST['new_title'];
+            $old_link = $this->model->get_link_url($link_id);
+            $old_title = $this->model->get_link_title($link_id);
+
+            $result1 = false;
+            $result2 = false;
+
+            // еслм ссылка изменилась
+            if ($old_link <> $new_link){
+                // запись новой ссылки
+                $result1 = $this->model->set_link_url($link_id, $new_link);
+                // если тайтл не перезадан вручную
+                if ($old_title == $new_title) {
+                    $result2 = $this->model->set_link_title($link_id, '');
+                    $data['title_null'] = true;
+                }
+            }
+            if ($old_title <> $new_title) {
+                $result2 = $this->model->set_link_title($link_id, $new_title);
+                $data['title_null'] = false;
+            }
+
+            $data['link_ed'] = $result1;
+            $data['title_ed'] = $result2;
+            echo json_encode($data);
         }
-        echo false;
     }
 
     public function getLinkData(){ // for ajax

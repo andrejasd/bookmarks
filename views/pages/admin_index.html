@@ -1,14 +1,36 @@
 <h3>Users</h3><br/>
-<table class="table table-striped" style="width: 400px;">
-    <?php foreach($data['users'] as $page_data) { ?>
-    <tr>
-        <td><b><?=$page_data['email']?></b></td>
-        <td align="right">
-            <!-- <a href="/admin/pages/edit/<?=$page_data['id']?>"><button class="btn btn-sm btn-primary">edit</button></a> -->
-            <a href="/admin/users/delete_user/<?=$page_data['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Забанить!!!</button></a>
-        </td>
-    </tr>
-    <?php } ?>
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <thead>
+        <tr class="info">
+            <th class="text-center">№</th>
+            <th class="text-center">user_id</th>
+            <th class="text-center">e-mail</th>
+            <th class="text-center">role</th>
+            <th class="text-center">registration date</th>
+            <th class="text-center">is_active</th>
+            <th class="text-center">delete_date</th>
+            <th class="text-center">Инструмент</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($data['users'] as $page_data) { ?>
+        <tr>
+            <td class="text-center"><?=$page_data['number']?></td>
+            <td><?=$page_data['id']?></td>
+            <td><?=$page_data['email']?></td>
+            <td><?=$page_data['role']?></td>
+            <td><?=$page_data['registration_date']?></td>
+            <td><?=$page_data['is_active']?></td>
+            <td><?=$page_data['delete_date']?></td>
+            <td align="right">
+                <!-- переделать на POST -->
+                <a href="/admin/users/delete_user/<?=$page_data['id']?>" onclick="return confirmDelete();">
+                    <button class="btn btn-sm btn-warning">Забанить!!!</button>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
 </table>
 
 <br/>
