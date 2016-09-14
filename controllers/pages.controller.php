@@ -77,7 +77,9 @@ class PagesController extends Controller
 
     public function test()
     {
-        //Router::redirect('/');
+        if (mail("andrej_asd@bigmir.net", "My Subject", "Line 1\nLine 2\nLine 3")){
+            Router::redirect('/');
+        }
     }
     
 }

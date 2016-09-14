@@ -34,10 +34,12 @@ class Preview{
 
         // превьюха через phantomjs
         $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/rasterize.js '.$url.' '.ROOT.'/webroot/uploads/preview/'.$file_name.'.jpg'.' '.'400px*250px 0.3125';
-        shell_exec($shell);
-        // добавить обрезку картинки
-
-        return true;
+        $result = shell_exec($shell);
+        if (!$result || $result == ''){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     // удаление картинки
@@ -61,9 +63,13 @@ class Preview{
 
         $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/title.js '.$url;
         $title = shell_exec($shell);
-        $title = mb_convert_encoding($title, "UTF-8");
+        if ($title === False || $title == '') {
+            $title = "Перевірте посилання";
+        }
+        else{
+            $title = mb_convert_encoding($title, "UTF-8");
+        }
         return $title;
-
 
 //        if ($content === False){
 //            $title = "Перевірте посилання";

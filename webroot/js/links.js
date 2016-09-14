@@ -23,7 +23,7 @@ function link_edit(link_id) {
     var div_link = $('[data-index = ' + link_id + ']');
     var url = $(div_link).find('a').attr('href');
     var title = $(div_link).find('p').html();
-    console.log(url + ' ' + title);
+    console.log(link_id + ' ' + url + ' ' + title);
     $("#new_link").val(url);
     $("#new_title").val(title);
     $("#link_id").val(link_id);
@@ -96,16 +96,16 @@ function add_new_link() {
 
         var last_link$ = $('#plus' + tab_id);
         var load = '<div class=\"l linkk col-xs-6 col-sm-4 col-md-3 col-lg-2\" data-index=\"' + id + '\">\
-                    <a href=\"' + link + '\" class=\"thumbnail my_thumbnail\" target="_blank">\
-                    <button type=\"button\" class=\"close my_close\" onclick=\"return link_delete(' + id + ');\"><span class=\"glyphicon glyphicon-remove\"></span></button>\
-                    <button type=\"button\" class=\"close my_close\" onclick=\"return link_edit(' + id + ');\"><span class=\"glyphicon glyphicon-cog\"></span></button>\
-                    <button type=\"button\" class=\"close my_close\" onclick=\"return link_refresh(' + id + ');\"><span class=\"glyphicon glyphicon glyphicon-refresh\"></span></button>\
-                    <div class="loader-wrapper">\
-                        <div class="loader"></div>\
-                    </div>\
-                    <hr>\
-                    <p class="text-primary size">' + title + '</p>\
-                    </a>\
+                      <a href=\"' + link + '\" class=\"thumbnail my_thumbnail\" target="_blank">\
+                        <button type=\"button\" class=\"close my_close\" onclick=\"return link_delete(' + id + ');\"><span class=\"glyphicon glyphicon-remove\"></span></button>\
+                        <button type=\"button\" class=\"close my_close\" onclick=\"return link_edit(' + id + ');\"><span class=\"glyphicon glyphicon-cog\"></span></button>\
+                        <button type=\"button\" class=\"close my_close\" onclick=\"return link_refresh(' + id + ');\"><span class=\"glyphicon glyphicon glyphicon-refresh\"></span></button>\
+                        <div class="loader-wrapper">\
+                            <div class="loader"></div>\
+                        </div>\
+                        <hr>\
+                        <p class="text-primary size">' + title + '</p>\
+                       </a>\
                     </div>\
         ';
         $(last_link$).before(load);
@@ -116,20 +116,25 @@ function add_new_link() {
         console.log(data);
 
         $.post('/links/create_image/', data, function (data) {
-            console.log('Есть КАРТИНКА!!!!!!!!!!! ' + data);
-            var id = data;
-            var load = '<img src=\"uploads\/preview\/' + id + '.jpg\">';
-            console.log(load);
-            var new_link = $('[data-index=' + id + ']');
-            $(new_link).find(".loader-wrapper").remove();
-            $(new_link).find("hr").before('<img src="">');
-            $(new_link).find("img").attr('src', 'uploads\/preview\/' + id + '.jpg');
-            console.log(new_link);
+            if (data){
+                console.log('Есть КАРТИНКА!!!!!!!!!!! ' + data);
+                var id = data;
+                var load = '<img src=\"uploads\/preview\/' + id + '.jpg\">';
+                console.log(load);
+                var new_link = $('[data-index=' + id + ']');
+                $(new_link).find(".loader-wrapper").remove();
+                $(new_link).find("hr").before('<img src="">');
+                $(new_link).find("img").attr('src', 'uploads\/preview\/' + id + '.jpg');
+                console.log(new_link);
+            }else{
+                console.log('НЕМА картинки!!!!!!!!!!! ' + data);
+            }
         });
 
     });
 }
 
+// оптимизировать!!!
 function link_refresh(id) {
     var data = {'id' : id};
     console.log(data);
@@ -137,47 +142,45 @@ function link_refresh(id) {
     var load = '<div class="loader-wrapper">\
                     <div class="loader"></div>\
                 </div>';
-    // var load = '<div class="loader">';
+    var load_loader = '<div class="loader">';
     var div_link = $('[data-index = ' + id + ']');
     var img_element = div_link.find('img').first();
-    // var h4_element = div_link.find('h4').first();
     var hr_element = div_link.find('hr').first();
     var loader = div_link.find('.loader-wrapper');
 
-    // if ($(h4_element).length > 0)
-    //     $(h4_element).remove();
-
-    $(img_element).removeAttr('src');
-    // if ($(img_element).length > 0)
-    //     $(img_element).remove();
+    if ($(img_element).length > 0)
+        $(img_element).removeAttr('src');
 
     if ($(loader).length <= 0){
         $(loader).remove();
         $(hr_element).before(load);
         loader = div_link.find('.loader-wrapper');
+    }else{
+        var h4_element = loader.find('h4').first();
+        if ($(h4_element).length > 0){
+            $(h4_element).remove();
+            $(loader).html(load_loader);
+        }
     }
-
-
-
-    console.log(loader);
 
     $.post('/links/link_refresh/', data, function (data) {
         console.log(data);
         data = JSON.parse(data);
-        console.log(data);
         var url = data['url'];
         var title = data['title'];
-        var file_name = data['file_name'];
-        // var load = '<img src="' + file_name + '?' + Math.random() + '">';
-        console.log(url + ' ' + title + ' ' + file_name);
+        var title_element = div_link.find('p');
+        $(title_element).text(title);
         loader.remove();
 
-        // $(hr_element).before(load);
-        $(img_element).attr('src', file_name + '?' + Math.random());
-
-        var title_element = div_link.find('p');
-        console.log(title_element);
-        $(title_element).text(title);
+        if (data['pic_exist'] == true){
+            var file_name = data['file_name'];
+            $(img_element).attr('src', file_name + '?' + Math.random());
+        }else{
+            load = '<div class="loader-wrapper">\
+                        <h4 class="overflow">' + title + '</h4>\
+                    </div>';
+            $(hr_element).before(load);
+        }
     });
     return false;
 }
@@ -186,13 +189,12 @@ function link_delete(id) {
     if ( confirm("Удалить закладку?") ){
         var data = {'id' : id};
         console.log(data);
+        var element = $('[data-index = ' + id + ']');
+        $(element).remove();
         $.post('/links/link_delete/', data, function(data){
-            var element = $('[data-index = ' + id + ']');
-            console.log(element);
-            $(element).remove();
+
         });
     }
-
     return false;
 }
 
@@ -233,6 +235,8 @@ function add_new_tab() {
 
         // активируем вкладку
         tab_activate(id);
+
+        $.cookie('last_tab_id', id, {expires: 365});
     });
 }
 

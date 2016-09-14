@@ -52,8 +52,11 @@ class LinksController extends Controller{
         if ( $_POST ){
             $url = $_POST['url'];
             $fname = $_POST['id'];
-            Preview::create_image($url, $fname);
-            echo $fname;
+            if (Preview::create_image($url, $fname)){
+                echo $fname;
+            }else{
+                echo false;
+            }
         }
     }
 
@@ -80,7 +83,7 @@ class LinksController extends Controller{
             if (!Session::get('id'))
                 $file_name = 'def_'.$file_name;
 
-            Preview::create_image($url, $file_name);
+            $pic_exist = Preview::create_image($url, $file_name);
 
             if (!$link['title']){
                 $title = Preview::get_title($url);
@@ -91,6 +94,7 @@ class LinksController extends Controller{
             }
 
             $data = array(
+                'pic_exist' => $pic_exist,
                 'url' => $link['url'],
                 'title' => $title,
                 'file_name' => 'uploads'.DS.'preview'.DS.$file_name.'.jpg'

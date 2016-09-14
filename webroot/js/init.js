@@ -1,8 +1,4 @@
-
 $(document).ready(function(){
-
-    console.log($('title').html());
-
     <!-- установка фокуса на поле добавления новой закладки -->
     $('#bookmark').focus();
 
@@ -33,9 +29,10 @@ $(document).ready(function(){
         return false;
     });
 
-    <!-- установка фокуса на форме добавления новой ссылки -->
+    // при открытии модального окна добавления новой ссылки
     $('#newLink').on('shown.bs.modal', function (event) {
-        $('#link').focus();
+        // установка фокуса и выделение текста в поле ввода новой ссылки
+        $('#link').select();
         <!-- считываем с какого tab data-content пришел запрос -->
         var tab = $(event.relatedTarget);
         var tab_id = tab.data('content');
@@ -50,7 +47,7 @@ $(document).ready(function(){
 
     <!-- установка фокуса на форме добавления новой вкладки -->
     $('#newTab').on('shown.bs.modal', function () {
-        $('#tab').focus();
+        $('#tab').select();
     });
 
     <!-- установка куки при ???? для категории -->
