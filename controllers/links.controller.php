@@ -77,6 +77,7 @@ class LinksController extends Controller{
         if ( $_POST ) {
             $id = $_POST['id'];
             $link = $this->model->getLinkById($id);
+            //Controller::ddd($link);
             $url = $link['url'] ;
             $file_name = $id;
 

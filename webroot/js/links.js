@@ -47,7 +47,7 @@ function link_edit(link_id) {
 // редактирование ссылки после нажатия кнопки ИЗМЕНИТЬ
 function link_finish_edit() {
     var new_link = $("#new_link").val();
-        new_link = encodeURI(new_link); //для кирилиці
+        // new_link = encodeURI(new_link); //для кирилиці
     var new_title = $("#new_title").val();
     var link_id = $("#link_id").val();
     var data = {'new_link' : new_link, 'new_title' : new_title, 'link_id' : link_id};
@@ -73,7 +73,9 @@ function link_finish_edit() {
 
 function add_new_link() {
     var link = $("#link").val();
-    link = encodeURI(link); //для кирилиці
+
+    //link = encodeURI(link); //для кирилиці
+
     var title = $('#title').val();
     var tab_id = $("#link_tab option:selected").val();
     var data = {'link': link, 'title': title, 'tab_id': tab_id};
@@ -136,9 +138,6 @@ function add_new_link() {
 
 // оптимизировать!!!
 function link_refresh(id) {
-    var data = {'id' : id};
-    console.log(data);
-
     var load = '<div class="loader-wrapper">\
                     <div class="loader"></div>\
                 </div>';
@@ -162,6 +161,9 @@ function link_refresh(id) {
             $(loader).html(load_loader);
         }
     }
+
+    var data = {'id' : id};
+    console.log(data);
 
     $.post('/links/link_refresh/', data, function (data) {
         console.log(data);

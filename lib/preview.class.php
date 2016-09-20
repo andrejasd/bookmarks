@@ -12,6 +12,37 @@ class Preview{
         return $contents;
     }
 
+    private function url_encode($url){
+        $url= strtr ($url, array (" "=> "%20",
+                                  "а"=>"%D0%B0", "А"=>"%D0%90","б"=>"%D0%B1", "Б"=>"%D0%91", "в"=>"%D0%B2", "В"=>"%D0%92",
+                                  "г"=>"%D0%B3", "Г"=>"%D0%93", "д"=>"%D0%B4", "Д"=>"%D0%94", "е"=>"%D0%B5", "Е"=>"%D0%95",
+                                  "ё"=>"%D1%91", "Ё"=>"%D0%81", "ж"=>"%D0%B6", "Ж"=>"%D0%96", "з"=>"%D0%B7", "З"=>"%D0%97",
+                                  "и"=>"%D0%B8", "И"=>"%D0%98", "й"=>"%D0%B9", "Й"=>"%D0%99", "к"=>"%D0%BA", "К"=>"%D0%9A",
+                                  "л"=>"%D0%BB", "Л"=>"%D0%9B", "м"=>"%D0%BC", "М"=>"%D0%9C", "н"=>"%D0%BD", "Н"=>"%D0%9D",
+                                  "о"=>"%D0%BE", "О"=>"%D0%9E", "п"=>"%D0%BF", "П"=>"%D0%9F", "р"=>"%D1%80", "Р"=>"%D0%A0",
+                                  "с"=>"%D1%81", "С"=>"%D0%A1", "т"=>"%D1%82", "Т"=>"%D0%A2", "у"=>"%D1%83", "У"=>"%D0%A3",
+                                  "ф"=>"%D1%84", "Ф"=>"%D0%A4", "х"=>"%D1%85", "Х"=>"%D0%A5", "ц"=>"%D1%86", "Ц"=>"%D0%A6",
+                                  "ч"=>"%D1%87", "Ч"=>"%D0%A7", "ш"=>"%D1%88", "Ш"=>"%D0%A8", "щ"=>"%D1%89", "Щ"=>"%D0%A9",
+                                  "ъ"=>"%D1%8A", "Ъ"=>"%D0%AA", "ы"=>"%D1%8B", "Ы"=>"%D0%AB", "ь"=>"%D1%8C", "Ь"=>"%D0%AC",
+                                  "э"=>"%D1%8D", "Э"=>"%D0%AD", "ю"=>"%D1%8E", "Ю"=>"%D0%AE", "я"=>"%D1%8F", "Я"=>"%D0%AF",
+                                  "і"=>"%D1%96", "І"=>"%D0%86", "ї"=>"%D1%97", "Ї"=>"%D0%87", "є"=>"%D1%94", "Є"=>"%D0%84"));
+//        return $url;
+
+//        $url = preg_replace('!^https?://!i','',$url); // рєгулярка для http:// b https://
+        $url = urlencode($url);
+//        $url = str_replace('%2F','/',$url);
+//        $url = str_replace('%3A',':',$url);
+//
+//        $url = str_replace('%3F','/',$url);
+//        $url = str_replace('%26','&',$url);
+//        $url = str_replace('%3D','=',$url);
+
+//        $url = 'http://' . $url;
+//        Controller::ddd($url);
+        return $url;
+
+    }
+
     // превьюха
     public static function create_image($url, $file_name){
 
@@ -31,15 +62,52 @@ class Preview{
             return false;
         }
 */
-
+        $url = self::url_encode($url);
         // превьюха через phantomjs
+
         $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/rasterize.js '.$url.' '.ROOT.'/webroot/uploads/preview/'.$file_name.'.jpg'.' '.'400px*250px 0.3125';
-        $result = shell_exec($shell);
+        // запуск с ожиданием завершения (windows and linux)
+        // $result = shell_exec($shell);
+
+        // запуск в фоне, без ожидания завершения
+        pclose(popen("start /B ". $shell, "r")); // for windows
+        // exec($shell . " > /dev/null &"); // for linux
+        $result = true;
+
         if (!$result || $result == ''){
             return false;
         }else{
             return true;
         }
+    }
+
+    // определение заголовка страници
+    public static function get_title($url){
+        $url = self::url_encode($url);
+        //Controller::ddd($url);
+        $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/title.js '.$url;
+        $title = shell_exec($shell);
+//        Controller::ddd($title);
+        if ($title === False || $title == '') {
+            $title = "Перевірте посилання";
+        }
+        else{
+            $title = mb_convert_encoding($title, "UTF-8");
+        }
+        return $title;
+
+//        $content = file_get_contents($url);
+//        $content = self::curl_get_file_contents($url);
+//        if ($content === False){
+//            $title = "Перевірте посилання";
+//        }
+//        else{
+//            preg_match_all("|<title(.*)>(.*)</title>|sUSi", $content, $matches);
+//            $title = $matches[2][0];
+//            $title = mb_convert_encoding($title, "UTF-8");
+//            // зробити: якщо в title є ?? то виводимо url
+//        }
+//        return $title;
     }
 
     // удаление картинки
@@ -51,36 +119,6 @@ class Preview{
         else{
             //пишем лог
         }
-    }
-
-    // определение заголовка страници
-    public static function get_title($url){
-
-        //$url =  urlencode($url);
-        //$content = file_get_contents($url);
-
-        //$content = self::curl_get_file_contents($url);
-
-        $shell = ROOT.'/webroot/js/phantomjs '.ROOT.'/webroot/js/title.js '.$url;
-        $title = shell_exec($shell);
-        if ($title === False || $title == '') {
-            $title = "Перевірте посилання";
-        }
-        else{
-            $title = mb_convert_encoding($title, "UTF-8");
-        }
-        return $title;
-
-//        if ($content === False){
-//            $title = "Перевірте посилання";
-//        }
-//        else{
-//            preg_match_all("|<title(.*)>(.*)</title>|sUSi", $content, $matches);
-//            $title = $matches[2][0];
-//            $title = mb_convert_encoding($title, "UTF-8");
-//            // зробити: якщо в title є ?? то виводимо url
-//        }
-//        return $title;
     }
 
 }
