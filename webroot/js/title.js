@@ -15,6 +15,26 @@ if (system.args.length === 1) {
 } else {
     address = system.args[1];
     address = decodeURIComponent(address);
+
+    // Отключение CSS и загрузки сторонних скриптов для ускореняи парсинга
+    page.onResourceRequested = function (requestData, request) {
+        if ((/http:\/\/.+?\.css$/gi).test(requestData['url']) || requestData.headers['Content-Type'] == 'text/css') {
+            request.abort();
+        }
+        if (
+            (/\.doubleclick\./gi.test(requestData['url'])) ||
+            (/\.pubmatic\.com$/gi.test(requestData['url']))
+        ) {
+            request.abort();
+        }
+    };
+
+    //Отключение картинок
+    page.settings = {
+        loadImages: false,
+        javascriptEnabled: false
+    };
+
     page.open(address , function (status) {
         if (status === 'success') {
             console.log(page.title); // get page Title

@@ -1,29 +1,10 @@
-test page
-
-<!--
-<script src="/js/ajaxx.js"></script>
-
-<script>
-
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        console.log(request.readyState);
-        if (request.readyState == 4) {
-            responseBody = request.responseText;
-            console.log(responseBody);
-            data = JSON.parse(responseBody);
-            console.log(data);
-            alert(data['message']);
-        }
-    }
-
-    //request.open('GET', '/pages/test1', true);
-    //request.send(null);
-
-</script>
--->
 
 <?php
-phpinfo();
+echo "test page\n<br>\n";
+?>
+
+<?php
+print_r($data['test']);
+
 
 ?>

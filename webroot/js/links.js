@@ -71,11 +71,12 @@ function link_finish_edit() {
     });
 }
 
+function test() {
+
+}
+
 function add_new_link() {
     var link = $("#link").val();
-
-    //link = encodeURI(link); //для кирилиці
-
     var title = $('#title').val();
     var tab_id = $("#link_tab option:selected").val();
     var data = {'link': link, 'title': title, 'tab_id': tab_id};

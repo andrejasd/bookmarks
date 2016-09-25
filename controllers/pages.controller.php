@@ -75,15 +75,16 @@ class PagesController extends Controller
         // Controller::ddd($this->data['users']);
     }
 
-    public function test()
-    {
+    public function test(){
 //        $to  = "Mary &lt;mary@example.com>, " ;
 //        $to .= "Kelly &lt;kelly@example.com>";
-        $message = "Line 1\nLine 2\nLine 3";
-        if (mail("user@mail.com", "My Subject", $message, "From: admin@bookmarks.com")){
+//        $message = "Line 1\nLine 2\nLine 3";
+//        if (mail("user@mail.com", "My Subject", $message, "From: admin@bookmarks.com")){
 //            Router::redirect('/');
-        }
+//        }
+
+       $this->data['test'] = $_GET;
 
     }
-    
+
 }
